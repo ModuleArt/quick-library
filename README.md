@@ -1,6 +1,19 @@
 <h1 align="center">Quick Library</h1>
+
 <p align="center">
   Windows Forms Control class library for "Quick" apps (.NET Framework)
+</p>
+
+<p align="center">
+  <a href="https://github.com/ModuleArt/quick-picture-viewer/releases">
+    <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/moduleart/quick-library?include_prereleases">
+  </a>
+  <a alt="Trello roadmap" href="https://trello.com/b/mFgTs747/quick-picture-viewer">
+    <img src="https://img.shields.io/badge/planner-trello-%230079BF">
+  </a>
+  <a alt="Buy ma a coffee" href="https://www.patreon.com/moduleart">
+    <img alt="Patreon" src="https://img.shields.io/badge/donate-patreon-%23E85B46">
+  </a>
 </p>
 
 <h2 align="center">Apps</h2>

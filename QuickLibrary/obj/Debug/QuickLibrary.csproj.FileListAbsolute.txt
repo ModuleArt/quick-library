@@ -1,0 +1,10 @@
+D:\Projects\DotNet\QuickLibrary\QuickLibrary\obj\Debug\QuickLibrary.csprojAssemblyReference.cache
+D:\Projects\DotNet\QuickLibrary\QuickLibrary\bin\Debug\QuickLibrary.dll
+D:\Projects\DotNet\QuickLibrary\QuickLibrary\bin\Debug\QuickLibrary.pdb
+D:\Projects\DotNet\QuickLibrary\QuickLibrary\obj\Debug\QuickLibrary.dll
+D:\Projects\DotNet\QuickLibrary\QuickLibrary\obj\Debug\QuickLibrary.pdb
+D:\Projects\DotNet\QuickLibrary\QuickLibrary\bin\Debug\Octokit.dll
+D:\Projects\DotNet\QuickLibrary\QuickLibrary\obj\Debug\QuickLibrary.DownloadForm.resources
+D:\Projects\DotNet\QuickLibrary\QuickLibrary\obj\Debug\QuickLibrary.Properties.Resources.resources
+D:\Projects\DotNet\QuickLibrary\QuickLibrary\obj\Debug\QuickLibrary.csproj.GenerateResource.cache
+D:\Projects\DotNet\QuickLibrary\QuickLibrary\obj\Debug\QuickLibrary.csproj.CopyComplete

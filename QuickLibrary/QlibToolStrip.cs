@@ -7,8 +7,29 @@ namespace QuickLibrary
 	{
 		public QlibToolStrip()
 		{
-
+			//this.Paint += QlibToolStrip_Paint;
 		}
+
+		//private void QlibToolStrip_Paint(object sender, PaintEventArgs e)
+		//{
+		//	foreach (var item in this.Items)
+		//	{
+		//		var asComboBox = item as ToolStripComboBox;
+		//		if (asComboBox != null)
+		//		{
+		//			var location = asComboBox.ComboBox.Location;
+		//			var size = asComboBox.ComboBox.Size;
+		//			Pen cbBorderPen = new Pen(Color.Red);
+		//			Rectangle rect = new Rectangle(
+		//					location.X,
+		//					location.Y,
+		//					size.Width - 1,
+		//					size.Height - 1);
+
+		//			e.Graphics.DrawRectangle(cbBorderPen, rect);
+		//		}
+		//	}
+		//}
 
 		public void SetDarkMode(bool dark, bool titlebar)
 		{

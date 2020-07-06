@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Windows.Forms;
 
@@ -45,7 +46,7 @@ namespace QuickLibrary
 		{
 			if (darkMode)
 			{
-				e.Graphics.Clear(ThemeManager.DarkBackColor);
+				e.Graphics.Clear(ThemeManager.DarkSecondColor);
 			}
 			else
 			{
@@ -56,31 +57,23 @@ namespace QuickLibrary
 			{
 				if (darkMode)
 				{
-					e.Graphics.FillRectangle(new SolidBrush(ThemeManager.DarkHoverColor), 0, 0, this.Width, this.Height - 2);
+					e.Graphics.Clear(ThemeManager.DarkHoverColor);
 				}
 				else
 				{
-					e.Graphics.FillRectangle(new SolidBrush(ThemeManager.LightHoverColor), 0, 0, this.Width, this.Height - 2);
+					e.Graphics.Clear(ThemeManager.LightHoverColor);
 				}
 			}
-			else
-			{
-				e.Graphics.FillRectangle(new SolidBrush(this.BackColor), 0, 0, this.Width, this.Height - 2);
-			}
 
-			Rectangle newBounds = new Rectangle(this.ClientRectangle.X, this.ClientRectangle.Y, this.ClientRectangle.Width, this.ClientRectangle.Height - 1);
-			ControlPaint.DrawBorder(e.Graphics, newBounds, ThemeManager.BorderColor, ButtonBorderStyle.Solid);
-
-			e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor), this.Width - 18, 0, this.Width - 18, this.Height - 2);
 			e.Graphics.FillPolygon(new SolidBrush(this.ForeColor), new PointF[]
 			{
-				new PointF(this.Width - 13, 10),
-				new PointF(this.Width - 9, 14),
-				new PointF(this.Width - 5, 10)
+				new PointF(this.Width - 19, 14),
+				new PointF(this.Width - 15, 18),
+				new PointF(this.Width - 11, 14)
 			});
 
-			e.Graphics.TextRenderingHint = TextRenderingHint.SystemDefault;
-			e.Graphics.DrawString(this.Text, this.Font, new SolidBrush(this.ForeColor), 3, 3);
+			e.Graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
+			e.Graphics.DrawString(this.Text, this.Font, new SolidBrush(this.ForeColor), 12, 7);
 		}
 
 		protected override void OnDrawItem(DrawItemEventArgs e)
@@ -88,6 +81,7 @@ namespace QuickLibrary
 			e.DrawBackground();
 			if (e.Index != -1)
 			{
+				e.Graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
 				if (!darkMode && (e.State & DrawItemState.Selected) == DrawItemState.Selected)
 				{
 					e.Graphics.DrawString(this.Items[e.Index].ToString(), this.Font, Brushes.White, e.Bounds.X, e.Bounds.Y);

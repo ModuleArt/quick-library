@@ -5,7 +5,7 @@ namespace QuickLibrary
 {
 	public class QlibNumericBox : NumericUpDown
 	{
-		private bool darkMode = false;
+		//private bool darkMode = false;
 
 		public QlibNumericBox()
 		{
@@ -15,7 +15,7 @@ namespace QuickLibrary
 
 		public void SetDarkMode(bool dark)
 		{
-			this.darkMode = dark;
+			//this.darkMode = dark;
 
 			if (dark)
 			{
@@ -27,10 +27,10 @@ namespace QuickLibrary
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			e.Graphics.Clear(this.BackColor);
-			ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, ThemeManager.BorderColor, ButtonBorderStyle.Solid);
+			//ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, ThemeManager.BorderColor, ButtonBorderStyle.Solid);
 
-			e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor), this.Width - 18, 0, this.Width - 18, this.Height);
-			e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor), this.Width - 18, this.Height / 2, this.Width, this.Height / 2);
+			//e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor), this.Width - 18, 0, this.Width - 18, this.Height);
+			//e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor), this.Width - 18, this.Height / 2, this.Width, this.Height / 2);
 
 			Brush arrowsBrush = new SolidBrush(this.ForeColor);
 			if (!this.Enabled)
@@ -40,15 +40,15 @@ namespace QuickLibrary
 
 			e.Graphics.FillPolygon(arrowsBrush, new PointF[]
 			{
-				new PointF(this.Width - 13, 15),
-				new PointF(this.Width - 9, 19),
-				new PointF(this.Width - 5, 15)
+				new PointF(this.Width - 14, 15),
+				new PointF(this.Width - 10, 19),
+				new PointF(this.Width - 6, 15)
 			});
 			e.Graphics.FillPolygon(arrowsBrush, new PointF[]
 			{
-				new PointF(this.Width - 14, 8),
-				new PointF(this.Width - 9, 3),
-				new PointF(this.Width - 5, 8)
+				new PointF(this.Width - 15, 10),
+				new PointF(this.Width - 10, 5),
+				new PointF(this.Width - 6, 10)
 			});
 		}
 

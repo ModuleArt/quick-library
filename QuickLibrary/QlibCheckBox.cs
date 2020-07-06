@@ -90,7 +90,7 @@ namespace QuickLibrary
 				}
 				else
 				{
-					ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 2, 13, 13), ThemeManager.BorderColor, ButtonBorderStyle.Solid);
+					//ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 2, 13, 13), ThemeManager.BorderColor, ButtonBorderStyle.Solid);
 				}
 
 				if (this.Checked)
@@ -109,7 +109,7 @@ namespace QuickLibrary
 					}
 				}
 
-				e.Graphics.TextRenderingHint = TextRenderingHint.SystemDefault;
+				e.Graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
 				if (this.Enabled)
 				{
 					e.Graphics.DrawString(darkText, this.Font, new SolidBrush(this.ForeColor), 17, 0);

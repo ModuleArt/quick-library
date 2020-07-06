@@ -39,14 +39,13 @@ namespace QuickLibrary
 				e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 				e.Graphics.FillEllipse(new SolidBrush(ThemeManager.DarkSecondColor), new Rectangle(0, 2, 13, 13));
 				
-
 				if (this.Focused)
 				{
 					e.Graphics.DrawEllipse(new Pen(ThemeManager.BorderColor, 2), new Rectangle(1, 3, 11, 11));
 				}
 				else
 				{
-					e.Graphics.DrawEllipse(new Pen(ThemeManager.BorderColor), new Rectangle(0, 2, 13, 13));
+					//e.Graphics.DrawEllipse(new Pen(ThemeManager.BorderColor), new Rectangle(0, 2, 13, 13));
 				}
 
 				if (this.Checked)
@@ -61,7 +60,7 @@ namespace QuickLibrary
 					}
 				}
 
-				e.Graphics.TextRenderingHint = TextRenderingHint.SystemDefault;
+				e.Graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
 				if (this.Enabled)
 				{
 					e.Graphics.DrawString(darkText, this.Font, new SolidBrush(this.ForeColor), 17, 0);

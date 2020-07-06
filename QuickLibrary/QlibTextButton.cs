@@ -89,16 +89,28 @@ namespace QuickLibrary
 			if (this.Focused)
 			{
 				e.Graphics.DrawRectangle(new Pen(ThemeManager.BorderColor, 2), 1, 1, this.Width - 2, this.Height - 2);
-				//e.Graphics.DrawRectangle(new Pen(ThemeManager.PressedColor), 5, 5, this.Width - 11, this.Height - 11);
 			}
 			else
 			{
-				e.Graphics.DrawRectangle(new Pen(ThemeManager.BorderColor), 0, 0, this.Width - 1, this.Height - 1);
+				//e.Graphics.DrawRectangle(new Pen(ThemeManager.BorderColor), 0, 0, this.Width - 1, this.Height - 1);
 			}
 
-			e.Graphics.TextRenderingHint = TextRenderingHint.SystemDefault;
+			e.Graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
 			Size textSize = TextRenderer.MeasureText(this.Text, this.Font);
-			e.Graphics.DrawString(this.Text, this.Font, new SolidBrush(this.ForeColor), (this.Width / 2) - (textSize.Width / 2), 3);
+			if (this.Enabled)
+			{
+				e.Graphics.DrawString(this.Text, this.Font,
+				new SolidBrush(this.ForeColor),
+				(this.Width / 2) - (textSize.Width / 2),
+				(this.Height / 2) - (textSize.Height / 2));
+			}
+			else
+			{
+				e.Graphics.DrawString(this.Text, this.Font,
+				new SolidBrush(ThemeManager.BorderColor),
+				(this.Width / 2) - (textSize.Width / 2),
+				(this.Height / 2) - (textSize.Height / 2));
+			}
 		}
 	}
 }

@@ -29,7 +29,7 @@ namespace QuickLibrary
 
 				p.Graphics.Clear(ThemeManager.DarkBackColor);
 
-				p.Graphics.TextRenderingHint = TextRenderingHint.SystemDefault;
+				p.Graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
 				p.Graphics.DrawString(box.Text, box.Font, Brushes.White, -2, -3);
 
 				p.Graphics.DrawLine(pen, 0, 20, 0, box.Height - 2); //left border

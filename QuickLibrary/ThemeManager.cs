@@ -9,6 +9,8 @@ namespace QuickLibrary
 {
 	public static class ThemeManager
 	{
+		public static Font DefaultFont = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(204)));
+
 		public static Color DarkMainColor = Color.Black;
 		public static Color DarkBackColor = Color.FromArgb(32, 32, 32);
 		public static Color DarkSecondColor = Color.FromArgb(56, 56, 56);

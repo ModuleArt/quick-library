@@ -352,6 +352,16 @@ namespace QuickLibrary
                 // ignored
             }
 
+            // Draws the horizontal line
+            Drawer.DrawLine(new Pen(this.horizLineColor, 5), new Point(0, 19), new Point(Width, 19));
+
+            // Draws the background of the tab control
+            Drawer.FillRectangle(new SolidBrush(this.backTabColor), new Rectangle(0, 20, Width, Height - 20));
+
+            // Draws the border of the TabControl
+            Drawer.DrawRectangle(new Pen(this.borderColor, 2), new Rectangle(1, 1, Width - 2, Height - 2));
+            Drawer.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
             for (var i = 0; i <= TabCount - 1; i++)
             {
                 var Header = new Rectangle(
@@ -395,16 +405,6 @@ namespace QuickLibrary
                         this.CenterSringFormat);
                 }
             }
-
-            // Draws the horizontal line
-            Drawer.DrawLine(new Pen(this.horizLineColor, 5), new Point(0, 19), new Point(Width, 19));
-
-            // Draws the background of the tab control
-            Drawer.FillRectangle(new SolidBrush(this.backTabColor), new Rectangle(0, 20, Width, Height - 20));
-
-            // Draws the border of the TabControl
-            Drawer.DrawRectangle(new Pen(this.borderColor, 2), new Rectangle(0, 0, Width, Height));
-            Drawer.InterpolationMode = InterpolationMode.HighQualityBicubic;
         }
 
         /// <summary>

@@ -57,6 +57,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="QlibCloseButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QlibSizableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="QlibFixedForm.cs">
       <SubType>Form</SubType>
     </Compile>

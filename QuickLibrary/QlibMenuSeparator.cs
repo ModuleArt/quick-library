@@ -10,7 +10,7 @@ namespace QuickLibrary
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			int y = e.ClipRectangle.Y + (e.ClipRectangle.Height / 2) - 1;
-			e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor), e.ClipRectangle.X + 4, y, e.ClipRectangle.Width - 5, y);
+			e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor), e.ClipRectangle.X + 10, y, e.ClipRectangle.Width - 11, y);
 		}
 	}
 }

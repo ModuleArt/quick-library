@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace QuickLibrary
 {
-	public class QlibFixedForm : Form
+	public class QlibSizableForm : Form
 	{
-		[Browsable(false), Obsolete("Don't use this! (FormBorderStyle = None)", true), EditorBrowsable(EditorBrowsableState.Never)]
-		public new enum FormBorderStyle { };
-
 		[Browsable(false), Obsolete("Don't use this! (AutoScaleMode = Dpi)", true), EditorBrowsable(EditorBrowsableState.Never)]
 		public new enum AutoScaleMode { };
 
@@ -39,114 +37,116 @@ namespace QuickLibrary
 		[Browsable(false), Obsolete("Don't use this! (Font = ThemeManager.DefaultFont)", true), EditorBrowsable(EditorBrowsableState.Never)]
 		public new enum Font { };
 
-		private bool m_aeroEnabled;
 		public bool draggable = false;
-
-		//private const int CS_DROPSHADOW = 0x00020000;
-		//private const int WM_NCPAINT = 0x0085;
-
-		//[System.Runtime.InteropServices.DllImport("dwmapi.dll")]
-		//public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS pMarInset);
-		//[System.Runtime.InteropServices.DllImport("dwmapi.dll")]
-		//public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
-		//[System.Runtime.InteropServices.DllImport("dwmapi.dll")]
-
-		//public static extern int DwmIsCompositionEnabled(ref int pfEnabled);
-		//[System.Runtime.InteropServices.DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
-
-		//private static extern IntPtr CreateRoundRectRgn(
-		//	int nLeftRect,
-		//	int nTopRect,
-		//	int nRightRect,
-		//	int nBottomRect,
-		//	int nWidthEllipse,
-		//	int nHeightEllipse
-		//);
-
-		//public struct MARGINS
-		//{
-		//	public int leftWidth;
-		//	public int rightWidth;
-		//	public int topHeight;
-		//	public int bottomHeight;
-		//}
-
-		//protected override CreateParams CreateParams
-		//{
-		//	get
-		//	{
-		//		m_aeroEnabled = CheckAeroEnabled();
-		//		CreateParams cp = base.CreateParams;
-		//		if (!m_aeroEnabled)
-		//			cp.ClassStyle |= CS_DROPSHADOW;
-		//		return cp;
-		//	}
-		//}
 
 		public const int WS_SYSMENU = 0x80000;
 		public const int CS_DROPSHADOW = 0x20000;
+
+		const int WM_NCHITTEST = 0x0084;
+		const int HTCLIENT = 1;
+		const int HTCAPTION = 2;
+
+		protected override void WndProc(ref Message m)
+		{
+			base.WndProc(ref m);
+			switch (m.Msg)
+			{
+				case WM_NCHITTEST:
+					if (m.Result == (IntPtr)HTCLIENT)
+					{
+						m.Result = (IntPtr)HTCAPTION;
+					}
+					break;
+			}
+		}
 
 		protected override CreateParams CreateParams
 		{
 			get
 			{
 				CreateParams cp = base.CreateParams;
-				//cp.Style = WS_SYSMENU;
-				cp.ClassStyle |= CS_DROPSHADOW;
+				cp.Style |= 0x40000;
 				return cp;
 			}
 		}
 
-		//private bool CheckAeroEnabled()
+
+		//protected override CreateParams CreateParams
 		//{
-		//	if (Environment.OSVersion.Version.Major >= 6)
+		//	get
 		//	{
-		//		int enabled = 0;
-		//		DwmIsCompositionEnabled(ref enabled);
-		//		return (enabled == 1) ? true : false;
+		//		CreateParams cp = base.CreateParams;
+		//		cp.ClassStyle |= 0x20000;
+		//		return cp;
 		//	}
-		//	return false;
 		//}
 
 		//protected override void WndProc(ref Message m)
 		//{
+		//	const int RESIZE_HANDLE_SIZE = 10;
+
 		//	switch (m.Msg)
 		//	{
-		//		case WM_NCPAINT:
-		//			if (m_aeroEnabled)
+		//		case 0x0084/*NCHITTEST*/ :
+		//			base.WndProc(ref m);
+
+		//			if ((int)m.Result == 0x01/*HTCLIENT*/)
 		//			{
-		//				var v = 2;
-		//				DwmSetWindowAttribute(this.Handle, 2, ref v, 4);
-		//				MARGINS margins = new MARGINS()
+		//				Point screenPoint = new Point(m.LParam.ToInt32());
+		//				Point clientPoint = this.PointToClient(screenPoint);
+		//				if (clientPoint.Y <= RESIZE_HANDLE_SIZE)
 		//				{
-		//					bottomHeight = -1,
-		//					leftWidth = 0,
-		//					rightWidth = 0,
-		//					topHeight = 0
-		//				};
-		//				DwmExtendFrameIntoClientArea(this.Handle, ref margins);
+		//					if (clientPoint.X <= RESIZE_HANDLE_SIZE)
+		//						m.Result = (IntPtr)13/*HTTOPLEFT*/ ;
+		//					else if (clientPoint.X < (Size.Width - RESIZE_HANDLE_SIZE))
+		//						m.Result = (IntPtr)12/*HTTOP*/ ;
+		//					else
+		//						m.Result = (IntPtr)14/*HTTOPRIGHT*/ ;
+		//				}
+		//				else if (clientPoint.Y <= (Size.Height - RESIZE_HANDLE_SIZE))
+		//				{
+		//					if (clientPoint.X <= RESIZE_HANDLE_SIZE)
+		//						m.Result = (IntPtr)10/*HTLEFT*/ ;
+		//					else if (clientPoint.X < (Size.Width - RESIZE_HANDLE_SIZE))
+		//						m.Result = (IntPtr)2/*HTCAPTION*/ ;
+		//					else
+		//						m.Result = (IntPtr)11/*HTRIGHT*/ ;
+		//				}
+		//				else
+		//				{
+		//					if (clientPoint.X <= RESIZE_HANDLE_SIZE)
+		//						m.Result = (IntPtr)16/*HTBOTTOMLEFT*/ ;
+		//					else if (clientPoint.X < (Size.Width - RESIZE_HANDLE_SIZE))
+		//						m.Result = (IntPtr)15/*HTBOTTOM*/ ;
+		//					else
+		//						m.Result = (IntPtr)17/*HTBOTTOMRIGHT*/ ;
+		//				}
 		//			}
-		//			break;
-		//		default: break;
+		//			return;
 		//	}
 		//	base.WndProc(ref m);
 		//}
 
-		public QlibFixedForm() 
+		public QlibSizableForm() 
 		{
-			base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+			base.FormBorderStyle = FormBorderStyle.Sizable;
 			base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
 			base.HelpButton = false;
 			base.AutoScroll = false;
-			base.AutoScrollMargin = new System.Drawing.Size(0, 0);
-			base.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+			base.AutoScrollMargin = new Size(0, 0);
+			base.AutoScrollMinSize = new Size(0, 0);
 			base.AutoSize = false;
 			base.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			base.BackgroundImage = null;
 			base.BackgroundImageLayout = ImageLayout.Tile;
 			base.Font = ThemeManager.DefaultFont;
 
-			m_aeroEnabled = !ThemeManager.isWindows10();
+			this.Load += QlibSizableForm_Load;
+		}
+
+		private void QlibSizableForm_Load(object sender, EventArgs e)
+		{
+			this.FormBorderStyle = FormBorderStyle.None;
 		}
 
 		public void SetDraggableControls(List<Control> controls)

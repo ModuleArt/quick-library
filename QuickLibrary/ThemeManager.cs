@@ -20,7 +20,7 @@ namespace QuickLibrary
 		public static Color LightMainColor = Color.White;
 		public static Color LightBackColor = SystemColors.Control;
 		public static Color LightSecondColor = SystemColors.ControlLight;
-		public static Color LightPaleColor = Color.FromArgb(192, 216, 235);
+		public static Color LightPaleColor = Color.FromArgb(205, 228, 247);
 		public static Color LightHoverColor = Color.FromArgb(204, 204, 204);
 
 		public static Color BorderColor = Color.FromArgb(100, 100, 100);

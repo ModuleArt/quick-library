@@ -5,8 +5,6 @@ namespace QuickLibrary
 {
 	public class QlibNumericBox : NumericUpDown
 	{
-		//private bool darkMode = false;
-
 		public QlibNumericBox()
 		{
 			SetStyle(ControlStyles.UserPaint, true);
@@ -15,8 +13,6 @@ namespace QuickLibrary
 
 		public void SetDarkMode(bool dark)
 		{
-			//this.darkMode = dark;
-
 			if (dark)
 			{
 				this.BackColor = ThemeManager.DarkSecondColor;
@@ -27,10 +23,6 @@ namespace QuickLibrary
 		protected override void OnPaint(PaintEventArgs e)
 		{
 			e.Graphics.Clear(this.BackColor);
-			//ControlPaint.DrawBorder(e.Graphics, this.ClientRectangle, ThemeManager.BorderColor, ButtonBorderStyle.Solid);
-
-			//e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor), this.Width - 18, 0, this.Width - 18, this.Height);
-			//e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor), this.Width - 18, this.Height / 2, this.Width, this.Height / 2);
 
 			Brush arrowsBrush = new SolidBrush(this.ForeColor);
 			if (!this.Enabled)

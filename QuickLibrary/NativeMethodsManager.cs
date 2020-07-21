@@ -9,6 +9,11 @@ namespace QuickLibrary
 		public const int WM_NCLBUTTONDOWN = 0xA1;
 		public const int HT_CAPTION = 0x2;
 		public const int GWL_HWNDPARENT = -8;
+		public const int WS_SYSMENU = 0x80000;
+		public const int CS_DROPSHADOW = 0x20000;
+		public const int WS_MINIMIZEBOX = 0x20000;
+		public const int WS_MAXIMIZEBOX = 0x10000;
+		public const int WM_POPUPSYSTEMMENU = 0x313;
 
 		public enum ScrollBarType : uint
 		{

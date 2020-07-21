@@ -16,4 +16,3 @@ D:\Projects\DotNet\quick-library\QuickLibrary\obj\Release\QuickLibrary.csproj.Ge
 D:\Projects\DotNet\quick-library\QuickLibrary\obj\Release\QuickLibrary.csproj.CopyComplete
 D:\Projects\DotNet\quick-library\QuickLibrary\obj\Release\QuickLibrary.dll
 D:\Projects\DotNet\quick-library\QuickLibrary\obj\Release\QuickLibrary.pdb
-D:\Projects\DotNet\quick-library\QuickLibrary\obj\Release\QuickLibrary.csprojAssemblyReference.cache

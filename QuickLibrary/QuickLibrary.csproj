@@ -51,13 +51,14 @@
     <Compile Include="DownloadForm.Designer.cs">
       <DependentUpon>DownloadForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FileAssociation.cs" />
     <Compile Include="NativeMethodsManager.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="QlibCloseButton.cs">
+    <Compile Include="QlibTitlebarButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="QlibSizableForm.cs">
@@ -74,9 +75,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="QlibTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="QlibToolStripComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="QlibComboBox.cs">

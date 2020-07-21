@@ -66,31 +66,29 @@ namespace QuickLibrary
 		{
 			if (darkMode)
 			{
+				int top = (this.Height / 2) - 8;
+
 				e.Graphics.Clear(this.BackColor);
 
 				if (this.pressed)
 				{
-					e.Graphics.FillRectangle(new SolidBrush(ThemeManager.PressedColor), new Rectangle(0, 2, 13, 13));
+					e.Graphics.FillRectangle(new SolidBrush(ThemeManager.PressedColor), new Rectangle(0, top + 2, 13, 13));
 				}
 				else
 				{
 					if (this.hovered)
 					{
-						e.Graphics.FillRectangle(new SolidBrush(ThemeManager.DarkHoverColor), new Rectangle(0, 2, 13, 13));
+						e.Graphics.FillRectangle(new SolidBrush(ThemeManager.DarkHoverColor), new Rectangle(0, top + 2, 13, 13));
 					}
 					else
 					{
-						e.Graphics.FillRectangle(new SolidBrush(ThemeManager.DarkSecondColor), new Rectangle(0, 2, 13, 13));
+						e.Graphics.FillRectangle(new SolidBrush(ThemeManager.DarkSecondColor), new Rectangle(0, top + 2, 13, 13));
 					}
 				}
 
 				if (this.Focused)
 				{
-					e.Graphics.DrawRectangle(new Pen(ThemeManager.BorderColor, 2), new Rectangle(1, 3, 11, 11));
-				}
-				else
-				{
-					//ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 2, 13, 13), ThemeManager.BorderColor, ButtonBorderStyle.Solid);
+					e.Graphics.DrawRectangle(new Pen(ThemeManager.BorderColor, 2), new Rectangle(1, top + 3, 11, 11));
 				}
 
 				if (this.Checked)
@@ -99,24 +97,24 @@ namespace QuickLibrary
 
 					if (this.Enabled)
 					{
-						e.Graphics.DrawLine(new Pen(this.ForeColor, 2), 2, 7, 5, 10);
-						e.Graphics.DrawLine(new Pen(this.ForeColor, 2), 5, 11, 12, 4);
+						e.Graphics.DrawLine(new Pen(this.ForeColor, 2), 2, top + 7, 5, top + 10);
+						e.Graphics.DrawLine(new Pen(this.ForeColor, 2), 5, top + 11, 12, top + 4);
 					}
 					else
 					{
-						e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor, 2), 2, 7, 5, 10);
-						e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor, 2), 5, 11, 12, 4);
+						e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor, 2), 2, top + 7, 5, top + 10);
+						e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor, 2), 5, top + 11, 12, top + 4);
 					}
 				}
 
 				e.Graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
 				if (this.Enabled)
 				{
-					e.Graphics.DrawString(darkText, this.Font, new SolidBrush(this.ForeColor), 17, 0);
+					e.Graphics.DrawString(darkText, this.Font, new SolidBrush(this.ForeColor), 17, top);
 				}
 				else
 				{
-					e.Graphics.DrawString(darkText, this.Font, new SolidBrush(ThemeManager.BorderColor), 17, 0);
+					e.Graphics.DrawString(darkText, this.Font, new SolidBrush(ThemeManager.BorderColor), 17, top);
 				}
 			}
 			else

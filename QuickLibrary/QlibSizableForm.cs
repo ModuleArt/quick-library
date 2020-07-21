@@ -39,93 +39,71 @@ namespace QuickLibrary
 
 		public bool draggable = false;
 
-		public const int WS_SYSMENU = 0x80000;
-		public const int CS_DROPSHADOW = 0x20000;
-
-		const int WM_NCHITTEST = 0x0084;
-		const int HTCLIENT = 1;
-		const int HTCAPTION = 2;
-
-		protected override void WndProc(ref Message m)
-		{
-			base.WndProc(ref m);
-			switch (m.Msg)
-			{
-				case WM_NCHITTEST:
-					if (m.Result == (IntPtr)HTCLIENT)
-					{
-						m.Result = (IntPtr)HTCAPTION;
-					}
-					break;
-			}
-		}
-
 		protected override CreateParams CreateParams
 		{
 			get
 			{
 				CreateParams cp = base.CreateParams;
-				cp.Style |= 0x40000;
+				cp.Style |= 0x40000 | NativeMethodsManager.WS_SYSMENU | NativeMethodsManager.WS_MINIMIZEBOX | NativeMethodsManager.WS_MAXIMIZEBOX;
 				return cp;
 			}
 		}
 
+		protected override void WndProc(ref Message m)
+		{
+			const UInt32 WM_NCHITTEST = 0x0084;
+			const UInt32 WM_MOUSEMOVE = 0x0200;
 
-		//protected override CreateParams CreateParams
-		//{
-		//	get
-		//	{
-		//		CreateParams cp = base.CreateParams;
-		//		cp.ClassStyle |= 0x20000;
-		//		return cp;
-		//	}
-		//}
+			const UInt32 HTLEFT = 10;
+			const UInt32 HTRIGHT = 11;
+			const UInt32 HTBOTTOMRIGHT = 17;
+			const UInt32 HTBOTTOM = 15;
+			const UInt32 HTBOTTOMLEFT = 16;
+			const UInt32 HTTOP = 12;
+			const UInt32 HTTOPLEFT = 13;
+			const UInt32 HTTOPRIGHT = 14;
 
-		//protected override void WndProc(ref Message m)
-		//{
-		//	const int RESIZE_HANDLE_SIZE = 10;
+			const int RESIZE_HANDLE_SIZE = 20;
+			bool handled = false;
+			if (m.Msg == WM_NCHITTEST || m.Msg == WM_MOUSEMOVE)
+			{
+				Size formSize = this.Size;
+				Point screenPoint = new Point(m.LParam.ToInt32());
+				Point clientPoint = this.PointToClient(screenPoint);
 
-		//	switch (m.Msg)
-		//	{
-		//		case 0x0084/*NCHITTEST*/ :
-		//			base.WndProc(ref m);
+				Dictionary<UInt32, Rectangle> boxes = new Dictionary<UInt32, Rectangle>() {
+					{HTBOTTOMLEFT,
+						new Rectangle(-RESIZE_HANDLE_SIZE, formSize.Height - RESIZE_HANDLE_SIZE, 2 * RESIZE_HANDLE_SIZE, 2 * RESIZE_HANDLE_SIZE)},
+					{HTBOTTOM,
+						new Rectangle(RESIZE_HANDLE_SIZE, formSize.Height - RESIZE_HANDLE_SIZE, formSize.Width - 2 * RESIZE_HANDLE_SIZE, 2 * RESIZE_HANDLE_SIZE)},
+					{HTBOTTOMRIGHT,
+						new Rectangle(formSize.Width - RESIZE_HANDLE_SIZE, formSize.Height - RESIZE_HANDLE_SIZE, 2 * RESIZE_HANDLE_SIZE, 2 * RESIZE_HANDLE_SIZE)},
+					{HTRIGHT,
+						new Rectangle(formSize.Width - RESIZE_HANDLE_SIZE, RESIZE_HANDLE_SIZE, 2 * RESIZE_HANDLE_SIZE, formSize.Height - 2 * RESIZE_HANDLE_SIZE)},
+					{HTTOPRIGHT,
+						new Rectangle(formSize.Width - RESIZE_HANDLE_SIZE, -RESIZE_HANDLE_SIZE, 2 * RESIZE_HANDLE_SIZE, 2 * RESIZE_HANDLE_SIZE) },
+					{HTTOP,
+						new Rectangle(RESIZE_HANDLE_SIZE, -RESIZE_HANDLE_SIZE, formSize.Width - 2 * RESIZE_HANDLE_SIZE, 2 * RESIZE_HANDLE_SIZE) },
+					{HTTOPLEFT,
+						new Rectangle(-RESIZE_HANDLE_SIZE, -RESIZE_HANDLE_SIZE, 2 * RESIZE_HANDLE_SIZE, 2 * RESIZE_HANDLE_SIZE) },
+					{HTLEFT,
+						new Rectangle(-RESIZE_HANDLE_SIZE, RESIZE_HANDLE_SIZE, 2 * RESIZE_HANDLE_SIZE, formSize.Height - 2 * RESIZE_HANDLE_SIZE) }
+				};
 
-		//			if ((int)m.Result == 0x01/*HTCLIENT*/)
-		//			{
-		//				Point screenPoint = new Point(m.LParam.ToInt32());
-		//				Point clientPoint = this.PointToClient(screenPoint);
-		//				if (clientPoint.Y <= RESIZE_HANDLE_SIZE)
-		//				{
-		//					if (clientPoint.X <= RESIZE_HANDLE_SIZE)
-		//						m.Result = (IntPtr)13/*HTTOPLEFT*/ ;
-		//					else if (clientPoint.X < (Size.Width - RESIZE_HANDLE_SIZE))
-		//						m.Result = (IntPtr)12/*HTTOP*/ ;
-		//					else
-		//						m.Result = (IntPtr)14/*HTTOPRIGHT*/ ;
-		//				}
-		//				else if (clientPoint.Y <= (Size.Height - RESIZE_HANDLE_SIZE))
-		//				{
-		//					if (clientPoint.X <= RESIZE_HANDLE_SIZE)
-		//						m.Result = (IntPtr)10/*HTLEFT*/ ;
-		//					else if (clientPoint.X < (Size.Width - RESIZE_HANDLE_SIZE))
-		//						m.Result = (IntPtr)2/*HTCAPTION*/ ;
-		//					else
-		//						m.Result = (IntPtr)11/*HTRIGHT*/ ;
-		//				}
-		//				else
-		//				{
-		//					if (clientPoint.X <= RESIZE_HANDLE_SIZE)
-		//						m.Result = (IntPtr)16/*HTBOTTOMLEFT*/ ;
-		//					else if (clientPoint.X < (Size.Width - RESIZE_HANDLE_SIZE))
-		//						m.Result = (IntPtr)15/*HTBOTTOM*/ ;
-		//					else
-		//						m.Result = (IntPtr)17/*HTBOTTOMRIGHT*/ ;
-		//				}
-		//			}
-		//			return;
-		//	}
-		//	base.WndProc(ref m);
-		//}
+				foreach (KeyValuePair<UInt32, Rectangle> hitBox in boxes)
+				{
+					if (hitBox.Value.Contains(clientPoint))
+					{
+						m.Result = (IntPtr)hitBox.Key;
+						handled = true;
+						break;
+					}
+				}
+			}
+
+			if (!handled)
+				base.WndProc(ref m);
+		}
 
 		public QlibSizableForm() 
 		{
@@ -162,6 +140,14 @@ namespace QuickLibrary
 			if (e.Button == MouseButtons.Left)
 			{
 				GoDrag();
+			}
+			else
+			{
+				if (e.Button == MouseButtons.Right)
+				{
+					var p = MousePosition.X + (MousePosition.Y * 0x10000);
+					NativeMethodsManager.SendMessage(this.Handle, NativeMethodsManager.WM_POPUPSYSTEMMENU, (IntPtr)0, (IntPtr)p);
+				}
 			}
 		}
 

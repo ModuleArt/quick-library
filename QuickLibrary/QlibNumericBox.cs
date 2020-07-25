@@ -51,11 +51,17 @@ namespace QuickLibrary
 				this.Focus();
 				if (e.Y > this.Height / 2)
 				{
-					this.Value--;
+					if (this.Value > this.Minimum)
+					{
+						this.Value--;
+					}
 				}
 				else
 				{
-					this.Value++;
+					if (this.Value < this.Maximum)
+					{
+						this.Value++;
+					}
 				}
 			}
 		}

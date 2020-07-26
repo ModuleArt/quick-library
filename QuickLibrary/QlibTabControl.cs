@@ -71,6 +71,12 @@ namespace QuickLibrary
         /// Selected tab text color
         /// </summary>
         public Color selectedTextColor = Color.FromArgb(255, 255, 255);
+
+        /// <summary>
+        /// Enable tab drag&drop
+        /// </summary>
+        public bool enableDragDrop = false;
+
         /// <summary>
         ///     Init
         /// </summary>
@@ -84,6 +90,20 @@ namespace QuickLibrary
             SizeMode = TabSizeMode.Normal;
             ItemSize = new Size(240, 16);
             AllowDrop = true;
+        }
+
+        [Category("Options"), Browsable(true), Description("Enable tab drag&drop")]
+        public bool EnableDragDrop
+        {
+            get
+            {
+                return this.enableDragDrop;
+            }
+
+            set
+            {
+                this.enableDragDrop = value;
+            }
         }
 
         [Category("Colors"), Browsable(true), Description("The color of the selected page")]
@@ -240,16 +260,19 @@ namespace QuickLibrary
         /// <param name="drgevent"></param>
         protected override void OnDragOver(DragEventArgs drgevent)
         {
-            var draggedTab = (TabPage)drgevent.Data.GetData(typeof(TabPage));
-            var pointedTab = getPointedTab();
-
-            if (ReferenceEquals(draggedTab, predraggedTab) && pointedTab != null)
+            if (enableDragDrop)
             {
-                drgevent.Effect = DragDropEffects.Move;
+                var draggedTab = (TabPage)drgevent.Data.GetData(typeof(TabPage));
+                var pointedTab = getPointedTab();
 
-                if (!ReferenceEquals(pointedTab, draggedTab))
+                if (ReferenceEquals(draggedTab, predraggedTab) && pointedTab != null)
                 {
-                    this.ReplaceTabPages(draggedTab, pointedTab);
+                    drgevent.Effect = DragDropEffects.Move;
+
+                    if (!ReferenceEquals(pointedTab, draggedTab))
+                    {
+                        this.ReplaceTabPages(draggedTab, pointedTab);
+                    }
                 }
             }
 
@@ -262,7 +285,11 @@ namespace QuickLibrary
         /// <param name="e"></param>
         protected override void OnMouseDown(MouseEventArgs e)
         {
-            predraggedTab = getPointedTab();
+            if (enableDragDrop)
+            {
+                predraggedTab = getPointedTab();
+            }
+
             var p = e.Location;
             if (!this.ShowClosingButton)
             {
@@ -378,7 +405,7 @@ namespace QuickLibrary
                     // Draws the back of the color when it is selected
                     Drawer.FillRectangle(
                         new SolidBrush(this.activeColor),
-                        new Rectangle(Header.X - 5, Header.Y - 3, Header.Width, Header.Height + 5));
+                        new Rectangle(Header.X - 2, Header.Y - 3, Header.Width - 3, Header.Height + 5));
 
                     // Draws the title of the page
                     Drawer.DrawString(

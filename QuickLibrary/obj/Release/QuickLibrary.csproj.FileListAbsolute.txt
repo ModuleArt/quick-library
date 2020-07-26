@@ -17,3 +17,12 @@ D:\Projects\DotNet\quick-library\QuickLibrary\obj\Release\QuickLibrary.csproj.Co
 D:\Projects\DotNet\quick-library\QuickLibrary\obj\Release\QuickLibrary.dll
 D:\Projects\DotNet\quick-library\QuickLibrary\obj\Release\QuickLibrary.pdb
 D:\Projects\DotNet\quick-library\QuickLibrary\obj\Release\QuickLibrary.csprojAssemblyReference.cache
+D:\Projects\quick-library\QuickLibrary\bin\Release\QuickLibrary.dll
+D:\Projects\quick-library\QuickLibrary\bin\Release\QuickLibrary.pdb
+D:\Projects\quick-library\QuickLibrary\bin\Release\Octokit.dll
+D:\Projects\quick-library\QuickLibrary\obj\Release\QuickLibrary.DownloadForm.resources
+D:\Projects\quick-library\QuickLibrary\obj\Release\QuickLibrary.Properties.Resources.resources
+D:\Projects\quick-library\QuickLibrary\obj\Release\QuickLibrary.csproj.GenerateResource.cache
+D:\Projects\quick-library\QuickLibrary\obj\Release\QuickLibrary.csproj.CopyComplete
+D:\Projects\quick-library\QuickLibrary\obj\Release\QuickLibrary.dll
+D:\Projects\quick-library\QuickLibrary\obj\Release\QuickLibrary.pdb

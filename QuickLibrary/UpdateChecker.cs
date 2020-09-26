@@ -19,7 +19,7 @@ namespace QuickLibrary
 			string version = System.Windows.Forms.Application.ProductVersion;
 
 			Github = new GitHubClient(new ProductHeaderValue(name + @"-UpdateCheck"));
-			_releaseClient = Github.Release;
+			_releaseClient = Github.Repository.Release;
 
 			RepositoryOwner = owner;
 			RepostoryName = name;

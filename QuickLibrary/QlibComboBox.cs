@@ -1,5 +1,4 @@
 ﻿using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Windows.Forms;
 
@@ -50,7 +49,7 @@ namespace QuickLibrary
 			}
 			else
 			{
-				e.Graphics.Clear(ThemeManager.LightBackColor);
+				e.Graphics.Clear(ThemeManager.LightSecondColor);
 			}
 
 			if (this.hovered)

@@ -6,10 +6,11 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using Microsoft.Win32;
+using System.Collections.Generic;
 
 namespace QuickLibrary
 {
-    public partial class DownloadForm : Form
+    public partial class DownloadForm : QlibFixedForm
     {
         private string fileName;
         private WebClient wc;
@@ -26,6 +27,8 @@ namespace QuickLibrary
             fileName = Path.Combine(GetDownloadFolderPath(), System.IO.Path.GetFileName(url));
 
             InitializeComponent();
+            (new DropShadow()).ApplyShadows(this);
+            SetDraggableControls(new List<Control>() { titlePanel, titleLabel, statusLabel, logoPictureBox });
 
             if (darkMode)
             {
@@ -33,10 +36,11 @@ namespace QuickLibrary
                 this.ForeColor = Color.White;
 
                 cancelButton.BackColor = ThemeManager.DarkSecondColor;
-                updateButton.BackColor = ThemeManager.DarkSecondColor;
-
-                manuallyLink.LinkColor = ThemeManager.AccentColor;
+                updateButton.BackColor = ThemeManager.DarkSecondColor;  
             }
+
+            closeBtn.SetDarkMode(darkMode);
+            manuallyLink.LinkColor = ThemeManager.AccentColor;
 
             wc = new WebClient();
 
@@ -116,6 +120,11 @@ namespace QuickLibrary
             }
 
             return String.Format("{0:0.##} {1}", len, sizes[order]);
+        }
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

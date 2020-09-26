@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Octokit, Version=0.3.4.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Octokit.0.3.4\lib\net45\Octokit.dll</HintPath>
+    <Reference Include="Octokit, Version=0.48.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Octokit.0.48.0\lib\net46\Octokit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -51,17 +51,26 @@
     <Compile Include="DownloadForm.Designer.cs">
       <DependentUpon>DownloadForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="DropShadow.cs" />
+    <Compile Include="Dwm.cs" />
     <Compile Include="FileAssociation.cs" />
     <Compile Include="NativeMethodsManager.cs" />
+    <Compile Include="NCRenderer.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="QlibTitlebarButton.cs">
+    <Compile Include="QlibContextMenu.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="QlibSizableForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QlibTitlebarButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QlibTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="QlibFixedForm.cs">
@@ -95,7 +104,13 @@
     <Compile Include="QlibTextButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="QlibToolbarForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="QlibToolStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QlibToolStripSeparator.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ThemeManager.cs" />
@@ -107,6 +122,7 @@
       <DependentUpon>UpdateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdateManager.cs" />
+    <Compile Include="WinApi.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +132,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateForm.resx">
+      <DependentUpon>UpdateForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

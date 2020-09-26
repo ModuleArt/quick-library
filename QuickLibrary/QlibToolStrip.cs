@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace QuickLibrary
@@ -18,6 +19,44 @@ namespace QuickLibrary
 				else
 				{
 					this.BackColor = ThemeManager.DarkBackColor;
+				}
+			}
+
+			foreach (var c in this.Items)
+			{
+				if (c.GetType() == typeof(QlibToolStripSeparator))
+				{
+					(c as QlibToolStripSeparator).SetDarkMode(dark);
+				}
+				else if (c.GetType() == typeof(ToolStripDropDownButton))
+				{
+					if (dark)
+					{
+						(c as ToolStripDropDownButton).DropDown.BackColor = ThemeManager.DarkSecondColor;
+						(c as ToolStripDropDownButton).DropDown.ForeColor = Color.White;
+					}
+					else
+					{
+						(c as ToolStripDropDownButton).DropDown.BackColor = ThemeManager.LightSecondColor;
+						(c as ToolStripDropDownButton).DropDown.ForeColor = Color.Black;
+					}
+
+					foreach (var c2 in (c as ToolStripDropDownButton).DropDownItems)
+					{
+						if (c2.GetType() == typeof(ToolStripMenuItem))
+						{
+							if (dark)
+							{
+								(c2 as ToolStripMenuItem).DropDown.BackColor = ThemeManager.DarkSecondColor;
+								(c2 as ToolStripMenuItem).DropDown.ForeColor = Color.White;
+							}
+							else
+							{
+								(c2 as ToolStripMenuItem).DropDown.BackColor = ThemeManager.LightSecondColor;
+								(c2 as ToolStripMenuItem).DropDown.ForeColor = Color.Black;
+							}
+						}
+					}
 				}
 			}
 
@@ -41,6 +80,10 @@ namespace QuickLibrary
 			if (darkMode)
 			{
 				e.ArrowColor = Color.White;
+			}
+			else
+			{
+				e.ArrowColor = Color.Black;
 			}
 			base.OnRenderArrow(e);
 		}

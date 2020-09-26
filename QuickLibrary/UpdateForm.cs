@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace QuickLibrary
 {
-	public partial class UpdateForm : Form
+	public partial class UpdateForm : QlibFixedForm
 	{
 		private readonly UpdateChecker _checker;
 		private bool _loadednotes;
@@ -20,8 +21,10 @@ namespace QuickLibrary
 			_checker = checker;
 
 			InitializeComponent();
+			(new DropShadow()).ApplyShadows(this);
+			SetDraggableControls(new List<Control>() { titlePanel, titleLabel, label1, label2, currentLabel, latestLabel });
 
-			this.Height = 179;
+			this.Height = 200;
 
 			label1.Text = string.Format(label1.Text, appName);
 
@@ -34,23 +37,23 @@ namespace QuickLibrary
 				this.ForeColor = Color.White;
 
 				buttonYes.BackColor = ThemeManager.DarkSecondColor;
-				buttonNo.BackColor = ThemeManager.DarkSecondColor;
 				boxReleaseNotes.BackColor = ThemeManager.DarkSecondColor;
-
-				currentVersionLink.LinkColor = ThemeManager.AccentColor;
-				latestReleaseLink.LinkColor = ThemeManager.AccentColor;
 			}
+
+			currentVersionLink.LinkColor = ThemeManager.AccentColor;
+			latestReleaseLink.LinkColor = ThemeManager.AccentColor;
+			closeBtn.SetDarkMode(darkMode);
 		}
 
 		async void boxReleaseNotes_CheckedChanged(object sender, EventArgs e)
 		{
 			if (boxReleaseNotes.Checked)
 			{
-				this.Height = 386;
+				this.Height = 400;
 			}
 			else
 			{
-				this.Height = 179;
+				this.Height = 200;
 			}
 
 			ReleaseNotes.Visible = boxReleaseNotes.Checked;
@@ -79,6 +82,11 @@ namespace QuickLibrary
 		{
 			string url = "https://github.com/" + _checker.RepositoryOwner + "/" + _checker.RepostoryName + "/releases/tag/v" + _checker.CurrentVersion;
 			Process.Start(url);
+		}
+
+		private void closeBtn_Click(object sender, EventArgs e)
+		{
+			this.Close();
 		}
 	}
 }

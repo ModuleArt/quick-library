@@ -13,6 +13,33 @@ namespace QuickLibrary
 		private bool hovered = false;
 		private bool pressed = false;
 
+		public string Text
+		{
+			get
+			{
+				if (darkMode)
+				{
+					return darkText;
+				}
+				else
+				{
+					return base.Text;
+				}
+			}
+
+			set
+			{
+				if (darkMode)
+				{
+					darkText = value;
+				}
+				else
+				{
+					base.Text = value;
+				}
+			}
+		}
+
 		public QlibCheckBox()
 		{
 			if (darkMode)

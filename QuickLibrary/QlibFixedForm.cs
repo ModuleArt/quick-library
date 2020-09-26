@@ -7,6 +7,8 @@ namespace QuickLibrary
 {
 	public class QlibFixedForm : Form
 	{
+		// LOCKED VARIABLES
+
 		[Browsable(false), Obsolete("Don't use this! (FormBorderStyle = None)", true), EditorBrowsable(EditorBrowsableState.Never)]
 		public new enum FormBorderStyle { };
 
@@ -39,17 +41,13 @@ namespace QuickLibrary
 		[Browsable(false), Obsolete("Don't use this! (Font = ThemeManager.DefaultFont)", true), EditorBrowsable(EditorBrowsableState.Never)]
 		public new enum Font { };
 
-		public bool draggable = false;
+		// CUSTOM VARIABLES
 
-		protected override CreateParams CreateParams
-		{
-			get
-			{
-				CreateParams cp = base.CreateParams;
-				cp.ClassStyle |= NativeMethodsManager.CS_DROPSHADOW;
-				return cp;
-			}
-		}
+		[Category("Qlib Options"), Browsable(true), Description("Draggable form")]
+		public bool Draggable { get; set; } = false;
+
+		[Category("Qlib Options"), Browsable(true), Description("Title label")]
+		public Label TitleLabel { get; set; } = null;
 
 		public QlibFixedForm() 
 		{
@@ -64,6 +62,22 @@ namespace QuickLibrary
 			base.BackgroundImage = null;
 			base.BackgroundImageLayout = ImageLayout.Tile;
 			base.Font = ThemeManager.DefaultFont;
+
+			this.TextChanged += QlibFixedForm_TextChanged;
+		}
+
+		protected override void OnHandleCreated(EventArgs e)
+		{
+			(new DropShadow()).ApplyShadows(this);
+			base.OnHandleCreated(e);
+		}
+
+		private void QlibFixedForm_TextChanged(object sender, EventArgs e)
+		{
+			if (TitleLabel != null) 
+			{
+				TitleLabel.Text = Text;
+			}
 		}
 
 		public void SetDraggableControls(List<Control> controls)
@@ -86,7 +100,7 @@ namespace QuickLibrary
 		{
 			base.OnMouseDown(e);
 
-			if (e.Button == MouseButtons.Left && draggable)
+			if (e.Button == MouseButtons.Left && Draggable)
 			{
 				GoDrag();
 			}

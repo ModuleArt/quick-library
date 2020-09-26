@@ -13,7 +13,7 @@ namespace QuickLibrary
         /// </summary>
         private readonly StringFormat CenterSringFormat = new StringFormat
         {
-            Alignment = StringAlignment.Near,
+            Alignment = StringAlignment.Center,
             LineAlignment = StringAlignment.Center
         };
 
@@ -26,11 +26,6 @@ namespace QuickLibrary
         ///     The color of the background of the Tab
         /// </summary>
         private Color backTabColor = Color.FromArgb(28, 28, 28);
-
-        /// <summary>
-        ///     The color of the border of the control
-        /// </summary>
-        private Color borderColor = Color.FromArgb(30, 30, 30);
 
         /// <summary>
         ///     Color of the closing button
@@ -68,11 +63,6 @@ namespace QuickLibrary
         public bool ShowClosingButton { get; set; }
 
         /// <summary>
-        /// Selected tab text color
-        /// </summary>
-        public Color selectedTextColor = Color.FromArgb(255, 255, 255);
-
-        /// <summary>
         /// Enable tab drag&drop
         /// </summary>
         public bool enableDragDrop = false;
@@ -88,7 +78,7 @@ namespace QuickLibrary
                 true);
             DoubleBuffered = true;
             SizeMode = TabSizeMode.Normal;
-            ItemSize = new Size(240, 16);
+            ItemSize = new Size(240, 24);
             AllowDrop = true;
         }
 
@@ -131,20 +121,6 @@ namespace QuickLibrary
             set
             {
                 this.backTabColor = value;
-            }
-        }
-
-        [Category("Colors"), Browsable(true), Description("The color of the border of the control")]
-        public Color BorderColor
-        {
-            get
-            {
-                return this.borderColor;
-            }
-
-            set
-            {
-                this.borderColor = value;
             }
         }
 
@@ -216,20 +192,6 @@ namespace QuickLibrary
         /// </summary>
         [Category("Options"), Browsable(true), Description("Show a Yes/No message before closing?")]
         public bool ShowClosingMessage { get; set; }
-
-        [Category("Colors"), Browsable(true), Description("The color of the title of the page")]
-        public Color SelectedTextColor
-        {
-            get
-            {
-                return this.selectedTextColor;
-            }
-
-            set
-            {
-                this.selectedTextColor = value;
-            }
-        }
 
         [Category("Colors"), Browsable(true), Description("The color of the title of the page")]
         public Color TextColor
@@ -380,21 +342,21 @@ namespace QuickLibrary
             }
 
             // Draws the horizontal line
-            Drawer.DrawLine(new Pen(this.horizLineColor, 5), new Point(0, 19), new Point(Width, 19));
+            //Drawer.DrawLine(new Pen(this.horizLineColor, 5), new Point(0, 19), new Point(Width, 19));
 
             // Draws the background of the tab control
-            Drawer.FillRectangle(new SolidBrush(this.backTabColor), new Rectangle(0, 20, Width, Height - 20));
+            Drawer.FillRectangle(new SolidBrush(this.backTabColor), new Rectangle(1, this.Height - this.TabPages[0].Height - 4, Width - 2, this.TabPages[0].Height + 3));
 
             // Draws the border of the TabControl
-            Drawer.DrawRectangle(new Pen(this.borderColor, 2), new Rectangle(1, 1, Width - 2, Height - 2));
+            //Drawer.DrawRectangle(new Pen(this.headerColor), new Rectangle(0, 0, Width, Height));
             Drawer.InterpolationMode = InterpolationMode.HighQualityBicubic;
 
             for (var i = 0; i <= TabCount - 1; i++)
             {
                 var Header = new Rectangle(
-                    new Point(GetTabRect(i).Location.X + 2, GetTabRect(i).Location.Y),
-                    new Size(GetTabRect(i).Width, GetTabRect(i).Height));
-                var HeaderSize = new Rectangle(Header.Location, new Size(Header.Width, Header.Height));
+                    new Point(GetTabRect(i).Location.X + 1, GetTabRect(i).Location.Y + 4),
+                    new Size(GetTabRect(i).Width, GetTabRect(i).Height - 4));
+                var HeaderSize = new Rectangle(new Point(Header.Location.X + 2, Header.Location.Y), new Size(Header.Width, Header.Height));
                 Brush ClosingColorBrush = new SolidBrush(this.closingButtonColor);
 
                 if (i == SelectedIndex)
@@ -404,15 +366,18 @@ namespace QuickLibrary
 
                     // Draws the back of the color when it is selected
                     Drawer.FillRectangle(
-                        new SolidBrush(this.activeColor),
+                        new SolidBrush(this.backTabColor),
                         new Rectangle(Header.X - 2, Header.Y - 3, Header.Width - 3, Header.Height + 5));
+                    Drawer.FillRectangle(
+                        new SolidBrush(this.activeColor),
+                        new Rectangle(Header.X - 2, Header.Y - 3, Header.Width - 3, 1));
 
                     // Draws the title of the page
                     Drawer.DrawString(
                         TabPages[i].Text,
                         Font,
-                        new SolidBrush(this.selectedTextColor),
-                        HeaderSize,
+                        new SolidBrush(this.textColor),
+                        new Rectangle(HeaderSize.X - 5, HeaderSize.Y + 1, HeaderSize.Width, HeaderSize.Height),
                         this.CenterSringFormat);
 
                     // Draws the closing button
@@ -428,7 +393,7 @@ namespace QuickLibrary
                         TabPages[i].Text,
                         Font,
                         new SolidBrush(this.textColor),
-                        HeaderSize,
+                        new Rectangle(HeaderSize.X - 5, HeaderSize.Y, HeaderSize.Width, HeaderSize.Height),
                         this.CenterSringFormat);
                 }
             }

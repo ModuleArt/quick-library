@@ -29,6 +29,13 @@
   <a href="https://github.com/ModuleArt/quick-color-picker/">Quick Color Picker</a> - Lightweight desktop color picker and color editor utility for Windows
 </p>
 
+<h2 align="center">Controls</h2>
+
+| Control name | Codename | WinForms analogue |
+| :---: | :---: | :---: |
+| Text box | QlibTextBox | TextBox |
+| Numeric box | QlibNumericBox | NumericUpDown |
+
 <h2 align="center">Special thanks to</h2>
 <p align="center">
   nixxquality for <a href="https://github.com/nixxquality/GitHubUpdate/">GitHubUpdate</a> (UpdateManager)<br>

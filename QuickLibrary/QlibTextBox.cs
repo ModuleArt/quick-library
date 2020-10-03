@@ -7,28 +7,72 @@ namespace QuickLibrary
 {
 	public class QlibTextBox : Panel
 	{
-		public TextBox textBox;
+		// PRIVATE FIELDS
 
-		[Category("Qlib Options"), Browsable(true), Description("Read only")]
+		private TextBox textBox;
+
+		// HIDDEN PROPS
+
+		[Browsable(false)]
+		public new Image BackgroundImage => base.BackgroundImage;
+
+		[Browsable(false)]
+		public new ImageLayout BackgroundImageLayout => base.BackgroundImageLayout;
+
+		[Browsable(false)]
+		public new Color ForeColor => base.ForeColor;
+
+		[Browsable(false)]
+		public new Color BackColor => base.BackColor;
+
+		[Browsable(false)]
+		public new Cursor Cursor => base.Cursor;
+
+		[Browsable(false)]
+		public new BorderStyle BorderStyle => base.BorderStyle;
+
+		[Browsable(false)]
+		public new Font Font => base.Font;
+
+		[Browsable(false)]
+		public new bool AutoScroll => base.AutoScroll;
+
+		[Browsable(false)]
+		public new bool AutoSize => base.AutoSize;
+
+		[Browsable(false)]
+		public new AutoSizeMode AutoSizeMode => base.AutoSizeMode;
+
+		[Browsable(false)]
+		public new Padding Padding => base.Padding;
+
+		[Browsable(false)]
+		public new RightToLeft RightToLeft => base.RightToLeft;
+
+		// PUBLIC PROPS
+
+		[Category("Qlib props"), Browsable(true), Description("Read only")]
 		public bool ReadOnly
 		{
 			get { return textBox.ReadOnly; }
 			set { textBox.ReadOnly = value; }
 		}
 
-		[Category("Qlib Options"), Browsable(true), Description("Word wrap")]
+		[Category("Qlib props"), Browsable(true), Description("Word wrap")]
 		public bool WordWrap
 		{
 			get { return textBox.WordWrap; }
 			set { textBox.WordWrap = value; }
 		}
 
-		[Category("Qlib Options"), Browsable(true), Description("Text")]
+		[Category("Qlib props"), Browsable(true), Description("Text")]
 		public override string Text
 		{
 			get { return textBox.Text; }
 			set { textBox.Text = value; }
 		}
+
+		// CONSTRUCTOR
 
 		public QlibTextBox()
 		{
@@ -40,12 +84,14 @@ namespace QuickLibrary
 
 			Controls.Add(textBox);
 
-			this.Cursor = Cursors.IBeam;
+			base.Cursor = Cursors.IBeam;
 
 			this.SizeChanged += QlibTextBox_SizeChanged;
 			this.GotFocus += QlibTextBox_GotFocus;
 			this.Click += QlibTextBox_Click;
 		}
+
+		// PRIVATE BODY
 
 		private void QlibTextBox_Click(object sender, EventArgs e)
 		{
@@ -62,16 +108,18 @@ namespace QuickLibrary
 			textBox.Size = new Size(Size.Width - 14, textBox.Size.Height);
 		}
 
+		// PUBLIC METHODS
+
 		public void SetDarkMode(bool dark)
 		{
 			if (dark)
 			{
-				BackColor = ThemeManager.DarkSecondColor;
+				base.BackColor = ThemeManager.DarkSecondColor;
 				textBox.ForeColor = Color.White;
 			}
 			else
 			{
-				BackColor = ThemeManager.LightSecondColor;
+				base.BackColor = ThemeManager.LightSecondColor;
 				textBox.ForeColor = Color.Black;
 			}
 			textBox.BackColor = BackColor;

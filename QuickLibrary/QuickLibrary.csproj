@@ -64,14 +64,14 @@
     <Compile Include="QlibContextMenu.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="QlibListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="QlibSizableForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="QlibTitlebarButton.cs">
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="QlibTestForm.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="QlibFixedForm.cs">
       <SubType>Form</SubType>

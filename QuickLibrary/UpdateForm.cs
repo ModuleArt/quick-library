@@ -33,8 +33,7 @@ namespace QuickLibrary
 
 			if (darkMode)
 			{
-				this.BackColor = ThemeManager.DarkBackColor;
-				this.ForeColor = Color.White;
+				DarkMode = darkMode;
 
 				buttonYes.BackColor = ThemeManager.DarkSecondColor;
 				boxReleaseNotes.BackColor = ThemeManager.DarkSecondColor;

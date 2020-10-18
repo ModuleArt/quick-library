@@ -1,69 +1,103 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace QuickLibrary
 {
 	public class QlibFixedForm : Form
 	{
-		// LOCKED VARIABLES
+		// PRIVATE FIELDS
 
-		[Browsable(false), Obsolete("Don't use this! (FormBorderStyle = None)", true), EditorBrowsable(EditorBrowsableState.Never)]
-		public new enum FormBorderStyle { };
+		private bool darkMode = false;
+		private bool alternativeAppearance = false;
 
-		[Browsable(false), Obsolete("Don't use this! (AutoScaleMode = Dpi)", true), EditorBrowsable(EditorBrowsableState.Never)]
-		public new enum AutoScaleMode { };
+		// HIDDEN PROPS
 
-		[Browsable(false), Obsolete("Don't use this! (HelpButton = false)", true), EditorBrowsable(EditorBrowsableState.Never)]
-		public new enum HelpButton { };
-		[Browsable(false), Obsolete("Don't use this! (AutoScroll = false)", true), EditorBrowsable(EditorBrowsableState.Never)]
-		public new enum AutoScroll { };
+		[Browsable(false)]
+		public new FormBorderStyle FormBorderStyle => base.FormBorderStyle;
 
-		[Browsable(false), Obsolete("Don't use this! (AutoScrollMargin = [0, 0])", true), EditorBrowsable(EditorBrowsableState.Never)]
-		public new enum AutoScrollMargin { };
+		[Browsable(false)]
+		public new AutoScaleMode AutoScaleMode => base.AutoScaleMode;
 
-		[Browsable(false), Obsolete("Don't use this! (AutoScrollMinSize = [0, 0])", true), EditorBrowsable(EditorBrowsableState.Never)]
-		public new enum AutoScrollMinSize { };
+		[Browsable(false)]
+		public new bool HelpButton => base.HelpButton;
 
-		[Browsable(false), Obsolete("Don't use this! (AutoSize = false)", true), EditorBrowsable(EditorBrowsableState.Never)]
-		public new enum AutoSize { };
+		[Browsable(false)]
+		public new bool AutoScroll => base.AutoScroll;
 
-		[Browsable(false), Obsolete("Don't use this! (AutoSizeMode = GrowAndShrink)", true), EditorBrowsable(EditorBrowsableState.Never)]
-		public new enum AutoSizeMode { };
+		[Browsable(false)]
+		public new Size AutoScrollMargin => base.AutoScrollMargin;
 
-		[Browsable(false), Obsolete("Don't use this! (BackgroundImage = None)", true), EditorBrowsable(EditorBrowsableState.Never)]
-		public new enum BackgroundImage { };
+		[Browsable(false)]
+		public new Size AutoScrollMinSize => base.AutoScrollMinSize;
 
-		[Browsable(false), Obsolete("Don't use this! (BackgroundImageLayout = Tile)", true), EditorBrowsable(EditorBrowsableState.Never)]
-		public new enum BackgroundImageLayout { };
+		[Browsable(false)]
+		public new bool AutoSize => base.AutoSize;
 
-		[Browsable(false), Obsolete("Don't use this! (Font = ThemeManager.DefaultFont)", true), EditorBrowsable(EditorBrowsableState.Never)]
-		public new enum Font { };
+		[Browsable(false)]
+		public new AutoSizeMode AutoSizeMode => base.AutoSizeMode;
 
-		// CUSTOM VARIABLES
+		[Browsable(false)]
+		public new Image BackgroundImage => base.BackgroundImage;
 
-		[Category("Qlib Options"), Browsable(true), Description("Draggable form")]
+		[Browsable(false)]
+		public new ImageLayout BackgroundImageLayout => base.BackgroundImageLayout;
+
+		[Browsable(false)]
+		public new Font Font => base.Font;
+
+		[Browsable(false)]
+		public new Color ForeColor => base.ForeColor;
+
+		[Browsable(false)]
+		public new Color BackColor => base.BackColor;
+
+		[Browsable(false)]
+		public new RightToLeft RightToLeft => base.RightToLeft;
+
+		[Browsable(false)]
+		public new bool RightToLeftLayout => base.RightToLeftLayout;
+
+		// PUBLIC PROPS
+
+		[Category("Qlib props"), Browsable(true), Description("Draggable form")]
 		public bool Draggable { get; set; } = false;
 
-		[Category("Qlib Options"), Browsable(true), Description("Title label")]
+		[Category("Qlib props"), Browsable(true), Description("Title label")]
 		public Label TitleLabel { get; set; } = null;
+
+		[Category("Qlib props"), Browsable(true), Description("Dark mode")]
+		public bool DarkMode
+		{
+			get { return darkMode; }
+			set { SetDarkMode(value, alternativeAppearance); }
+		}
+
+		[Category("Qlib props"), Browsable(true), Description("Alternative appearance")]
+
+		public bool AlternativeAppearance
+		{
+			get { return alternativeAppearance; }
+			set { SetDarkMode(darkMode, value); }
+		}
 
 		public QlibFixedForm() 
 		{
-			base.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-			base.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+			base.FormBorderStyle = FormBorderStyle.None;
+			base.AutoScaleMode = AutoScaleMode.Dpi;
 			base.HelpButton = false;
 			base.AutoScroll = false;
-			base.AutoScrollMargin = new System.Drawing.Size(0, 0);
-			base.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+			base.AutoScrollMargin = new Size(0, 0);
+			base.AutoScrollMinSize = new Size(0, 0);
 			base.AutoSize = false;
-			base.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			base.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 			base.BackgroundImage = null;
 			base.BackgroundImageLayout = ImageLayout.Tile;
 			base.Font = ThemeManager.DefaultFont;
 
-			this.TextChanged += QlibFixedForm_TextChanged;
+			TextChanged += QlibFixedForm_TextChanged;
 		}
 
 		protected override void OnHandleCreated(EventArgs e)
@@ -111,6 +145,39 @@ namespace QuickLibrary
 			Cursor.Current = Cursors.SizeAll;
 			NativeMethodsManager.ReleaseCapture();
 			NativeMethodsManager.SendMessage(Handle, 0xA1, 0x2, 0);
+		}
+
+		private void SetDarkMode(bool dark, bool alternative)
+		{
+			darkMode = dark;
+			alternativeAppearance = alternative;
+
+			if (dark)
+			{
+				base.ForeColor = Color.White;
+
+				if (alternative)
+				{
+					base.BackColor = ThemeManager.DarkMainColor;
+				}
+				else
+				{
+					base.BackColor = ThemeManager.DarkBackColor;
+				}
+			}
+			else
+			{
+				base.ForeColor = Color.Black;
+
+				if (alternative)
+				{
+					base.BackColor = ThemeManager.LightMainColor;
+				}
+				else
+				{
+					base.BackColor = ThemeManager.LightBackColor;
+				}
+			}
 		}
 	}
 }

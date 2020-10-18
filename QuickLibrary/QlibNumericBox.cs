@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace QuickLibrary
@@ -10,8 +11,14 @@ namespace QuickLibrary
 		// PRIVATE FIELDS
 
 		private InternalNumericUpDown numeric;
+		private Button upBtn;
+		private Button downBtn;
+		private bool darkMode = false;
 
 		// HIDDEN PROPS
+
+		[Browsable(false)]
+		public new string Text => base.Text;
 
 		[Browsable(false)]
 		public new Image BackgroundImage => base.BackgroundImage;
@@ -72,17 +79,44 @@ namespace QuickLibrary
 			set { numeric.Minimum = value; }
 		}
 
+		[Category("Qlib props"), Browsable(true), Description("Dark mode")]
+		public bool DarkMode
+		{
+			get { return darkMode; }
+			set { SetDarkMode(value); }
+		}
+
 		// CONSTRUCTOR
 
 		public QlibNumericBox()
 		{
 			numeric = new InternalNumericUpDown();
-
 			numeric.Location = new Point(7, 7);
 			numeric.BorderStyle = BorderStyle.None;
 			numeric.BackColor = BackColor;
-
 			Controls.Add(numeric);
+
+			upBtn = new Button();
+			upBtn.Size = new Size(21, 16);
+			upBtn.BackColor = BackColor;
+			upBtn.FlatStyle = FlatStyle.Flat;
+			upBtn.FlatAppearance.BorderSize = 0;
+			upBtn.Cursor = Cursors.Default;
+			upBtn.ImageAlign = ContentAlignment.MiddleCenter;
+			upBtn.Padding = Padding.Empty;
+			upBtn.Click += UpBtn_Click;
+			Controls.Add(upBtn);
+
+			downBtn = new Button();
+			downBtn.Size = new Size(21, 16);
+			downBtn.BackColor = BackColor;
+			downBtn.FlatStyle = FlatStyle.Flat;
+			downBtn.FlatAppearance.BorderSize = 0;
+			downBtn.Cursor = Cursors.Default;
+			downBtn.Click += DownBtn_Click;
+			Controls.Add(downBtn);
+
+			numeric.SendToBack();
 
 			base.Cursor = Cursors.IBeam;
 
@@ -91,6 +125,16 @@ namespace QuickLibrary
 			Click += QlibNumericBox_Click;
 			
 			numeric.ValueChanged += Numeric_ValueChanged;
+		}
+
+		private void DownBtn_Click(object sender, EventArgs e)
+		{
+			numeric.DownButton();
+		}
+
+		private void UpBtn_Click(object sender, EventArgs e)
+		{
+			numeric.UpButton();
 		}
 
 		// PRIVATE BODY
@@ -113,6 +157,8 @@ namespace QuickLibrary
 		private void QlibNumericBox_SizeChanged(object sender, EventArgs e)
 		{
 			numeric.Size = new Size(Size.Width - 14, numeric.Size.Height);
+			upBtn.Location = new Point(Size.Width - 21, 0);
+			downBtn.Location = new Point(Size.Width - 21, 16);
 		}
 
 		internal class InternalNumericUpDown : NumericUpDown
@@ -126,54 +172,15 @@ namespace QuickLibrary
 			protected override void OnPaint(PaintEventArgs e)
 			{
 				e.Graphics.Clear(BackColor);
-
-				Brush arrowsBrush = new SolidBrush(ForeColor);
-				if (!Enabled)
-				{
-					arrowsBrush = new SolidBrush(ThemeManager.BorderColor);
-				}
-
-				e.Graphics.FillPolygon(arrowsBrush, new PointF[]
-				{
-					new PointF(Width - 14, 15),
-					new PointF(Width - 10, 19),
-					new PointF(Width - 6, 15)
-				});
-				e.Graphics.FillPolygon(arrowsBrush, new PointF[]
-				{
-					new PointF(Width - 15, 10),
-					new PointF(Width - 10, 5),
-					new PointF(Width - 6, 10)
-				});
-			}
-
-			protected override void OnMouseClick(MouseEventArgs e)
-			{
-				if (e.X > Width - 18)
-				{
-					Focus();
-					if (e.Y > Height / 2)
-					{
-						if (Value > Minimum)
-						{
-							Value--;
-						}
-					}
-					else
-					{
-						if (Value < Maximum)
-						{
-							Value++;
-						}
-					}
-				}
 			}
 		}
 
 		// PUBLIC METHODS
 
-		public void SetDarkMode(bool dark)
+		private void SetDarkMode(bool dark)
 		{
+			darkMode = dark;
+
 			if (dark)
 			{
 				base.BackColor = ThemeManager.DarkSecondColor;
@@ -184,7 +191,34 @@ namespace QuickLibrary
 				base.BackColor = ThemeManager.LightSecondColor;
 				numeric.ForeColor = Color.Black;
 			}
+
+			Bitmap upArrowBmp = new Bitmap(8, 8);
+			using (Graphics g = Graphics.FromImage(upArrowBmp))
+			{
+				g.FillPolygon(new SolidBrush(ForeColor), new PointF[]
+				{
+					new PointF(-1, 6),
+					new PointF(8, 6),
+					new PointF(3, 1)
+				});
+			}
+			upBtn.Image = upArrowBmp;
+
+			Bitmap downArrowBmp = new Bitmap(8, 8);
+			using (Graphics g = Graphics.FromImage(downArrowBmp))
+			{
+				g.FillPolygon(new SolidBrush(ForeColor), new PointF[]
+				{
+					new PointF(0, 0),
+					new PointF(7, 0),
+					new PointF(3, 4)
+				});
+			}
+			downBtn.Image = downArrowBmp;
+
 			numeric.BackColor = ThemeManager.DarkSecondColor;
+			upBtn.BackColor = ThemeManager.DarkSecondColor;
+			downBtn.BackColor = ThemeManager.DarkSecondColor;
 		}
 
 		// EVENTS

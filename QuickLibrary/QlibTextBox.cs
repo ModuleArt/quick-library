@@ -10,6 +10,7 @@ namespace QuickLibrary
 		// PRIVATE FIELDS
 
 		private TextBox textBox;
+		private bool darkMode = false;
 
 		// HIDDEN PROPS
 
@@ -72,6 +73,13 @@ namespace QuickLibrary
 			set { textBox.Text = value; }
 		}
 
+		[Category("Qlib props"), Browsable(true), Description("Dark mode")]
+		public bool DarkMode
+		{
+			get { return darkMode; }
+			set { SetDarkMode(value); }
+		}
+
 		// CONSTRUCTOR
 
 		public QlibTextBox()
@@ -110,8 +118,10 @@ namespace QuickLibrary
 
 		// PUBLIC METHODS
 
-		public void SetDarkMode(bool dark)
+		private void SetDarkMode(bool dark)
 		{
+			darkMode = dark;
+
 			if (dark)
 			{
 				base.BackColor = ThemeManager.DarkSecondColor;

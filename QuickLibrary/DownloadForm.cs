@@ -32,8 +32,7 @@ namespace QuickLibrary
 
             if (darkMode)
             {
-                this.BackColor = ThemeManager.DarkBackColor;
-                this.ForeColor = Color.White;
+                DarkMode = darkMode;
 
                 cancelButton.BackColor = ThemeManager.DarkSecondColor;
                 updateButton.BackColor = ThemeManager.DarkSecondColor;  

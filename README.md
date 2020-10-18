@@ -31,10 +31,11 @@
 
 <h2 align="center">Controls</h2>
 
-| Control name | Codename | WinForms analogue |
+| Control name | Codename | WinForms alternative |
 | :---: | :---: | :---: |
 | Text box | QlibTextBox | TextBox |
 | Numeric box | QlibNumericBox | NumericUpDown |
+| Fixed form | QlibFixedForm | Form |
 
 <h2 align="center">Special thanks to</h2>
 <p align="center">

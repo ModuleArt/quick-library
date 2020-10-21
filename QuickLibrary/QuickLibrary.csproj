@@ -89,7 +89,7 @@
     <Compile Include="QlibGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="QlibNumericBox.cs">
+    <Compile Include="QlibNumeric.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="QlibRadioButton.cs">

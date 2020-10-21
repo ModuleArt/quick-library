@@ -1,12 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace QuickLibrary
 {
-	public class QlibNumericBox : Panel
+	public class QlibNumeric : Panel
 	{
 		// PRIVATE FIELDS
 
@@ -88,7 +87,7 @@ namespace QuickLibrary
 
 		// CONSTRUCTOR
 
-		public QlibNumericBox()
+		public QlibNumeric()
 		{
 			numeric = new InternalNumericUpDown();
 			numeric.Location = new Point(7, 7);
@@ -216,9 +215,9 @@ namespace QuickLibrary
 			}
 			downBtn.Image = downArrowBmp;
 
-			numeric.BackColor = ThemeManager.DarkSecondColor;
-			upBtn.BackColor = ThemeManager.DarkSecondColor;
-			downBtn.BackColor = ThemeManager.DarkSecondColor;
+			numeric.BackColor = BackColor;
+			upBtn.BackColor = BackColor;
+			downBtn.BackColor = BackColor;
 		}
 
 		// EVENTS

@@ -126,6 +126,8 @@ namespace QuickLibrary
 			numeric.ValueChanged += Numeric_ValueChanged;
 		}
 
+		// PRIVATE BODY
+
 		private void DownBtn_Click(object sender, EventArgs e)
 		{
 			numeric.DownButton();
@@ -135,8 +137,6 @@ namespace QuickLibrary
 		{
 			numeric.UpButton();
 		}
-
-		// PRIVATE BODY
 
 		private void Numeric_ValueChanged(object sender, EventArgs e)
 		{
@@ -173,8 +173,6 @@ namespace QuickLibrary
 				e.Graphics.Clear(BackColor);
 			}
 		}
-
-		// PUBLIC METHODS
 
 		private void SetDarkMode(bool dark)
 		{

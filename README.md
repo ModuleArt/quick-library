@@ -33,8 +33,9 @@
 
 | Control name | Codename | WinForms alternative |
 | :---: | :---: | :---: |
+| Check box | QlibCheckBox | CheckBox |
 | Text box | QlibTextBox | TextBox |
-| Numeric box | QlibNumericBox | NumericUpDown |
+| Numeric | QlibNumeric | NumericUpDown |
 | Fixed form | QlibFixedForm | Form |
 
 <h2 align="center">Special thanks to</h2>

@@ -83,6 +83,8 @@ namespace QuickLibrary
 			set { SetDarkMode(darkMode, value); }
 		}
 
+		// CONSTRUCTOR
+
 		public QlibFixedForm() 
 		{
 			base.FormBorderStyle = FormBorderStyle.None;
@@ -99,6 +101,8 @@ namespace QuickLibrary
 
 			TextChanged += QlibFixedForm_TextChanged;
 		}
+
+		// PRIVATE BODY
 
 		protected override void OnHandleCreated(EventArgs e)
 		{

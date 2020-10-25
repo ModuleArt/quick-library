@@ -116,8 +116,6 @@ namespace QuickLibrary
 			textBox.Size = new Size(Size.Width - 14, textBox.Size.Height);
 		}
 
-		// PUBLIC METHODS
-
 		private void SetDarkMode(bool dark)
 		{
 			darkMode = dark;

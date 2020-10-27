@@ -90,16 +90,23 @@ namespace QuickLibrary
 			textBox.BorderStyle = BorderStyle.None;
 			textBox.BackColor = BackColor;
 
+			textBox.TextChanged += TextBox_TextChanged;
+
 			Controls.Add(textBox);
 
 			base.Cursor = Cursors.IBeam;
 
-			this.SizeChanged += QlibTextBox_SizeChanged;
-			this.GotFocus += QlibTextBox_GotFocus;
-			this.Click += QlibTextBox_Click;
+			SizeChanged += QlibTextBox_SizeChanged;
+			GotFocus += QlibTextBox_GotFocus;
+			Click += QlibTextBox_Click;
 		}
 
 		// PRIVATE BODY
+
+		private void TextBox_TextChanged(object sender, EventArgs e)
+		{
+			OnTextChanged(e);
+		}
 
 		private void QlibTextBox_Click(object sender, EventArgs e)
 		{

@@ -165,23 +165,23 @@ namespace QuickLibrary
 
 				if (pressed)
 				{
-					e.Graphics.FillRectangle(new SolidBrush(ThemeManager.PressedColor), new Rectangle(0, top + 2, 13, 13));
+					e.Graphics.FillRectangle(new SolidBrush(ThemeManager.PressedColor), new Rectangle(0, top + 2, 15, 15));
 				}
 				else
 				{
 					if (hovered)
 					{
-						e.Graphics.FillRectangle(new SolidBrush(ThemeManager.DarkHoverColor), new Rectangle(0, top + 2, 13, 13));
+						e.Graphics.FillRectangle(new SolidBrush(ThemeManager.DarkHoverColor), new Rectangle(0, top + 2, 15, 15));
 					}
 					else
 					{
-						e.Graphics.FillRectangle(new SolidBrush(ThemeManager.DarkSecondColor), new Rectangle(0, top + 2, 13, 13));
+						e.Graphics.FillRectangle(new SolidBrush(ThemeManager.DarkSecondColor), new Rectangle(0, top + 2, 15, 15));
 					}
 				}
 
 				if (Focused)
 				{
-					e.Graphics.DrawRectangle(new Pen(ThemeManager.BorderColor, 2), new Rectangle(1, top + 3, 11, 11));
+					e.Graphics.DrawRectangle(new Pen(ThemeManager.BorderColor, 2), new Rectangle(1, top + 3, 13, 13));
 				}
 
 				if (Checked)
@@ -190,24 +190,24 @@ namespace QuickLibrary
 
 					if (Enabled)
 					{
-						e.Graphics.DrawLine(new Pen(ForeColor, 2), 2, top + 7, 5, top + 10);
-						e.Graphics.DrawLine(new Pen(ForeColor, 2), 5, top + 11, 12, top + 4);
+						e.Graphics.DrawLine(new Pen(ForeColor, 2), 2, top + 8, 5, top + 11);
+						e.Graphics.DrawLine(new Pen(ForeColor, 2), 5, top + 12, 12, top + 5);
 					}
 					else
 					{
-						e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor, 2), 2, top + 7, 5, top + 10);
-						e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor, 2), 5, top + 11, 12, top + 4);
+						e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor, 2), 2, top + 8, 5, top + 11);
+						e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor, 2), 5, top + 12, 12, top + 5);
 					}
 				}
 
 				e.Graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
 				if (Enabled)
 				{
-					e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), 17, top);
+					e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), 22, top);
 				}
 				else
 				{
-					e.Graphics.DrawString(Text, Font, new SolidBrush(ThemeManager.BorderColor), 17, top);
+					e.Graphics.DrawString(Text, Font, new SolidBrush(ThemeManager.BorderColor), 22, top);
 				}
 			}
 			else

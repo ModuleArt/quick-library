@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace QuickLibrary
 {
-	public class QlibCheckBox : CheckBox
+	public class QlibRadio : RadioButton
 	{
 		// PRIVATE FIELDS
 
@@ -40,9 +40,6 @@ namespace QuickLibrary
 
 		[Browsable(false)]
 		public new Cursor Cursor => base.Cursor;
-
-		[Browsable(false)]
-		public new CheckState CheckState => base.CheckState;
 
 		[Browsable(false)]
 		public new FlatButtonAppearance FlatAppearance => base.FlatAppearance;
@@ -78,9 +75,6 @@ namespace QuickLibrary
 		public new Size MaximumSize => base.MaximumSize;
 
 		[Browsable(false)]
-		public new bool ThreeState => base.ThreeState;
-
-		[Browsable(false)]
 		public new bool AutoCheck => base.AutoCheck;
 
 		// PUBLIC PROPS
@@ -94,7 +88,7 @@ namespace QuickLibrary
 
 		// CONSTRUCTOR
 
-		public QlibCheckBox()
+		public QlibRadio()
 		{
 
 		}
@@ -155,42 +149,40 @@ namespace QuickLibrary
 			{
 				int top = (Height / 2) - 8;
 
-				e.Graphics.Clear(BackColor);
+				e.Graphics.Clear(ThemeManager.DarkBackColor);
 
+				e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+				
 				if (pressed)
 				{
-					e.Graphics.FillRectangle(new SolidBrush(ThemeManager.PressedColor), new Rectangle(0, top + 2, 15, 15));
+					e.Graphics.FillEllipse(new SolidBrush(ThemeManager.PressedColor), new Rectangle(0, top + 2, 15, 15));
 				}
 				else
 				{
 					if (hovered)
 					{
-						e.Graphics.FillRectangle(new SolidBrush(ThemeManager.DarkHoverColor), new Rectangle(0, top + 2, 15, 15));
+						e.Graphics.FillEllipse(new SolidBrush(ThemeManager.DarkHoverColor), new Rectangle(0, top + 2, 15, 15));
 					}
 					else
 					{
-						e.Graphics.FillRectangle(new SolidBrush(ThemeManager.DarkSecondColor), new Rectangle(0, top + 2, 15, 15));
+						e.Graphics.FillEllipse(new SolidBrush(ThemeManager.DarkSecondColor), new Rectangle(0, top + 2, 15, 15));
 					}
 				}
 
 				if (Focused)
 				{
-					e.Graphics.DrawRectangle(new Pen(ThemeManager.BorderColor, 2), new Rectangle(1, top + 3, 13, 13));
+					e.Graphics.DrawEllipse(new Pen(ThemeManager.BorderColor, 2), new Rectangle(1, top + 3, 13, 13));
 				}
 
 				if (Checked)
 				{
-					e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-
 					if (Enabled)
 					{
-						e.Graphics.DrawLine(new Pen(ForeColor, 2), 2, top + 9, 5, top + 12);
-						e.Graphics.DrawLine(new Pen(ForeColor, 2), 5, top + 13, 12, top + 6);
+						e.Graphics.FillEllipse(new SolidBrush(ForeColor), new Rectangle(4, top + 6, 7, 7));
 					}
 					else
 					{
-						e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor, 2), 2, top + 9, 5, top + 12);
-						e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor, 2), 5, top + 13, 12, top + 6);
+						e.Graphics.FillEllipse(new SolidBrush(ThemeManager.BorderColor), new Rectangle(4, top + 6, 7, 7));
 					}
 				}
 

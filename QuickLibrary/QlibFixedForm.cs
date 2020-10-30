@@ -12,6 +12,7 @@ namespace QuickLibrary
 
 		private bool darkMode = false;
 		private bool alternativeAppearance = false;
+		private Color customBackColor = Color.White;
 
 		// HIDDEN PROPS
 
@@ -61,6 +62,20 @@ namespace QuickLibrary
 		public new bool RightToLeftLayout => base.RightToLeftLayout;
 
 		// PUBLIC PROPS
+
+		[Category("Qlib props"), Browsable(true), Description("Custom back color")]
+		public Color CustomBackColor 
+		{
+			get { return customBackColor; }
+			set 
+			{
+				customBackColor = value;
+				base.BackColor = value;
+			}
+		}
+
+		[Category("Qlib props"), Browsable(true), Description("Custom back color")]
+		public bool CustomBack { get; set; } = false;
 
 		[Category("Qlib props"), Browsable(true), Description("Draggable form")]
 		public bool Draggable { get; set; } = false;
@@ -160,7 +175,11 @@ namespace QuickLibrary
 			{
 				base.ForeColor = Color.White;
 
-				if (alternative)
+				if (CustomBack)
+				{
+					base.BackColor = customBackColor;
+				}
+				else if (alternative)
 				{
 					base.BackColor = ThemeManager.DarkMainColor;
 				}
@@ -173,7 +192,11 @@ namespace QuickLibrary
 			{
 				base.ForeColor = Color.Black;
 
-				if (alternative)
+				if (CustomBack)
+				{
+					base.BackColor = customBackColor;
+				}
+				else if (alternative)
 				{
 					base.BackColor = ThemeManager.LightMainColor;
 				}

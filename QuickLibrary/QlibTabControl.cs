@@ -377,7 +377,7 @@ namespace QuickLibrary
                         TabPages[i].Text,
                         Font,
                         new SolidBrush(this.textColor),
-                        new Rectangle(HeaderSize.X - 5, HeaderSize.Y + 1, HeaderSize.Width, HeaderSize.Height),
+                        new Rectangle(HeaderSize.X - 5, HeaderSize.Y + 2, HeaderSize.Width, HeaderSize.Height),
                         this.CenterSringFormat);
 
                     // Draws the closing button

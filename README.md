@@ -37,6 +37,8 @@
 | Text box | QlibTextBox | TextBox |
 | Numeric | QlibNumeric | NumericUpDown |
 | Fixed form | QlibFixedForm | Form |
+| Radio | QlibRadio | RadioButton |
+| Tabs | QlibTabs | TabControl |
 
 <h2 align="center">Special thanks to</h2>
 <p align="center">

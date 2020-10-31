@@ -210,7 +210,6 @@
 			// 
 			// UpdateForm
 			// 
-			this.AcceptButton = this.buttonYes;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.ClientSize = new System.Drawing.Size(400, 400);
 			this.Controls.Add(this.titlePanel);
@@ -224,12 +223,10 @@
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
 			this.Draggable = true;
-			this.KeyPreview = true;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(320, 39);
 			this.Name = "UpdateForm";
-			this.Padding = new System.Windows.Forms.Padding(10);
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Update available!";

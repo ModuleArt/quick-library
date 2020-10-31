@@ -13,6 +13,7 @@ namespace QuickLibrary
 		private bool darkMode = false;
 		private bool alternativeAppearance = false;
 		private Color customBackColor = Color.White;
+		private bool usePadding = true;
 
 		// HIDDEN PROPS
 
@@ -61,6 +62,27 @@ namespace QuickLibrary
 		[Browsable(false)]
 		public new bool RightToLeftLayout => base.RightToLeftLayout;
 
+		[Browsable(false)]
+		public new SizeGripStyle SizeGripStyle => base.SizeGripStyle;
+
+		[Browsable(false)]
+		public new IButtonControl AcceptButton => base.AcceptButton;
+
+		[Browsable(false)]
+		public new IButtonControl CancelButton => base.CancelButton;
+
+		[Browsable(false)]
+		public new bool KeyPreview => base.KeyPreview;
+
+		[Browsable(false)]
+		public new Padding Padding => base.Padding;
+
+		[Browsable(false)]
+		public new bool UseWaitCursor => base.UseWaitCursor;
+
+		[Browsable(false)]
+		public new Cursor Cursor => base.Cursor;
+
 		// PUBLIC PROPS
 
 		[Category("Qlib props"), Browsable(true), Description("Custom back color")]
@@ -98,6 +120,24 @@ namespace QuickLibrary
 			set { SetDarkMode(darkMode, value); }
 		}
 
+		[Category("Qlib props"), Browsable(true), Description("Use padding")]
+		public bool UsePadding
+		{
+			get { return usePadding; }
+			set 
+			{
+				usePadding = value;
+				if (value)
+				{
+					base.Padding = new Padding(10);
+				}
+				else
+				{
+					base.Padding = new Padding(0);
+				}
+			}
+		}
+
 		// CONSTRUCTOR
 
 		public QlibFixedForm() 
@@ -113,8 +153,19 @@ namespace QuickLibrary
 			base.BackgroundImage = null;
 			base.BackgroundImageLayout = ImageLayout.Tile;
 			base.Font = ThemeManager.DefaultFont;
+			base.KeyPreview = true;
+			base.CancelButton = null;
+			base.AcceptButton = null;
+			base.SizeGripStyle = SizeGripStyle.Hide;
+			base.RightToLeft = RightToLeft.No;
+			base.RightToLeftLayout = false;
+			base.Padding = new Padding(10);
+			base.UseWaitCursor = false;
+			base.Cursor = Cursors.Default;
 
 			TextChanged += QlibFixedForm_TextChanged;
+
+			SetDarkMode(false, false);
 		}
 
 		// PRIVATE BODY

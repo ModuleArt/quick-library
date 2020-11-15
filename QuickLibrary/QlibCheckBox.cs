@@ -9,81 +9,82 @@ namespace QuickLibrary
 {
 	public class QlibCheckBox : CheckBox
 	{
-		// PRIVATE FIELDS
+		#region PRIVATE FIELDS
 
 		private bool darkMode = false;
 		private bool hovered = false;
 		private bool pressed = false;
 
-		// HIDDEN PROPS
+		#endregion
 
-		[Browsable(false)]
-		public new Appearance Appearance => base.Appearance;
+		#region HIDDEN PROPS
 
-		[Browsable(false)]
-		public new Color ForeColor => base.ForeColor;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Appearance Appearance { get { return base.Appearance; } set { } }
 
-		[Browsable(false)]
-		public new Color BackColor => base.BackColor;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Color ForeColor { get { return base.ForeColor; } set { } }
 
-		[Browsable(false)]
-		public new Image BackgroundImage => base.BackgroundImage;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Color BackColor { get { return base.BackColor; } set { } }
 
-		[Browsable(false)]
-		public new ImageLayout BackgroundImageLayout => base.BackgroundImageLayout;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Image BackgroundImage { get { return base.BackgroundImage; } set { } }
 
-		[Browsable(false)]
-		public new ContentAlignment CheckAlign => base.CheckAlign;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new ImageLayout BackgroundImageLayout { get { return base.BackgroundImageLayout; } set { } }
 
-		[Browsable(false)]
-		public new Image Image => base.Image;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new ContentAlignment CheckAlign { get { return base.CheckAlign; } set { } }
 
-		[Browsable(false)]
-		public new Cursor Cursor => base.Cursor;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Image Image { get { return base.Image; } set { } }
 
-		[Browsable(false)]
-		public new CheckState CheckState => base.CheckState;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Cursor Cursor { get { return base.Cursor; } set { } }
 
-		[Browsable(false)]
-		public new FlatButtonAppearance FlatAppearance => base.FlatAppearance;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new CheckState CheckState { get { return base.CheckState; } set { } }
 
-		[Browsable(false)]
-		public new FlatStyle FlatStyle => base.FlatStyle;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new FlatStyle FlatStyle { get { return base.FlatStyle; } set { } }
 
-		[Browsable(false)]
-		public new ContentAlignment ImageAlign => base.ImageAlign;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new ContentAlignment ImageAlign { get { return base.ImageAlign; } set { } }
 
-		[Browsable(false)]
-		public new int ImageIndex => base.ImageIndex;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new int ImageIndex { get { return base.ImageIndex; } set { } }
 
-		[Browsable(false)]
-		public new string ImageKey => base.ImageKey;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new string ImageKey { get { return base.ImageKey; } set { } }
 
-		[Browsable(false)]
-		public new Padding Padding => base.Padding;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Padding Padding { get { return base.Padding; } set { } }
 
-		[Browsable(false)]
-		public new RightToLeft RightToLeft => base.RightToLeft;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new RightToLeft RightToLeft { get { return base.RightToLeft; } set { } }
 
-		[Browsable(false)]
-		public new bool AutoSize => base.AutoSize;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool AutoSize { get { return base.AutoSize; } set { } }
 
-		[Browsable(false)]
-		public new DockStyle Dock => base.Dock;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new DockStyle Dock { get { return base.Dock; } set { } }
 
-		[Browsable(false)]
-		public new Size MinimumSize => base.MinimumSize;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Size MinimumSize { get { return base.MinimumSize; } set { } }
 
-		[Browsable(false)]
-		public new Size MaximumSize => base.MaximumSize;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Size MaximumSize { get { return base.MaximumSize; } set { } }
 
-		[Browsable(false)]
-		public new bool ThreeState => base.ThreeState;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool ThreeState { get { return base.ThreeState; } set { } }
 
-		[Browsable(false)]
-		public new bool AutoCheck => base.AutoCheck;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool AutoCheck { get { return base.AutoCheck; } set { } }
 
-		// PUBLIC PROPS
+		#endregion
+
+		#region PUBLIC PROPS
 
 		[Category("Qlib props"), Browsable(true), Description("Dark mode")]
 		public bool DarkMode
@@ -92,14 +93,38 @@ namespace QuickLibrary
 			set { SetDarkMode(value); }
 		}
 
-		// CONSTRUCTOR
+		#endregion
+
+		#region CONSTRUCTOR
 
 		public QlibCheckBox()
 		{
-
+			base.AutoCheck = true;
+			base.ThreeState = false;
+			base.MaximumSize = DefaultMaximumSize;
+			base.MinimumSize = DefaultMinimumSize;
+			base.Dock = DockStyle.None;
+			base.AutoSize = false;
+			base.RightToLeft = RightToLeft.No;
+			base.Padding = Padding.Empty;
+			base.ImageKey = null;
+			base.ImageIndex = 0;
+			base.ImageAlign = ContentAlignment.MiddleCenter;
+			base.FlatStyle = FlatStyle.System;
+			base.CheckState = CheckState.Unchecked;
+			base.Cursor = Cursors.Default;
+			base.Image = null;
+			base.CheckAlign = ContentAlignment.MiddleLeft;
+			base.BackgroundImageLayout = ImageLayout.None;
+			base.BackgroundImage = null;
+			base.BackColor = ThemeManager.LightBackColor;
+			base.ForeColor = Color.Black;
+			base.Appearance = Appearance.Normal;
 		}
 
-		// PRIVATE BODY
+		#endregion
+
+		#region PRIVATE BODY
 
 		private void CustomCheckBox_MouseUp(object sender, MouseEventArgs e)
 		{
@@ -209,5 +234,7 @@ namespace QuickLibrary
 				base.OnPaint(e);
 			}
 		}
+
+		#endregion
 	}
 }

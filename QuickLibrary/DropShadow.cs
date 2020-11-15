@@ -7,10 +7,6 @@ namespace QuickLibrary
 {
     public class DropShadow
     {
-        #region Shadowing
-
-        #region Fields
-
         private const int WM_NCHITTEST = 0x84;
         private const int WS_MINIMIZEBOX = 0x20000;
         private const int HTCLIENT = 0x1;
@@ -20,10 +16,6 @@ namespace QuickLibrary
         private const int WM_NCPAINT = 0x0085;
         private const int WM_ACTIVATEAPP = 0x001C;
 
-        #endregion
-
-        #region Structures
-
         [EditorBrowsable(EditorBrowsableState.Never)]
         public struct MARGINS
         {
@@ -32,12 +24,6 @@ namespace QuickLibrary
             public int topHeight;
             public int bottomHeight;
         }
-
-        #endregion
-
-        #region Methods
-
-        #region Public
 
         [DllImport("dwmapi.dll")]
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -61,10 +47,6 @@ namespace QuickLibrary
 
             return enabled;
         }
-
-        #endregion
-
-        #region Private
 
         [DllImport("dwmapi.dll")]
         private static extern int DwmIsCompositionEnabled(out bool enabled);
@@ -92,10 +74,6 @@ namespace QuickLibrary
             return false;
         }
 
-        #endregion
-
-        #region Overrides
-
         public void ApplyShadows(Form form)
         {
             var v = 2;
@@ -112,11 +90,5 @@ namespace QuickLibrary
 
             DwmExtendFrameIntoClientArea(form.Handle, ref margins);
         }
-
-        #endregion
-
-        #endregion
-
-        #endregion
     }
 }

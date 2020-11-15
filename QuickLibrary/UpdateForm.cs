@@ -24,7 +24,7 @@ namespace QuickLibrary
 			(new DropShadow()).ApplyShadows(this);
 			SetDraggableControls(new List<Control>() { titlePanel, titleLabel, label1, label2, currentLabel, latestLabel });
 
-			this.Height = 200;
+			Height = 200;
 
 			label1.Text = string.Format(label1.Text, appName);
 
@@ -33,15 +33,14 @@ namespace QuickLibrary
 
 			if (darkMode)
 			{
-				DarkMode = darkMode;
-
 				buttonYes.BackColor = ThemeManager.DarkSecondColor;
 				boxReleaseNotes.BackColor = ThemeManager.DarkSecondColor;
 			}
 
+			DarkMode = darkMode;
 			currentVersionLink.LinkColor = ThemeManager.AccentColor;
 			latestReleaseLink.LinkColor = ThemeManager.AccentColor;
-			closeBtn.SetDarkMode(darkMode);
+			closeBtn.DarkMode = darkMode;
 		}
 
 		async void boxReleaseNotes_CheckedChanged(object sender, EventArgs e)

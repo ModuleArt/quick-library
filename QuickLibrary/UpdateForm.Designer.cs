@@ -196,7 +196,6 @@
 			// 
 			this.closeBtn.DarkImage = ((System.Drawing.Image)(resources.GetObject("closeBtn.DarkImage")));
 			this.closeBtn.FlatAppearance.BorderSize = 0;
-			this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.closeBtn.Image = ((System.Drawing.Image)(resources.GetObject("closeBtn.Image")));
 			this.closeBtn.IsRed = true;
 			this.closeBtn.LightImage = ((System.Drawing.Image)(resources.GetObject("closeBtn.LightImage")));

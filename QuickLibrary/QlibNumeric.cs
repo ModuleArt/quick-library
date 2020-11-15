@@ -7,55 +7,59 @@ namespace QuickLibrary
 {
 	public class QlibNumeric : Panel
 	{
-		// PRIVATE FIELDS
+		#region PRIVATE FIELDS
 
 		private InternalNumericUpDown numeric;
 		private Button upBtn;
 		private Button downBtn;
 		private bool darkMode = false;
 
-		// HIDDEN PROPS
+		#endregion
 
-		[Browsable(false)]
-		public new string Text => base.Text;
+		#region HIDDEN PROPS
 
-		[Browsable(false)]
-		public new Image BackgroundImage => base.BackgroundImage;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new string Text { get { return base.Text; } set { } }
 
-		[Browsable(false)]
-		public new ImageLayout BackgroundImageLayout => base.BackgroundImageLayout;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Image BackgroundImage { get { return base.BackgroundImage; } set { } }
 
-		[Browsable(false)]
-		public new Color ForeColor => base.ForeColor;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new ImageLayout BackgroundImageLayout { get { return base.BackgroundImageLayout; } set { } }
 
-		[Browsable(false)]
-		public new Color BackColor => base.BackColor;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Color ForeColor { get { return base.ForeColor; } set { } }
 
-		[Browsable(false)]
-		public new Cursor Cursor => base.Cursor;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Color BackColor { get { return base.BackColor; } set { } }
 
-		[Browsable(false)]
-		public new BorderStyle BorderStyle => base.BorderStyle;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Cursor Cursor { get { return base.Cursor; } set { } }
 
-		[Browsable(false)]
-		public new Font Font => base.Font;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new BorderStyle BorderStyle { get { return base.BorderStyle; } set { } }
 
-		[Browsable(false)]
-		public new bool AutoScroll => base.AutoScroll;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool AutoScroll { get { return base.AutoScroll; } set { } }
 
-		[Browsable(false)]
-		public new bool AutoSize => base.AutoSize;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool AutoSize { get { return base.AutoSize; } set { } }
 
-		[Browsable(false)]
-		public new AutoSizeMode AutoSizeMode => base.AutoSizeMode;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new AutoSizeMode AutoSizeMode { get { return base.AutoSizeMode; } set { } }
 
-		[Browsable(false)]
-		public new Padding Padding => base.Padding;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Font Font { get { return base.Font; } set { } }
 
-		[Browsable(false)]
-		public new RightToLeft RightToLeft => base.RightToLeft;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Padding Padding { get { return base.Padding; } set { } }
 
-		// PUBLIC PROPS
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new RightToLeft RightToLeft { get { return base.RightToLeft; } set { } }
+
+		#endregion
+
+		#region PUBLIC PROPS
 
 		[Category("Qlib props"), Browsable(true), Description("Value")]
 		public decimal Value
@@ -85,10 +89,26 @@ namespace QuickLibrary
 			set { SetDarkMode(value); }
 		}
 
-		// CONSTRUCTOR
+		#endregion
+
+		#region CONSTRUCTOR
 
 		public QlibNumeric()
 		{
+			base.BackgroundImageLayout = ImageLayout.None;
+			base.BackgroundImage = null;
+			base.Font = ThemeManager.DefaultFont;
+			base.RightToLeft = RightToLeft.No;
+			base.Padding = Padding.Empty;
+			base.AutoScroll = false;
+			base.AutoSize = false;
+			base.AutoSizeMode = AutoSizeMode;
+			base.BorderStyle = BorderStyle.None;
+			base.BackColor = ThemeManager.LightBackColor;
+			base.ForeColor = Color.Black;
+			base.Cursor = Cursors.IBeam;
+			base.Text = string.Empty;
+
 			numeric = new InternalNumericUpDown();
 			numeric.Location = new Point(7, 7);
 			numeric.BorderStyle = BorderStyle.None;
@@ -117,8 +137,6 @@ namespace QuickLibrary
 
 			numeric.SendToBack();
 
-			base.Cursor = Cursors.IBeam;
-
 			SizeChanged += QlibNumericBox_SizeChanged;
 			GotFocus += QlibNumericBox_GotFocus;
 			Click += QlibNumericBox_Click;
@@ -126,7 +144,9 @@ namespace QuickLibrary
 			numeric.ValueChanged += Numeric_ValueChanged;
 		}
 
-		// PRIVATE BODY
+		#endregion
+
+		#region PRIVATE BODY
 
 		private void DownBtn_Click(object sender, EventArgs e)
 		{
@@ -182,11 +202,13 @@ namespace QuickLibrary
 			{
 				base.BackColor = ThemeManager.DarkSecondColor;
 				numeric.ForeColor = Color.White;
+				base.ForeColor = Color.White;
 			}
 			else
 			{
 				base.BackColor = ThemeManager.LightSecondColor;
 				numeric.ForeColor = Color.Black;
+				base.ForeColor = Color.Black;
 			}
 
 			Bitmap upArrowBmp = new Bitmap(8, 8);
@@ -218,7 +240,9 @@ namespace QuickLibrary
 			downBtn.BackColor = BackColor;
 		}
 
-		// EVENTS
+		#endregion
+
+		#region PUBLIC EVENTS
 
 		protected virtual void OnValueChanged(EventArgs e)
 		{
@@ -226,5 +250,7 @@ namespace QuickLibrary
 		}
 
 		public event EventHandler ValueChanged;
+
+		#endregion
 	}
 }

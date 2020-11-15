@@ -7,53 +7,118 @@ namespace QuickLibrary
 {
 	public class QlibTitlebarButton : Button
 	{
-		[Description("Light icon"), Category("Options")]
-		public Image LightImage { get; set; }
-
-		[Description("Dark icon"), Category("Options")]
-		public Image DarkImage { get; set; }
-
-		[Description("Red button"), Category("Options")]
-		public bool IsRed { get; set; }
+		#region PRIVATE FIELDS
 
 		private bool darkMode = false;
 
-		public QlibTitlebarButton()
-		{
-			this.FlatStyle = FlatStyle.Flat;
+		#endregion
 
-			this.MouseEnter += QlibCloseButton_MouseEnter;
-			this.MouseLeave += QlibCloseButton_MouseLeave;
+		#region HIDDEN PROPS
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new ContentAlignment TextAlign
+		{
+			get { return base.TextAlign; }
+			set { base.TextAlign = value; }
 		}
 
-		public void SetDarkMode(bool darkMode)
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new string Text
+		{
+			get { return base.Text; }
+			set { base.Text = value; }
+		}
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Color ForeColor 
+		{
+			get { return base.ForeColor; }
+			set { base.ForeColor = value; }
+		}
+
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool UseWaitCursor
+		{
+			get { return base.UseWaitCursor; }
+			set { base.UseWaitCursor = value; }
+		}
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new FlatStyle FlatStyle
+		{
+			get { return base.FlatStyle; }
+			set { base.FlatStyle = value; }
+		}
+
+		#endregion
+
+		#region PUBLIC PROPS
+
+		[Category("Qlib props"), Browsable(true), Description("Light image")]
+		public Image LightImage { get; set; }
+
+		[Category("Qlib props"), Browsable(true), Description("Dark image")]
+		public Image DarkImage { get; set; }
+
+		[Category("Qlib props"), Browsable(true), Description("Red button")]
+		public bool IsRed { get; set; }
+
+		[Category("Qlib props"), Browsable(true), Description("Dark mode")]
+		public bool DarkMode
+		{
+			get { return darkMode; }
+			set { SetDarkMode(value); }
+		}
+
+		#endregion
+
+		#region CONSTRUCTOR
+
+		public QlibTitlebarButton()
+		{
+			base.FlatStyle = FlatStyle.Flat;
+			base.TextAlign = ContentAlignment.MiddleCenter;
+			base.Text = "";
+			base.ForeColor = Color.Black;
+			base.UseWaitCursor = false;
+
+			MouseEnter += QlibCloseButton_MouseEnter;
+			MouseLeave += QlibCloseButton_MouseLeave;
+		}
+
+		#endregion
+
+		#region PRIVATE BODY
+
+		private void SetDarkMode(bool darkMode)
 		{
 			this.darkMode = darkMode;
 
 			if (IsRed)
 			{
-				this.FlatAppearance.MouseOverBackColor = Color.FromArgb(232, 17, 35);
+				FlatAppearance.MouseOverBackColor = Color.FromArgb(232, 17, 35);
 
 				if (darkMode)
 				{
-					this.FlatAppearance.MouseDownBackColor = Color.FromArgb(139, 10, 20);
+					FlatAppearance.MouseDownBackColor = Color.FromArgb(139, 10, 20);
 				}
 				else
 				{
-					this.FlatAppearance.MouseDownBackColor = Color.FromArgb(241, 112, 122);
+					FlatAppearance.MouseDownBackColor = Color.FromArgb(241, 112, 122);
 				}
 			}
 			else
 			{
-				this.FlatAppearance.MouseDownBackColor = ThemeManager.PressedColor;
+				FlatAppearance.MouseDownBackColor = ThemeManager.PressedColor;
 
 				if (darkMode)
 				{
-					this.FlatAppearance.MouseOverBackColor = ThemeManager.DarkHoverColor;
+					FlatAppearance.MouseOverBackColor = ThemeManager.DarkHoverColor;
 				}
 				else
 				{
-					this.FlatAppearance.MouseOverBackColor = ThemeManager.LightHoverColor;
+					FlatAppearance.MouseOverBackColor = ThemeManager.LightHoverColor;
 				}
 			}
 
@@ -64,11 +129,11 @@ namespace QuickLibrary
 		{
 			if (darkMode)
 			{
-				this.Image = LightImage;
+				Image = LightImage;
 			}
 			else
 			{
-				this.Image = DarkImage;
+				Image = DarkImage;
 			}
 		}
 
@@ -76,8 +141,10 @@ namespace QuickLibrary
 		{
 			if (IsRed && !darkMode)
 			{
-				this.Image = LightImage;
+				Image = LightImage;
 			}
 		}
+
+		#endregion
 	}
 }

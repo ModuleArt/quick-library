@@ -15,7 +15,6 @@ namespace QuickLibrary
 		public static Color DarkSecondColor = Color.FromArgb(56, 56, 56);
 		public static Color DarkPaleColor = Color.FromArgb(0, 58, 105);
 		public static Color DarkHoverColor = Color.FromArgb(67, 67, 67);
-		public static Color DarkTitlebarUnfocus = Color.FromArgb(43, 43, 43);
 
 		public static Color LightMainColor = Color.White;
 		public static Color LightBackColor = SystemColors.Control;

@@ -32,13 +32,12 @@ namespace QuickLibrary
 
             if (darkMode)
             {
-                DarkMode = darkMode;
-
                 cancelButton.BackColor = ThemeManager.DarkSecondColor;
                 updateButton.BackColor = ThemeManager.DarkSecondColor;  
             }
 
-            closeBtn.SetDarkMode(darkMode);
+            DarkMode = darkMode;
+            closeBtn.DarkMode = darkMode;
             manuallyLink.LinkColor = ThemeManager.AccentColor;
 
             wc = new WebClient();

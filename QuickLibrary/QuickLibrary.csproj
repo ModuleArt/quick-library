@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DialogMan.cs" />
     <Compile Include="DownloadForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -54,8 +55,7 @@
     <Compile Include="DropShadow.cs" />
     <Compile Include="Dwm.cs" />
     <Compile Include="FileAssociation.cs" />
-    <Compile Include="NativeMethodsManager.cs" />
-    <Compile Include="NCRenderer.cs" />
+    <Compile Include="NativeMan.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -65,6 +65,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="QlibListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QlibTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="QlibTitlebarButton.cs">
@@ -77,12 +80,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QlibMenuSeparator.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="QlibTextBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="QlibComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -98,20 +95,20 @@
     <Compile Include="QlibTabs.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="QlibTextButton.cs">
+    <Compile Include="QlibToolbar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="QlibToolbarForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="QlibToolStrip.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="QlibToolStripSeparator.cs">
+    <Compile Include="QlibToolsep.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ThemeManager.cs" />
     <Compile Include="UpdateChecker.cs" />
+    <Compile Include="YesNoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="YesNoForm.Designer.cs">
+      <DependentUpon>YesNoForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +126,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YesNoForm.resx">
+      <DependentUpon>YesNoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateForm.resx">
       <DependentUpon>UpdateForm.cs</DependentUpon>

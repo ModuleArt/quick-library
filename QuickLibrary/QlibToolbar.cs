@@ -1,32 +1,132 @@
-﻿using System;
+﻿using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace QuickLibrary
 {
-	public class QlibToolStrip : ToolStrip
+	public class QlibToolbar : ToolStrip
 	{
-		public QlibToolStrip() { }
+		#region PRIVATE FIELDS
 
-		public void SetDarkMode(bool dark, bool titlebar)
+		private bool darkMode = false;
+		private bool alternativeAppearance = false;
+
+		#endregion
+
+		#region HIDDEN PROPS
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Color ForeColor { get { return base.ForeColor; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Color BackColor { get { return base.BackColor; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Image BackgroundImage { get { return base.BackgroundImage; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new ImageLayout BackgroundImageLayout { get { return base.BackgroundImageLayout; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Font Font { get { return base.Font; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new ToolStripGripStyle GripStyle { get { return base.GripStyle; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new RightToLeft RightToLeft { get { return base.RightToLeft; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new string Text { get { return base.Text; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new ToolStripTextDirection TextDirection { get { return base.TextDirection; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool UseWaitCursor { get { return base.UseWaitCursor; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Size ImageScalingSize { get { return base.ImageScalingSize; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool AllowDrop { get { return base.AllowDrop; } set { } }
+
+		#endregion
+
+		#region PUBLIC PROPS
+
+		[Category("Qlib props"), Browsable(true), Description("Dark mode")]
+		public bool DarkMode
 		{
+			get { return darkMode; }
+			set { SetDarkMode(value, alternativeAppearance); }
+		}
+
+		[Category("Qlib props"), Browsable(true), Description("Alternative appearance")]
+
+		public bool AlternativeAppearance
+		{
+			get { return alternativeAppearance; }
+			set { SetDarkMode(darkMode, value); }
+		}
+
+		#endregion
+
+		#region CONSTRUCTOR
+
+		public QlibToolbar() 
+		{
+			base.BackColor = ThemeManager.LightBackColor;
+			base.ForeColor = Color.Black;
+			base.BackgroundImageLayout = ImageLayout.None;
+			base.BackgroundImage = null;
+			base.Font = ThemeManager.DefaultFont;
+			base.GripStyle = ToolStripGripStyle.Hidden;
+			base.RightToLeft = RightToLeft.No;
+			base.Text = string.Empty;
+			base.TextDirection = ToolStripTextDirection.Horizontal;
+			base.UseWaitCursor = false;
+			base.ImageScalingSize = new Size(16, 16);
+			base.AllowDrop = false;
+		}
+
+		#endregion
+
+		#region PRIVATE BODY
+
+		private void SetDarkMode(bool dark, bool alternative)
+		{
+			darkMode = dark;
+			alternativeAppearance = alternative;
+
 			if (dark)
 			{
-				if (titlebar)
+				if (alternative)
 				{
-					this.BackColor = ThemeManager.DarkMainColor;
+					base.BackColor = ThemeManager.DarkMainColor;
 				}
 				else
 				{
-					this.BackColor = ThemeManager.DarkBackColor;
+					base.BackColor = ThemeManager.DarkBackColor;
+				}
+			}
+			else
+			{
+				if (alternative)
+				{
+					base.BackColor = ThemeManager.LightMainColor;
+				}
+				else
+				{
+					base.BackColor = ThemeManager.LightBackColor;
 				}
 			}
 
-			foreach (var c in this.Items)
+			foreach (var c in Items)
 			{
-				if (c.GetType() == typeof(QlibToolStripSeparator))
+				if (c.GetType() == typeof(QlibToolsep))
 				{
-					(c as QlibToolStripSeparator).SetDarkMode(dark);
+					(c as QlibToolsep).DarkMode = dark;
 				}
 				else if (c.GetType() == typeof(ToolStripDropDownButton))
 				{
@@ -60,9 +160,13 @@ namespace QuickLibrary
 				}
 			}
 
-			this.Renderer = new CustomToolStripSystemRenderer(dark);
+			Renderer = new CustomToolStripSystemRenderer(dark);
 		}
+
+		#endregion
 	}
+
+	#region INTERNAL CLASSES
 
 	internal class CustomToolStripSystemRenderer : ToolStripSystemRenderer
 	{
@@ -199,5 +303,8 @@ namespace QuickLibrary
 				e.Graphics.DrawRectangle(new Pen(ThemeManager.AccentColor), new Rectangle(0, 0, e.Item.Width - 1, e.Item.Height - 2));
 			}
 		}
+		
 	}
+
+	#endregion
 }

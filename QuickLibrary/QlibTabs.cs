@@ -8,7 +8,7 @@ namespace QuickLibrary
 {
     public class QlibTabs : TabControl
     {
-        // PRIVATE PROPS
+        #region PRIVATE FIELDS
 
         private bool darkMode = false;
         private readonly StringFormat CenterSringFormat = new StringFormat
@@ -17,36 +17,39 @@ namespace QuickLibrary
             LineAlignment = StringAlignment.Center
         };
 
-        // HIDDEN PROPS
+        #endregion
 
-        [Browsable(false)]
-        public new bool AllowDrop => base.AllowDrop;
+        #region HIDDEN PROPS
 
-        [Browsable(false)]
-        public new Size ItemSize => base.ItemSize;
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new bool AllowDrop { get { return base.AllowDrop; } set { } }
 
-        [Browsable(false)]
-        public new TabAppearance Appearance => base.Appearance;
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new Size ItemSize { get { return base.ItemSize; } set { } }
 
-        [Browsable(false)]
-        public new TabAlignment Alignment => base.Alignment;
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new TabAppearance Appearance { get { return base.Appearance; } set { } }
 
-        [Browsable(false)]
-        public new bool HotTrack => base.HotTrack;
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new TabAlignment Alignment { get { return base.Alignment; } set { } }
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new bool HotTrack { get { return base.HotTrack; } set { } }
 
-        [Browsable(false)]
-        public new ImeMode ImeMode => base.ImeMode;
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new ImeMode ImeMode { get { return base.ImeMode; } set { } }
 
-        [Browsable(false)]
-        public new bool Multiline => base.Multiline;
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new bool Multiline { get { return base.Multiline; } set { } }
 
-        [Browsable(false)]
-        public new bool ShowToolTips => base.ShowToolTips;
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new bool ShowToolTips { get { return base.ShowToolTips; } set { } }
 
-        [Browsable(false)]
-        public new TabSizeMode SizeMode => base.SizeMode;
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new TabSizeMode SizeMode { get { return base.SizeMode; } set { } }
 
-        // PUBLIC PROPS
+        #endregion
+
+        #region PUBLIC PROPS
 
         [Category("Qlib props"), Browsable(true), Description("Dark mode")]
         public bool DarkMode
@@ -55,7 +58,10 @@ namespace QuickLibrary
             set { SetDarkMode(value); }
         }
 
-        // CONSTRUCTOR
+        #endregion
+
+        #region CONSTRUCTOR
+
         public QlibTabs()
         {
             base.AllowDrop = false;
@@ -69,13 +75,18 @@ namespace QuickLibrary
             base.SizeMode = TabSizeMode.Normal;
 
             SetStyle(
-                ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.ResizeRedraw
-                | ControlStyles.OptimizedDoubleBuffer,
-                true);
+                ControlStyles.AllPaintingInWmPaint | 
+                ControlStyles.UserPaint | 
+                ControlStyles.ResizeRedraw | 
+                ControlStyles.OptimizedDoubleBuffer,
+                true
+            );
             DoubleBuffered = true;
         }
 
-        // PRIVATE BODY
+        #endregion
+
+        #region PRIVATE BODY
 
         protected override void OnPaint(PaintEventArgs e)
         {
@@ -165,5 +176,7 @@ namespace QuickLibrary
         {
             darkMode = dark;
         }
-    }
+
+		#endregion
+	}
 }

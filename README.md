@@ -39,6 +39,13 @@
 | Fixed form | QlibFixedForm | Form |
 | Radio | QlibRadio | RadioButton |
 | Tabs | QlibTabs | TabControl |
+| Toolbar | QlibToolbar | ToolStrip |
+
+<h2 align="center">Managers</h2>
+
+| Manager name | Codename | WinForms alternative |
+| :---: | :---: | :---: |
+| Native manager | NativeMan | MessageBox |
 
 <h2 align="center">Special thanks to</h2>
 <p align="center">

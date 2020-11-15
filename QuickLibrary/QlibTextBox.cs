@@ -7,50 +7,54 @@ namespace QuickLibrary
 {
 	public class QlibTextBox : Panel
 	{
-		// PRIVATE FIELDS
+		#region PRIVATE FIELDS
 
 		private TextBox textBox;
 		private bool darkMode = false;
 
-		// HIDDEN PROPS
+		#endregion
 
-		[Browsable(false)]
-		public new Image BackgroundImage => base.BackgroundImage;
+		#region HIDDEN PROPS
 
-		[Browsable(false)]
-		public new ImageLayout BackgroundImageLayout => base.BackgroundImageLayout;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Image BackgroundImage { get { return base.BackgroundImage; } set { } }
 
-		[Browsable(false)]
-		public new Color ForeColor => base.ForeColor;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new ImageLayout BackgroundImageLayout { get { return base.BackgroundImageLayout; } set { } }
 
-		[Browsable(false)]
-		public new Color BackColor => base.BackColor;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Color ForeColor { get { return base.ForeColor; } set { } }
 
-		[Browsable(false)]
-		public new Cursor Cursor => base.Cursor;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Color BackColor { get { return base.BackColor; } set { } }
 
-		[Browsable(false)]
-		public new BorderStyle BorderStyle => base.BorderStyle;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Cursor Cursor { get { return base.Cursor; } set { } }
 
-		[Browsable(false)]
-		public new Font Font => base.Font;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new BorderStyle BorderStyle { get { return base.BorderStyle; } set { } }
 
-		[Browsable(false)]
-		public new bool AutoScroll => base.AutoScroll;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Font Font { get { return base.Font; } set { } }
 
-		[Browsable(false)]
-		public new bool AutoSize => base.AutoSize;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool AutoScroll { get { return base.AutoScroll; } set { } }
 
-		[Browsable(false)]
-		public new AutoSizeMode AutoSizeMode => base.AutoSizeMode;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool AutoSize { get { return base.AutoSize; } set { } }
 
-		[Browsable(false)]
-		public new Padding Padding => base.Padding;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new AutoSizeMode AutoSizeMode { get { return base.AutoSizeMode; } set { } }
 
-		[Browsable(false)]
-		public new RightToLeft RightToLeft => base.RightToLeft;
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Padding Padding { get { return base.Padding; } set { } }
 
-		// PUBLIC PROPS
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new RightToLeft RightToLeft { get { return base.RightToLeft; } set { } }
+
+		#endregion
+
+		#region PUBLIC PROPS
 
 		[Category("Qlib props"), Browsable(true), Description("Read only")]
 		public bool ReadOnly
@@ -80,10 +84,25 @@ namespace QuickLibrary
 			set { SetDarkMode(value); }
 		}
 
-		// CONSTRUCTOR
+		#endregion
+
+		#region CONSTRUCTOR
 
 		public QlibTextBox()
 		{
+			base.BackgroundImageLayout = ImageLayout.None;
+			base.BackgroundImage = null;
+			base.Cursor = Cursors.IBeam;
+			base.BackColor = ThemeManager.LightBackColor;
+			base.ForeColor = Color.Black;
+			base.BorderStyle = BorderStyle.None;
+			base.Font = ThemeManager.DefaultFont;
+			base.AutoScroll = false;
+			base.AutoSize = false;
+			base.AutoSizeMode = AutoSizeMode;
+			base.RightToLeft = RightToLeft.No;
+			base.Padding = Padding.Empty;
+
 			textBox = new TextBox();
 
 			textBox.Location = new Point(7, 7);
@@ -94,14 +113,14 @@ namespace QuickLibrary
 
 			Controls.Add(textBox);
 
-			base.Cursor = Cursors.IBeam;
-
 			SizeChanged += QlibTextBox_SizeChanged;
 			GotFocus += QlibTextBox_GotFocus;
 			Click += QlibTextBox_Click;
 		}
 
-		// PRIVATE BODY
+		#endregion
+
+		#region PRIVATE BODY
 
 		private void TextBox_TextChanged(object sender, EventArgs e)
 		{
@@ -139,5 +158,7 @@ namespace QuickLibrary
 			}
 			textBox.BackColor = BackColor;
 		}
+
+		#endregion
 	}
 }

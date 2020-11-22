@@ -29,4 +29,4 @@ D:\Projects\quick-library\QuickLibrary\obj\Release\QuickLibrary.pdb
 D:\Projects\quick-library\QuickLibrary\bin\Release\Octokit.xml
 D:\Projects\quick-library\QuickLibrary\obj\Release\QuickLibrary.UpdateForm.resources
 D:\Projects\quick-library\QuickLibrary\obj\Release\QuickLibrary.YesNoForm.resources
-D:\Projects\quick-library\QuickLibrary\obj\Release\QuickLibrary.csprojAssemblyReference.cache
+D:\Projects\quick-library\QuickLibrary\obj\Release\QuickLibrary.OkForm.resources

@@ -39,7 +39,8 @@
 | Fixed form | QlibFixedForm | Form |
 | Radio | QlibRadio | RadioButton |
 | Tabs | QlibTabs | TabControl |
-| Toolbar | QlibToolbar | ToolStrip |
+| Tool bar | QlibToolbar | ToolStrip |
+| Tool separator | QlibToolsep | ToolStripSeparator |
 
 <h2 align="center">Managers</h2>
 

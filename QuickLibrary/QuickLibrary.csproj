@@ -103,6 +103,12 @@
     </Compile>
     <Compile Include="ThemeManager.cs" />
     <Compile Include="UpdateChecker.cs" />
+    <Compile Include="OkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OkForm.Designer.cs">
+      <DependentUpon>OkForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="YesNoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OkForm.resx">
+      <DependentUpon>OkForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YesNoForm.resx">
       <DependentUpon>YesNoForm.cs</DependentUpon>

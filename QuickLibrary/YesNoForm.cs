@@ -85,7 +85,7 @@ namespace QuickLibrary
 			}
 		}
 
-		private void UpdateForm_KeyDown(object sender, KeyEventArgs e)
+		private void YesNoForm_KeyDown(object sender, KeyEventArgs e)
 		{
 			if (e.KeyCode == Keys.Escape)
 			{

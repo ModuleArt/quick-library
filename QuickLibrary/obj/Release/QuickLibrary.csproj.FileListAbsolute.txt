@@ -30,3 +30,9 @@ D:\Projects\quick-library\QuickLibrary\bin\Release\Octokit.xml
 D:\Projects\quick-library\QuickLibrary\obj\Release\QuickLibrary.UpdateForm.resources
 D:\Projects\quick-library\QuickLibrary\obj\Release\QuickLibrary.YesNoForm.resources
 D:\Projects\quick-library\QuickLibrary\obj\Release\QuickLibrary.OkForm.resources
+D:\Projects\quick-library\QuickLibrary\bin\Release\System.Threading.Tasks.Extensions.dll
+D:\Projects\quick-library\QuickLibrary\bin\Release\System.ValueTuple.dll
+D:\Projects\quick-library\QuickLibrary\bin\Release\Utf8Json.dll
+D:\Projects\quick-library\QuickLibrary\bin\Release\System.Threading.Tasks.Extensions.xml
+D:\Projects\quick-library\QuickLibrary\bin\Release\System.ValueTuple.xml
+D:\Projects\quick-library\QuickLibrary\bin\Release\Utf8Json.xml

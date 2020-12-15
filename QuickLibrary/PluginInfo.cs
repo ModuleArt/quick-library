@@ -12,13 +12,6 @@ namespace QuickLibrary
 			public string link;
 		}
 
-		public struct Target
-		{
-			public string name;
-			public string minVersion;
-			public string maxVersion;
-		}
-
 		public struct Hotkey
 		{
 			public bool ctrl;

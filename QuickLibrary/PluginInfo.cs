@@ -12,13 +12,6 @@ namespace QuickLibrary
 			public string link;
 		}
 
-		public struct Hotkey
-		{
-			public bool ctrl;
-			public bool shift;
-			public int key;
-		}
-
 		public struct MultilangString
 		{
 			public string en;
@@ -48,10 +41,9 @@ namespace QuickLibrary
 		{
 			public string name;
 			public MultilangString title;
-			public Hotkey hotkey;
-			public bool configurable; // for pluginType = effect
-			public bool inputRequired;
-			public bool source;
+			public string type; // tool, effect
+			public bool configurable;
+			public bool inputRequired; // for type = tool
 		}
 
 		#endregion
@@ -65,7 +57,6 @@ namespace QuickLibrary
 		public string link;
 		public Author[] authors;
 		public int apiVer; // 2
-		public string pluginType; // tool, effect
 		public string inputType; // bitmap
 		public string dllType; // csharp, cpp
 		public Function[] functions;

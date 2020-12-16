@@ -67,6 +67,9 @@
     <Compile Include="NativeMan.cs" />
     <Compile Include="PluginInfo.cs" />
     <Compile Include="PluginMan.cs" />
+    <Compile Include="PluginMenuItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -156,6 +159,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\imgs\light\white-check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\imgs\light\white-options.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\imgs\dark\black-check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\imgs\dark\black-options.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

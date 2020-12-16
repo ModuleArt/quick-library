@@ -72,6 +72,14 @@ namespace QuickLibrary
 			public int Bottom;
 		}
 
+		// KERNEL32 METHODS
+
+		[DllImport("kernel32", SetLastError = true, CharSet = CharSet.Ansi)]
+		public static extern IntPtr LoadLibrary([MarshalAs(UnmanagedType.LPStr)]string lpFileName);
+
+		[DllImport("kernel32", SetLastError = true, EntryPoint = "GetProcAddress")]
+		public static extern IntPtr GetProcAddressOrdinal(IntPtr hModule, string procName);
+
 		// USER32 METHODS
 
 		[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]

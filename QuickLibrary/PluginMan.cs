@@ -8,23 +8,18 @@ namespace QuickLibrary
 {
 	public class PluginMan
 	{
-		public static string pluginsFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "plugins");
-		public static int apiVer = 2;
-
-		[DllImport("kernel32", SetLastError = true, CharSet = CharSet.Ansi)]
-		public static extern IntPtr LoadLibrary([MarshalAs(UnmanagedType.LPStr)]string lpFileName);
-
-		[DllImport("kernel32", SetLastError = true, EntryPoint = "GetProcAddress")]
-		public static extern IntPtr GetProcAddressOrdinal(IntPtr hModule, string procName);
+		public static string pluginsFolder = null;
+		public static int apiVer = 0;
+		public static string inputType = null;
 
 		public delegate Bitmap RunFunction(
-			Bitmap bmp = null,
+			Object input = null,
 			string path = null,
 			string[] args = null
 		);
 
 		public delegate string[] ConfFunction(
-			Bitmap bmp = null,
+			Object input = null,
 			string path = null,
 			bool darkMode = false,
 			string language = "en",
@@ -38,28 +33,22 @@ namespace QuickLibrary
 			public object subject { get; set; }
 		}
 
-		public static PluginInfo[] GetPlugins(bool onlyAvailable, string pluginType)
+		public static PluginInfo[] GetPlugins(bool onlyAvailable)
 		{
 			List<PluginInfo> plugins = new List<PluginInfo>();
 			DirectoryInfo di = new DirectoryInfo(pluginsFolder);
 			if (di.Exists)
 			{
-				List<FileInfo> files = new List<FileInfo>();
-				DirectoryInfo[] dirs = di.GetDirectories();
-				for (int i = 0; i < dirs.Length; i++)
-				{
-					files.AddRange(dirs[i].GetFiles());
-					dirs[i] = null;
-				}
-				for (int i = 0; i < files.Count; i++)
+				FileInfo[] files = di.GetFiles();
+				for (int i = 0; i < files.Length; i++)
 				{
 					if (Path.GetExtension(files[i].Name) == ".json")
 					{
-						PluginInfo pi = PluginInfo.FromJson(File.ReadAllText(Path.Combine(di.FullName, files[i].DirectoryName, files[i].Name)));
+						PluginInfo pi = PluginInfo.FromJson(File.ReadAllText(Path.Combine(di.FullName, files[i].Name)));
 
 						if (onlyAvailable)
 						{
-							if (pi.apiVer == apiVer && pi.pluginType == pluginType)
+							if (pi.apiVer == apiVer && pi.inputType == inputType)
 							{
 								plugins.Add(pi);
 							}

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Runtime.InteropServices;
 
 namespace QuickLibrary
 {
@@ -12,13 +11,7 @@ namespace QuickLibrary
 		public static int apiVer = 0;
 		public static string inputType = null;
 
-		public delegate Bitmap RunFunction(
-			Object input = null,
-			string path = null,
-			string[] args = null
-		);
-
-		public delegate string[] ConfFunction(
+		public delegate string[] RunFunction(
 			Object input = null,
 			string path = null,
 			bool darkMode = false,

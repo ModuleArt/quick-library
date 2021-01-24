@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace QuickLibrary
 {
-    public class DropShadow
+    internal class DropShadow
     {
         private const int WM_NCHITTEST = 0x84;
         private const int WS_MINIMIZEBOX = 0x20000;

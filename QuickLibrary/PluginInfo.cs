@@ -41,9 +41,10 @@ namespace QuickLibrary
 		{
 			public string name;
 			public MultilangString title;
-			public string type; // tool, effect
-			public bool configurable;
-			public bool inputRequired; // for type = tool
+			public string type; 
+			public bool inputRequired;
+			public bool dialog;
+			public bool hideMainWindow;
 		}
 
 		#endregion
@@ -56,9 +57,9 @@ namespace QuickLibrary
 		public MultilangString description;
 		public string link;
 		public Author[] authors;
-		public int apiVer; // 2
-		public string inputType; // bitmap
-		public string dllType; // csharp, cpp
+		public int apiVer; 
+		public string inputType; 
+		public string dllType; 
 		public Function[] functions;
 
 		#endregion

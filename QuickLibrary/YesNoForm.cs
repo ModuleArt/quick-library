@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace QuickLibrary
 {
-	public partial class YesNoForm : QlibFixedForm
+	internal partial class YesNoForm : QlibFixedForm
 	{
 		public YesNoForm(
 			string messageText,
@@ -82,6 +82,7 @@ namespace QuickLibrary
 				noBtn.BackColor = ThemeManager.DarkSecondColor;
 				cancelBtn.BackColor = ThemeManager.DarkSecondColor;
 				textBox.ForeColor = Color.White;
+				textBox.BackColor = ThemeManager.DarkBackColor;
 			}
 		}
 

@@ -10,6 +10,7 @@ namespace QuickLibrary
 
 		private bool darkMode = false;
 		private bool alternativeAppearance = false;
+		private bool dragForm = false;
 
 		#endregion
 
@@ -51,6 +52,7 @@ namespace QuickLibrary
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
 		public new bool AllowDrop { get { return base.AllowDrop; } set { } }
 
+
 		#endregion
 
 		#region PUBLIC PROPS
@@ -68,6 +70,13 @@ namespace QuickLibrary
 		{
 			get { return alternativeAppearance; }
 			set { SetDarkMode(darkMode, value); }
+		}
+
+		[Category("Qlib props"), Browsable(true), Description("Drag form")]
+		public bool DragForm
+		{
+			get { return dragForm; }
+			set { dragForm = value; }
 		}
 
 		#endregion
@@ -88,11 +97,22 @@ namespace QuickLibrary
 			base.UseWaitCursor = false;
 			base.ImageScalingSize = new Size(16, 16);
 			base.AllowDrop = false;
+
+			base.MouseDown += QlibToolbar_MouseDown;
 		}
 
 		#endregion
 
 		#region PRIVATE BODY
+
+		private void QlibToolbar_MouseDown(object sender, MouseEventArgs e)
+		{
+			if (dragForm && e.Button == MouseButtons.Left)
+			{
+				Cursor.Current = Cursors.SizeAll;
+				NativeMan.DragWindow(Parent.Handle);
+			}
+		}
 
 		private void SetDarkMode(bool dark, bool alternative)
 		{

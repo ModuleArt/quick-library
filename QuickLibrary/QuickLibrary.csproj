@@ -62,7 +62,6 @@
       <DependentUpon>DownloadForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DropShadow.cs" />
-    <Compile Include="Dwm.cs" />
     <Compile Include="FileAssociation.cs" />
     <Compile Include="NativeMan.cs" />
     <Compile Include="PluginInfo.cs" />
@@ -97,9 +96,6 @@
     <Compile Include="QlibComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="QlibGroupBox.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="QlibNumeric.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -123,6 +119,7 @@
     <Compile Include="OkForm.Designer.cs">
       <DependentUpon>OkForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="WallpaperMan.cs" />
     <Compile Include="YesNoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,7 +133,6 @@
       <DependentUpon>UpdateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdateManager.cs" />
-    <Compile Include="WinApi.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
@@ -159,18 +155,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="resources\imgs\light\white-check.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="resources\imgs\light\white-options.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="resources\imgs\dark\black-check.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="resources\imgs\dark\black-options.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

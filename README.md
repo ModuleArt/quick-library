@@ -46,10 +46,12 @@
 
 | Manager name | Codename | WinForms alternative |
 | :---: | :---: | :---: |
-| Native manager | NativeMan | MessageBox |
+| Dialog manager | DialogMan | MessageBox |
+| Update manager | UpdateMan | - |
+| Native manager | NativeMan | - |
 
 <h2 align="center">Special thanks to</h2>
 <p align="center">
-  nixxquality for <a href="https://github.com/nixxquality/GitHubUpdate/">GitHubUpdate</a> (UpdateManager)<br>
-  Alaa Ben Fatma for <a href="https://www.codeproject.com/Articles/1106140/VisualStudio-Like-TabControl">VisualStudio-Like TabControl</a> (QlibTabControl)
+  nixxquality for <a href="https://github.com/nixxquality/GitHubUpdate/">GitHubUpdate</a> (UpdateMan)<br>
+  Alaa Ben Fatma for <a href="https://www.codeproject.com/Articles/1106140/VisualStudio-Like-TabControl">VisualStudio-Like TabControl</a> (QlibTabs)
 </p>

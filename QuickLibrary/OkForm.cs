@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace QuickLibrary
 {
-	public partial class OkForm : QlibFixedForm
+	internal partial class OkForm : QlibFixedForm
 	{
 		public OkForm(
 			string messageText,
@@ -13,6 +13,7 @@ namespace QuickLibrary
 			bool darkMode = false
 		)
 		{
+
 			if (darkMode)
 			{
 				HandleCreated += new EventHandler(ThemeManager.formHandleCreated);

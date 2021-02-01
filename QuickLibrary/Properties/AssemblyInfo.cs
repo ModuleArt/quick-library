@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("QuickLibrary")]
-[assembly: AssemblyDescription("WinForms/C# library for \"Quick\" apps (.NET Framework)")]
+[assembly: AssemblyDescription("WinForms control class library for \"Quick\" apps (.NET Framework)")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Module Art")]
 [assembly: AssemblyProduct("QuickLibrary")]
@@ -32,6 +32,6 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.4.0")]
-[assembly: AssemblyFileVersion("2.4.0")]
+[assembly: AssemblyVersion("2.4.1")]
+[assembly: AssemblyFileVersion("2.4.1")]
 [assembly: NeutralResourcesLanguage("en")]

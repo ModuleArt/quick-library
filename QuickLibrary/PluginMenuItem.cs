@@ -17,7 +17,8 @@ namespace QuickLibrary
 			PluginInfo pi,
 			PluginInfo.Function func,
 			bool alwaysOnTop,
-			string langCode
+			string langCode,
+			Form mainForm = null
 		)
 		{
 			Text = func.title.Get(langCode);
@@ -35,6 +36,11 @@ namespace QuickLibrary
 
 			Click += (s, e) =>
 			{
+				if (mainForm != null && func.hideMainForm)
+				{
+					mainForm.Hide();
+				}
+
 				Object res;
 				if (pi.dllType == "cpp")
 				{
@@ -56,7 +62,7 @@ namespace QuickLibrary
 						alwaysOnTop
 					}) as Object;
 
-					OutputEventArgs oea = new OutputEventArgs
+					PluginMan.OutputEventArgs oea = new PluginMan.OutputEventArgs
 					{
 						input = res
 					};
@@ -67,15 +73,10 @@ namespace QuickLibrary
 			Image = PluginMan.GetPluginIcon(pi.name, func.name, darkMode);
 		}
 
-		protected virtual void OnOutput(OutputEventArgs e)
+		protected virtual void OnOutput(PluginMan.OutputEventArgs e)
 		{
 			Output?.Invoke(this, e);
 		}
-		public event EventHandler<OutputEventArgs> Output;
-	}
-
-	public class OutputEventArgs : EventArgs
-	{
-		public Object input { get; set; }
+		public event EventHandler<PluginMan.OutputEventArgs> Output;
 	}
 }

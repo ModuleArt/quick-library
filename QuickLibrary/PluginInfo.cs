@@ -44,7 +44,7 @@ namespace QuickLibrary
 			public string type; 
 			public bool inputRequired;
 			public bool dialog;
-			public bool hideMainWindow;
+			public bool hideMainForm;
 		}
 
 		#endregion

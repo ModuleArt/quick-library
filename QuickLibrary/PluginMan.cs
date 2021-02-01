@@ -19,11 +19,11 @@ namespace QuickLibrary
 			bool alwaysOnTop = false
 		);
 
-		public delegate void PluginOutput(object sender, PluginOutputEventArgs poea);
+		public delegate void PluginOutput(object sender, OutputEventArgs oea);
 
-		public class PluginOutputEventArgs : EventArgs
+		public class OutputEventArgs : EventArgs
 		{
-			public object subject { get; set; }
+			public object input { get; set; }
 		}
 
 		public static PluginInfo[] GetPlugins(bool onlyAvailable)

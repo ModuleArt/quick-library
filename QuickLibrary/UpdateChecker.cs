@@ -4,29 +4,29 @@ using System.Threading.Tasks;
 
 namespace QuickLibrary
 {
-	public class UpdateChecker
+	internal static class UpdateChecker
 	{
-		private IReleasesClient _releaseClient;
-		internal GitHubClient Github;
+		private static IReleasesClient _releaseClient;
+		internal static GitHubClient Github;
 
-		internal string CurrentVersion;
-		internal string RepositoryOwner;
-		internal string RepostoryName;
-		internal Release LatestRelease;
+		internal static string CurrentVersion;
+		internal static string RepositoryOwner;
+		internal static string RepostoryName;
+		internal static Release LatestRelease;
 
-		public UpdateChecker(string owner, string name)
+		internal static void Init(string owner, string repo)
 		{
 			string version = System.Windows.Forms.Application.ProductVersion;
 
-			Github = new GitHubClient(new ProductHeaderValue(name + @"-UpdateCheck"));
+			Github = new GitHubClient(new ProductHeaderValue(repo + @"-UpdateCheck"));
 			_releaseClient = Github.Repository.Release;
 
 			RepositoryOwner = owner;
-			RepostoryName = name;
+			RepostoryName = repo;
 			CurrentVersion = version;
 		}
 
-		public async Task<bool> CheckUpdate()
+		internal static async Task<bool> CheckUpdate()
 		{
 			var releases = await _releaseClient.GetAll(RepositoryOwner, RepostoryName);
 			LatestRelease = releases[0];
@@ -66,7 +66,7 @@ namespace QuickLibrary
 			return false;
 		}
 
-		public async Task<string> RenderReleaseNotes()
+		internal static async Task<string> RenderReleaseNotes()
 		{
 			if (LatestRelease == null)
 			{
@@ -75,7 +75,7 @@ namespace QuickLibrary
 			return await Github.Miscellaneous.RenderRawMarkdown(LatestRelease.Body);
 		}
 
-		public string GetAssetUrl(string assetname)
+		internal static string GetAssetUrl(string assetname)
 		{
 			const string template = "https://github.com/{0}/{1}/releases/download/{2}/{3}";
 			return string.Format(template, RepositoryOwner, RepostoryName, LatestRelease.TagName, assetname);

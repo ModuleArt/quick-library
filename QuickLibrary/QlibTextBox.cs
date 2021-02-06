@@ -93,10 +93,10 @@ namespace QuickLibrary
 			base.BackgroundImageLayout = ImageLayout.None;
 			base.BackgroundImage = null;
 			base.Cursor = Cursors.IBeam;
-			base.BackColor = ThemeManager.LightBackColor;
+			base.BackColor = ThemeMan.LightBackColor;
 			base.ForeColor = Color.Black;
 			base.BorderStyle = BorderStyle.None;
-			base.Font = ThemeManager.DefaultFont;
+			base.Font = ThemeMan.DefaultFont;
 			base.AutoScroll = false;
 			base.AutoSize = false;
 			base.AutoSizeMode = AutoSizeMode;
@@ -148,12 +148,12 @@ namespace QuickLibrary
 
 			if (dark)
 			{
-				base.BackColor = ThemeManager.DarkSecondColor;
+				base.BackColor = ThemeMan.DarkSecondColor;
 				textBox.ForeColor = Color.White;
 			}
 			else
 			{
-				base.BackColor = ThemeManager.LightSecondColor;
+				base.BackColor = ThemeMan.LightSecondColor;
 				textBox.ForeColor = Color.Black;
 			}
 			textBox.BackColor = BackColor;

@@ -16,7 +16,7 @@ namespace QuickLibrary
 
 			if (darkMode)
 			{
-				HandleCreated += new EventHandler(ThemeManager.formHandleCreated);
+				HandleCreated += new EventHandler(ThemeMan.formHandleCreated);
 			}
 
 			InitializeComponent();
@@ -35,8 +35,9 @@ namespace QuickLibrary
 			closeBtn.DarkMode = darkMode;
 			if (darkMode)
 			{
-				okBtn.BackColor = ThemeManager.DarkSecondColor;
+				okBtn.BackColor = ThemeMan.DarkSecondColor;
 				textBox.ForeColor = Color.White;
+				textBox.BackColor = ThemeMan.DarkBackColor;
 			}
 		}
 

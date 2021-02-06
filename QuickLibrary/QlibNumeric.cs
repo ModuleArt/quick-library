@@ -97,14 +97,14 @@ namespace QuickLibrary
 		{
 			base.BackgroundImageLayout = ImageLayout.None;
 			base.BackgroundImage = null;
-			base.Font = ThemeManager.DefaultFont;
+			base.Font = ThemeMan.DefaultFont;
 			base.RightToLeft = RightToLeft.No;
 			base.Padding = Padding.Empty;
 			base.AutoScroll = false;
 			base.AutoSize = false;
 			base.AutoSizeMode = AutoSizeMode;
 			base.BorderStyle = BorderStyle.None;
-			base.BackColor = ThemeManager.LightBackColor;
+			base.BackColor = ThemeMan.LightBackColor;
 			base.ForeColor = Color.Black;
 			base.Cursor = Cursors.IBeam;
 			base.Text = string.Empty;
@@ -200,13 +200,13 @@ namespace QuickLibrary
 
 			if (dark)
 			{
-				base.BackColor = ThemeManager.DarkSecondColor;
+				base.BackColor = ThemeMan.DarkSecondColor;
 				numeric.ForeColor = Color.White;
 				base.ForeColor = Color.White;
 			}
 			else
 			{
-				base.BackColor = ThemeManager.LightSecondColor;
+				base.BackColor = ThemeMan.LightSecondColor;
 				numeric.ForeColor = Color.Black;
 				base.ForeColor = Color.Black;
 			}

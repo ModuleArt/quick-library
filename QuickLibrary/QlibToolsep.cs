@@ -64,11 +64,11 @@ namespace QuickLibrary
 		{
 			if (dark)
 			{
-				BackColor = ThemeManager.DarkSecondColor;
+				BackColor = ThemeMan.DarkSecondColor;
 			}
 			else
 			{
-				BackColor = ThemeManager.LightSecondColor;
+				BackColor = ThemeMan.LightSecondColor;
 			}
 		}
 
@@ -77,7 +77,7 @@ namespace QuickLibrary
 			if (insideMenu)
 			{
 				int y = e.ClipRectangle.Y + (e.ClipRectangle.Height / 2) - 1;
-				e.Graphics.DrawLine(new Pen(ThemeManager.BorderColor), e.ClipRectangle.X + 10, y, e.ClipRectangle.Width - 11, y);
+				e.Graphics.DrawLine(new Pen(ThemeMan.BorderColor), e.ClipRectangle.X + 10, y, e.ClipRectangle.Width - 11, y);
 			}
 			else
 			{

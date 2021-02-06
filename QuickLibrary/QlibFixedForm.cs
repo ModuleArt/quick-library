@@ -169,7 +169,7 @@ namespace QuickLibrary
 			base.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 			base.BackgroundImage = null;
 			base.BackgroundImageLayout = ImageLayout.Tile;
-			base.Font = ThemeManager.DefaultFont;
+			base.Font = ThemeMan.DefaultFont;
 			base.KeyPreview = true;
 			base.CancelButton = null;
 			base.AcceptButton = null;
@@ -179,7 +179,7 @@ namespace QuickLibrary
 			base.Padding = new Padding(10);
 			base.UseWaitCursor = false;
 			base.Cursor = Cursors.Default;
-			base.BackColor = ThemeManager.LightBackColor;
+			base.BackColor = ThemeMan.LightBackColor;
 			base.ForeColor = Color.Black;
 
 			TextChanged += QlibFixedForm_TextChanged;
@@ -233,7 +233,6 @@ namespace QuickLibrary
 
 		private void GoDrag()
 		{
-			Cursor.Current = Cursors.SizeAll;
 			NativeMan.DragWindow(Handle);
 		}
 
@@ -279,11 +278,11 @@ namespace QuickLibrary
 				}
 				else if (alternative)
 				{
-					base.BackColor = ThemeManager.DarkMainColor;
+					base.BackColor = ThemeMan.DarkMainColor;
 				}
 				else
 				{
-					base.BackColor = ThemeManager.DarkBackColor;
+					base.BackColor = ThemeMan.DarkBackColor;
 				}
 			}
 			else
@@ -296,11 +295,11 @@ namespace QuickLibrary
 				}
 				else if (alternative)
 				{
-					base.BackColor = ThemeManager.LightMainColor;
+					base.BackColor = ThemeMan.LightMainColor;
 				}
 				else
 				{
-					base.BackColor = ThemeManager.LightBackColor;
+					base.BackColor = ThemeMan.LightBackColor;
 				}
 			}
 		}

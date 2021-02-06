@@ -91,15 +91,15 @@ namespace QuickLibrary
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            Color headerColor = ThemeManager.LightSecondColor;
+            Color headerColor = ThemeMan.LightSecondColor;
             if (darkMode)
             {
-                headerColor = ThemeManager.DarkSecondColor;
+                headerColor = ThemeMan.DarkSecondColor;
             }
-            Color backTabColor = ThemeManager.LightBackColor;
+            Color backTabColor = ThemeMan.LightBackColor;
             if (darkMode)
             {
-                backTabColor = ThemeManager.DarkBackColor;
+                backTabColor = ThemeMan.DarkBackColor;
             }
             Color textColor = Color.Black;
             if (darkMode)
@@ -151,7 +151,7 @@ namespace QuickLibrary
                         new SolidBrush(backTabColor),
                         new Rectangle(Header.X - 2, Header.Y - 3, Header.Width - 3, Header.Height + 5));
                     Drawer.FillRectangle(
-                        new SolidBrush(ThemeManager.AccentColor),
+                        new SolidBrush(ThemeMan.AccentColor),
                         new Rectangle(Header.X - 2, Header.Y - 3, Header.Width - 3, 1));
 
                     Drawer.DrawString(

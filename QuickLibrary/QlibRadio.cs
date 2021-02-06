@@ -109,7 +109,7 @@ namespace QuickLibrary
 			base.BackgroundImageLayout = ImageLayout.None;
 			base.BackgroundImage = null;
 			base.CheckAlign = ContentAlignment.MiddleLeft;
-			base.BackColor = ThemeManager.LightBackColor;
+			base.BackColor = ThemeMan.LightBackColor;
 			base.ForeColor = Color.Black;
 			base.Appearance = Appearance.Normal;
 		}
@@ -148,7 +148,7 @@ namespace QuickLibrary
 
 			if (dark)
 			{
-				base.BackColor = ThemeManager.DarkBackColor;
+				base.BackColor = ThemeMan.DarkBackColor;
 				base.ForeColor = Color.White;
 
 				SetStyle(ControlStyles.UserPaint, true);
@@ -161,7 +161,7 @@ namespace QuickLibrary
 			}
 			else
 			{
-				base.BackColor = ThemeManager.LightBackColor;
+				base.BackColor = ThemeMan.LightBackColor;
 				base.ForeColor = Color.Black;
 			}
 		}
@@ -178,23 +178,23 @@ namespace QuickLibrary
 
 				if (pressed)
 				{
-					e.Graphics.FillEllipse(new SolidBrush(ThemeManager.PressedColor), new Rectangle(0, top + 2, 15, 15));
+					e.Graphics.FillEllipse(new SolidBrush(ThemeMan.PressedColor), new Rectangle(0, top + 2, 15, 15));
 				}
 				else
 				{
 					if (hovered)
 					{
-						e.Graphics.FillEllipse(new SolidBrush(ThemeManager.DarkHoverColor), new Rectangle(0, top + 2, 15, 15));
+						e.Graphics.FillEllipse(new SolidBrush(ThemeMan.DarkHoverColor), new Rectangle(0, top + 2, 15, 15));
 					}
 					else
 					{
-						e.Graphics.FillEllipse(new SolidBrush(ThemeManager.DarkSecondColor), new Rectangle(0, top + 2, 15, 15));
+						e.Graphics.FillEllipse(new SolidBrush(ThemeMan.DarkSecondColor), new Rectangle(0, top + 2, 15, 15));
 					}
 				}
 
 				if (Focused)
 				{
-					e.Graphics.DrawEllipse(new Pen(ThemeManager.BorderColor, 2), new Rectangle(1, top + 3, 13, 13));
+					e.Graphics.DrawEllipse(new Pen(ThemeMan.BorderColor, 2), new Rectangle(1, top + 3, 13, 13));
 				}
 
 				if (Checked)
@@ -205,7 +205,7 @@ namespace QuickLibrary
 					}
 					else
 					{
-						e.Graphics.FillEllipse(new SolidBrush(ThemeManager.BorderColor), new Rectangle(4, top + 6, 7, 7));
+						e.Graphics.FillEllipse(new SolidBrush(ThemeMan.BorderColor), new Rectangle(4, top + 6, 7, 7));
 					}
 				}
 
@@ -216,7 +216,7 @@ namespace QuickLibrary
 				}
 				else
 				{
-					e.Graphics.DrawString(Text, Font, new SolidBrush(ThemeManager.BorderColor), 22, top);
+					e.Graphics.DrawString(Text, Font, new SolidBrush(ThemeMan.BorderColor), 22, top);
 				}
 			}
 			else

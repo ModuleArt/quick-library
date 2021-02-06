@@ -7,7 +7,7 @@ namespace QuickLibrary
 {
 	internal partial class YesNoForm : QlibFixedForm
 	{
-		public YesNoForm(
+		internal YesNoForm(
 			string messageText,
 			string yesBtnText,
 			Image yesBtnImage,
@@ -20,7 +20,7 @@ namespace QuickLibrary
 		{
 			if (darkMode)
 			{
-				HandleCreated += new EventHandler(ThemeManager.formHandleCreated);
+				HandleCreated += new EventHandler(ThemeMan.formHandleCreated);
 			}
 
 			InitializeComponent();
@@ -78,11 +78,11 @@ namespace QuickLibrary
 			closeBtn.DarkMode = darkMode;
 			if (darkMode)
 			{
-				yesBtn.BackColor = ThemeManager.DarkSecondColor;
-				noBtn.BackColor = ThemeManager.DarkSecondColor;
-				cancelBtn.BackColor = ThemeManager.DarkSecondColor;
+				yesBtn.BackColor = ThemeMan.DarkSecondColor;
+				noBtn.BackColor = ThemeMan.DarkSecondColor;
+				cancelBtn.BackColor = ThemeMan.DarkSecondColor;
 				textBox.ForeColor = Color.White;
-				textBox.BackColor = ThemeManager.DarkBackColor;
+				textBox.BackColor = ThemeMan.DarkBackColor;
 			}
 		}
 

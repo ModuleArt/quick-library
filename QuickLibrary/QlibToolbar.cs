@@ -85,11 +85,11 @@ namespace QuickLibrary
 
 		public QlibToolbar() 
 		{
-			base.BackColor = ThemeManager.LightBackColor;
+			base.BackColor = ThemeMan.LightBackColor;
 			base.ForeColor = Color.Black;
 			base.BackgroundImageLayout = ImageLayout.None;
 			base.BackgroundImage = null;
-			base.Font = ThemeManager.DefaultFont;
+			base.Font = ThemeMan.DefaultFont;
 			base.GripStyle = ToolStripGripStyle.Hidden;
 			base.RightToLeft = RightToLeft.No;
 			base.Text = string.Empty;
@@ -109,7 +109,6 @@ namespace QuickLibrary
 		{
 			if (dragForm && e.Button == MouseButtons.Left)
 			{
-				Cursor.Current = Cursors.SizeAll;
 				NativeMan.DragWindow(Parent.Handle);
 			}
 		}
@@ -123,22 +122,22 @@ namespace QuickLibrary
 			{
 				if (alternative)
 				{
-					base.BackColor = ThemeManager.DarkMainColor;
+					base.BackColor = ThemeMan.DarkMainColor;
 				}
 				else
 				{
-					base.BackColor = ThemeManager.DarkBackColor;
+					base.BackColor = ThemeMan.DarkBackColor;
 				}
 			}
 			else
 			{
 				if (alternative)
 				{
-					base.BackColor = ThemeManager.LightMainColor;
+					base.BackColor = ThemeMan.LightMainColor;
 				}
 				else
 				{
-					base.BackColor = ThemeManager.LightBackColor;
+					base.BackColor = ThemeMan.LightBackColor;
 				}
 			}
 
@@ -152,12 +151,12 @@ namespace QuickLibrary
 				{
 					if (dark)
 					{
-						(c as ToolStripDropDownButton).DropDown.BackColor = ThemeManager.DarkSecondColor;
+						(c as ToolStripDropDownButton).DropDown.BackColor = ThemeMan.DarkSecondColor;
 						(c as ToolStripDropDownButton).DropDown.ForeColor = Color.White;
 					}
 					else
 					{
-						(c as ToolStripDropDownButton).DropDown.BackColor = ThemeManager.LightSecondColor;
+						(c as ToolStripDropDownButton).DropDown.BackColor = ThemeMan.LightSecondColor;
 						(c as ToolStripDropDownButton).DropDown.ForeColor = Color.Black;
 					}
 
@@ -167,12 +166,12 @@ namespace QuickLibrary
 						{
 							if (dark)
 							{
-								(c2 as ToolStripMenuItem).DropDown.BackColor = ThemeManager.DarkSecondColor;
+								(c2 as ToolStripMenuItem).DropDown.BackColor = ThemeMan.DarkSecondColor;
 								(c2 as ToolStripMenuItem).DropDown.ForeColor = Color.White;
 							}
 							else
 							{
-								(c2 as ToolStripMenuItem).DropDown.BackColor = ThemeManager.LightSecondColor;
+								(c2 as ToolStripMenuItem).DropDown.BackColor = ThemeMan.LightSecondColor;
 								(c2 as ToolStripMenuItem).DropDown.ForeColor = Color.Black;
 							}
 						}
@@ -230,13 +229,13 @@ namespace QuickLibrary
 			{
 				if (darkMode)
 				{
-					e.Graphics.FillRectangle(new SolidBrush(ThemeManager.DarkSecondColor), e.Item.Bounds);
-					e.Item.BackColor = ThemeManager.DarkSecondColor;
+					e.Graphics.FillRectangle(new SolidBrush(ThemeMan.DarkSecondColor), e.Item.Bounds);
+					e.Item.BackColor = ThemeMan.DarkSecondColor;
 				}
 				else
 				{
-					e.Graphics.FillRectangle(new SolidBrush(ThemeManager.LightSecondColor), e.Item.Bounds);
-					e.Item.BackColor = ThemeManager.LightSecondColor;
+					e.Graphics.FillRectangle(new SolidBrush(ThemeMan.LightSecondColor), e.Item.Bounds);
+					e.Item.BackColor = ThemeMan.LightSecondColor;
 				}
 			}
 			else
@@ -244,15 +243,15 @@ namespace QuickLibrary
 				Rectangle rc = new Rectangle(1, 0, e.Item.Size.Width - 1, e.Item.Height);
 				if (darkMode)
 				{
-					e.Graphics.FillRectangle(new SolidBrush(ThemeManager.DarkPaleColor), rc);
-					e.Item.BackColor = ThemeManager.DarkPaleColor;
+					e.Graphics.FillRectangle(new SolidBrush(ThemeMan.DarkPaleColor), rc);
+					e.Item.BackColor = ThemeMan.DarkPaleColor;
 				}
 				else
 				{
-					e.Graphics.FillRectangle(new SolidBrush(ThemeManager.LightPaleColor), rc);
-					e.Item.BackColor = ThemeManager.LightPaleColor;
+					e.Graphics.FillRectangle(new SolidBrush(ThemeMan.LightPaleColor), rc);
+					e.Item.BackColor = ThemeMan.LightPaleColor;
 				}
-				e.Graphics.DrawRectangle(new Pen(ThemeManager.AccentColor), 1, 0, rc.Width - 1, rc.Height - 1);
+				e.Graphics.DrawRectangle(new Pen(ThemeMan.AccentColor), 1, 0, rc.Width - 1, rc.Height - 1);
 			}
 		}
 
@@ -281,13 +280,13 @@ namespace QuickLibrary
 			};
 			if (darkMode)
 			{
-				e.Graphics.FillRectangle(new SolidBrush(ThemeManager.DarkPaleColor), rec);
+				e.Graphics.FillRectangle(new SolidBrush(ThemeMan.DarkPaleColor), rec);
 			}
 			else
 			{
-				e.Graphics.FillRectangle(new SolidBrush(ThemeManager.LightPaleColor), rec);
+				e.Graphics.FillRectangle(new SolidBrush(ThemeMan.LightPaleColor), rec);
 			}
-			e.Graphics.DrawRectangle(new Pen(ThemeManager.AccentColor), rec);
+			e.Graphics.DrawRectangle(new Pen(ThemeMan.AccentColor), rec);
 		}
 
 		protected override void OnRenderDropDownButtonBackground(ToolStripItemRenderEventArgs e)
@@ -296,14 +295,14 @@ namespace QuickLibrary
 			{
 				if (darkMode)
 				{
-					e.Graphics.FillRectangle(new SolidBrush(ThemeManager.DarkPaleColor), new Rectangle(0, 0, e.Item.Width - 1, e.Item.Height - 2));
+					e.Graphics.FillRectangle(new SolidBrush(ThemeMan.DarkPaleColor), new Rectangle(0, 0, e.Item.Width - 1, e.Item.Height - 2));
 				}
 				else
 				{
-					e.Graphics.FillRectangle(new SolidBrush(ThemeManager.LightPaleColor), new Rectangle(0, 0, e.Item.Width - 1, e.Item.Height - 2));
+					e.Graphics.FillRectangle(new SolidBrush(ThemeMan.LightPaleColor), new Rectangle(0, 0, e.Item.Width - 1, e.Item.Height - 2));
 				}
 
-				e.Graphics.DrawRectangle(new Pen(ThemeManager.AccentColor), new Rectangle(0, 0, e.Item.Width - 1, e.Item.Height - 2));
+				e.Graphics.DrawRectangle(new Pen(ThemeMan.AccentColor), new Rectangle(0, 0, e.Item.Width - 1, e.Item.Height - 2));
 			}
 		}
 
@@ -313,14 +312,14 @@ namespace QuickLibrary
 			{
 				if (darkMode)
 				{
-					e.Graphics.FillRectangle(new SolidBrush(ThemeManager.DarkPaleColor), new Rectangle(0, 0, e.Item.Width - 1, e.Item.Height - 2));
+					e.Graphics.FillRectangle(new SolidBrush(ThemeMan.DarkPaleColor), new Rectangle(0, 0, e.Item.Width - 1, e.Item.Height - 2));
 				}
 				else
 				{
-					e.Graphics.FillRectangle(new SolidBrush(ThemeManager.LightPaleColor), new Rectangle(0, 0, e.Item.Width - 1, e.Item.Height - 2));
+					e.Graphics.FillRectangle(new SolidBrush(ThemeMan.LightPaleColor), new Rectangle(0, 0, e.Item.Width - 1, e.Item.Height - 2));
 				}
 
-				e.Graphics.DrawRectangle(new Pen(ThemeManager.AccentColor), new Rectangle(0, 0, e.Item.Width - 1, e.Item.Height - 2));
+				e.Graphics.DrawRectangle(new Pen(ThemeMan.AccentColor), new Rectangle(0, 0, e.Item.Width - 1, e.Item.Height - 2));
 			}
 		}
 		

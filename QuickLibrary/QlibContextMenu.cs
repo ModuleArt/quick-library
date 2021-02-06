@@ -14,11 +14,11 @@ namespace QuickLibrary
 		{
 			if (dark)
 			{
-				BackColor = ThemeManager.DarkSecondColor;
+				BackColor = ThemeMan.DarkSecondColor;
 			}
 			else
 			{
-				BackColor = ThemeManager.LightSecondColor;
+				BackColor = ThemeMan.LightSecondColor;
 			}
 
 			this.Renderer = new CustomToolStripSystemRenderer(dark);

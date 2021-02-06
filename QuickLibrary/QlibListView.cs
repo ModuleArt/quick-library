@@ -14,7 +14,7 @@ namespace QuickLibrary
 		public new enum OwnerDraw { };
 
 
-		private Color headerColor = ThemeManager.LightSecondColor;
+		private Color headerColor = ThemeMan.LightSecondColor;
 
 		public QlibListView() 
 		{
@@ -25,14 +25,14 @@ namespace QuickLibrary
 		{
 			if (dark)
 			{
-				this.BackColor = ThemeManager.DarkBackColor;
-				this.headerColor = ThemeManager.DarkSecondColor;
+				this.BackColor = ThemeMan.DarkBackColor;
+				this.headerColor = ThemeMan.DarkSecondColor;
 				this.ForeColor = Color.White;
 			}
 			else
 			{
-				this.BackColor = ThemeManager.LightBackColor;
-				this.headerColor = ThemeManager.LightSecondColor;
+				this.BackColor = ThemeMan.LightBackColor;
+				this.headerColor = ThemeMan.LightSecondColor;
 				this.ForeColor = Color.Black;
 			}
 		}

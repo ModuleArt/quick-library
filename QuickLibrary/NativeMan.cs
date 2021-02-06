@@ -21,6 +21,12 @@ namespace QuickLibrary
 		public const int EM_SETMARGINS = 0xd3;
 		public const int EC_RIGHTMARGIN = 2;
 		public const int EC_LEFTMARGIN = 1;
+		public const int WM_NCHITTEST = 0x84;
+		public const int HTCLIENT = 0x1;
+		public const int HTCAPTION = 0x2;
+		public const int CS_DBLCLKS = 0x8;
+		public const int WM_NCPAINT = 0x0085;
+		public const int WM_ACTIVATEAPP = 0x001C;
 
 		// ENUMS
 
@@ -113,6 +119,17 @@ namespace QuickLibrary
 
 		[DllImport("dwmapi.dll", SetLastError = true, CharSet = CharSet.Unicode)]
 		public static extern int DwmExtendFrameIntoClientArea(IntPtr hWnd, ref MARGINS pMargins);
+
+		[DllImport("dwmapi.dll")]
+		public static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int attrValue, int attrSize);
+
+		[DllImport("dwmapi.dll")]
+		public static extern int DwmIsCompositionEnabled(out bool enabled);
+
+		// GDI32 METHODS
+
+		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+		public static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
 
 		// CUSTOM METHODS
 

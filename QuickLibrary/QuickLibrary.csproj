@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="DropShadow.cs" />
     <Compile Include="FileAssociation.cs" />
+    <Compile Include="LangMan.cs" />
     <Compile Include="NativeMan.cs" />
     <Compile Include="PluginInfo.cs" />
     <Compile Include="PluginMan.cs" />
@@ -78,6 +79,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="QlibListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="QlibProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="QlibTextBox.cs">
@@ -111,7 +115,7 @@
     <Compile Include="QlibToolsep.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ThemeManager.cs" />
+    <Compile Include="ThemeMan.cs" />
     <Compile Include="UpdateChecker.cs" />
     <Compile Include="OkForm.cs">
       <SubType>Form</SubType>
@@ -119,6 +123,7 @@
     <Compile Include="OkForm.Designer.cs">
       <DependentUpon>OkForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UpdateMan.cs" />
     <Compile Include="WallpaperMan.cs" />
     <Compile Include="YesNoForm.cs">
       <SubType>Form</SubType>
@@ -132,7 +137,6 @@
     <Compile Include="UpdateForm.Designer.cs">
       <DependentUpon>UpdateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateManager.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>

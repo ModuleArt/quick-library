@@ -8,57 +8,55 @@ namespace QuickLibrary
 {
 	public partial class UpdateForm : QlibFixedForm
 	{
-		private readonly UpdateChecker _checker;
 		private bool _loadednotes;
 
-		public UpdateForm(UpdateChecker checker, string appName, bool darkMode)
+		public UpdateForm(bool darkMode, string title, string message, string dwnldBtnText, string whatsNewBtnText)
 		{
 			if (darkMode)
 			{
-				this.HandleCreated += new EventHandler(ThemeManager.formHandleCreated);
+				HandleCreated += new EventHandler(ThemeMan.formHandleCreated);
 			}
-
-			_checker = checker;
 
 			InitializeComponent();
 			(new DropShadow()).ApplyShadows(this);
-			SetDraggableControls(new List<Control>() { titlePanel, titleLabel, label1, label2, currentLabel, latestLabel });
+			SetDraggableControls(new List<Control>() { titlePanel, titleLabel });
 
-			Height = 200;
+			Height = 160;
 
-			label1.Text = string.Format(label1.Text, appName);
+			titleLabel.Text = title;
+			boxReleaseNotes.Text = whatsNewBtnText;
+			messageTextBox.Text = string.Format(message, UpdateChecker.LatestRelease.TagName, "v" + UpdateChecker.CurrentVersion);
+			buttonYes.Text = dwnldBtnText;
 
-			currentVersionLink.Text = "v" + _checker.CurrentVersion;
-			latestReleaseLink.Text = _checker.LatestRelease.TagName;
-
-			if (darkMode)
-			{
-				buttonYes.BackColor = ThemeManager.DarkSecondColor;
-				boxReleaseNotes.BackColor = ThemeManager.DarkSecondColor;
-			}
+			infoTooltip.SetToolTip(closeBtn, NativeMan.GetMessageBoxText(NativeMan.DialogBoxCommandID.IDCLOSE) + " | Alt+F4");
 
 			DarkMode = darkMode;
-			currentVersionLink.LinkColor = ThemeManager.AccentColor;
-			latestReleaseLink.LinkColor = ThemeManager.AccentColor;
 			closeBtn.DarkMode = darkMode;
+			if (darkMode)
+			{
+				buttonYes.BackColor = ThemeMan.DarkSecondColor;
+				boxReleaseNotes.BackColor = ThemeMan.DarkSecondColor;
+				messageTextBox.BackColor = ThemeMan.DarkBackColor;
+				messageTextBox.ForeColor = Color.White;
+			}
 		}
 
 		async void boxReleaseNotes_CheckedChanged(object sender, EventArgs e)
 		{
 			if (boxReleaseNotes.Checked)
 			{
-				this.Height = 400;
+				Height = 360;
 			}
 			else
 			{
-				this.Height = 200;
+				Height = 160;
 			}
 
 			ReleaseNotes.Visible = boxReleaseNotes.Checked;
 
 			if (_loadednotes) return;
 
-			ReleaseNotes.DocumentText = await _checker.RenderReleaseNotes();
+			ReleaseNotes.DocumentText = await UpdateChecker.RenderReleaseNotes();
 			_loadednotes = true;
 		}
 
@@ -66,25 +64,13 @@ namespace QuickLibrary
 		{
 			if (e.KeyCode == Keys.Escape)
 			{
-				this.Close();
+				Close();
 			}
-		}
-
-		private void latestReleaseLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			string url = "https://github.com/" + _checker.RepositoryOwner + "/" + _checker.RepostoryName + "/releases/tag/" + _checker.LatestRelease.TagName;
-			Process.Start(url);
-		}
-
-		private void currentVersionLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-		{
-			string url = "https://github.com/" + _checker.RepositoryOwner + "/" + _checker.RepostoryName + "/releases/tag/v" + _checker.CurrentVersion;
-			Process.Start(url);
 		}
 
 		private void closeBtn_Click(object sender, EventArgs e)
 		{
-			this.Close();
+			Close();
 		}
 	}
 }

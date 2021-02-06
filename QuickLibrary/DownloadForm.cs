@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Net;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
 using Microsoft.Win32;
 using System.Collections.Generic;
@@ -14,31 +13,42 @@ namespace QuickLibrary
     {
         private string fileName;
         private WebClient wc;
-        private string url;
 
-        public DownloadForm(string url, bool darkMode)
+        private string downloading;
+        private string readyToInstall;
+        private string failed;
+
+        public DownloadForm(string url, bool darkMode, string updating, string downloading, string readyToInstall, string failed, string install)
         {
             if (darkMode)
             {
-                this.HandleCreated += new EventHandler(ThemeManager.formHandleCreated);
+                HandleCreated += new EventHandler(ThemeMan.formHandleCreated);
             }
 
-            this.url = url;
             fileName = Path.Combine(GetDownloadFolderPath(), System.IO.Path.GetFileName(url));
+            this.downloading = downloading;
+            this.readyToInstall = readyToInstall;
+            this.failed = failed;
 
             InitializeComponent();
             (new DropShadow()).ApplyShadows(this);
-            SetDraggableControls(new List<Control>() { titlePanel, titleLabel, statusLabel, logoPictureBox });
+            SetDraggableControls(new List<Control>() { titlePanel, titleLabel, statusLabel });
 
-            if (darkMode)
-            {
-                cancelButton.BackColor = ThemeManager.DarkSecondColor;
-                updateButton.BackColor = ThemeManager.DarkSecondColor;  
-            }
+            titleLabel.Text = updating;
+            statusLabel.Text = downloading;
+            updateButton.Text = install;
+            cancelButton.Text = NativeMan.GetMessageBoxText(NativeMan.DialogBoxCommandID.IDCANCEL);
+
+            infoTooltip.SetToolTip(closeBtn, NativeMan.GetMessageBoxText(NativeMan.DialogBoxCommandID.IDCLOSE) + " | Alt+F4");
 
             DarkMode = darkMode;
             closeBtn.DarkMode = darkMode;
-            manuallyLink.LinkColor = ThemeManager.AccentColor;
+            progressBar1.DarkMode = darkMode;
+            if (darkMode)
+            {
+                cancelButton.BackColor = ThemeMan.DarkSecondColor;
+                updateButton.BackColor = ThemeMan.DarkSecondColor;  
+            }
 
             wc = new WebClient();
 
@@ -63,43 +73,32 @@ namespace QuickLibrary
         private void wc_DownloadProgressChanged(object sender, DownloadProgressChangedEventArgs e)
         {
             progressBar1.Value = e.ProgressPercentage;
-            statusLabel.Text = string.Format("Downloading... {0}% ({1} / {2})", e.ProgressPercentage, BytesToSize(e.BytesReceived), BytesToSize(e.TotalBytesToReceive));
+            statusLabel.Text = string.Format(downloading + " {0}% ({1} / {2})", e.ProgressPercentage, BytesToSize(e.BytesReceived), BytesToSize(e.TotalBytesToReceive));
         }
 
         private void wc_DownloadFileCompleted(object sender, AsyncCompletedEventArgs e)
         {
-            if (e.Error != null)
+            if (e.Error != null || e.Cancelled)
             {
-                statusLabel.Text = "Update failed!";
-            }
-            else if (e.Cancelled)
-            {
-                statusLabel.Text = "Update cancelled!";
+                statusLabel.Text = failed;
             }
             else
             {
                 updateButton.Visible = true;
-                statusLabel.Text = "Download finished!";
+                statusLabel.Text = readyToInstall;
             }
         }
 
         private void updateButton_Click(object sender, EventArgs e)
         {
             Process.Start(fileName);
-            this.Close();
-            this.Owner.Close();
+            Close();
+            Owner.Close();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
             wc.CancelAsync();
-        }
-
-        private void manuallyLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            wc.CancelAsync();
-            Process.Start(url);
-            this.Close();
         }
 
         private void DownloadForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -117,12 +116,12 @@ namespace QuickLibrary
                 len = len / 1024;
             }
 
-            return String.Format("{0:0.##} {1}", len, sizes[order]);
+            return String.Format("{0:0.#} {1}", len, sizes[order]);
         }
 
         private void closeBtn_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

@@ -36,7 +36,7 @@ namespace QuickLibrary
 
 			if (dark)
 			{
-				this.BackColor = ThemeManager.DarkSecondColor;
+				this.BackColor = ThemeMan.DarkSecondColor;
 				this.ForeColor = Color.White;
 			}
 		}
@@ -45,22 +45,22 @@ namespace QuickLibrary
 		{
 			if (darkMode)
 			{
-				e.Graphics.Clear(ThemeManager.DarkSecondColor);
+				e.Graphics.Clear(ThemeMan.DarkSecondColor);
 			}
 			else
 			{
-				e.Graphics.Clear(ThemeManager.LightSecondColor);
+				e.Graphics.Clear(ThemeMan.LightSecondColor);
 			}
 
 			if (this.hovered)
 			{
 				if (darkMode)
 				{
-					e.Graphics.Clear(ThemeManager.DarkHoverColor);
+					e.Graphics.Clear(ThemeMan.DarkHoverColor);
 				}
 				else
 				{
-					e.Graphics.Clear(ThemeManager.LightHoverColor);
+					e.Graphics.Clear(ThemeMan.LightHoverColor);
 				}
 			}
 

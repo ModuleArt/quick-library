@@ -54,6 +54,8 @@
 			this.closeBtn.DarkImage = ((System.Drawing.Image)(resources.GetObject("closeBtn.DarkImage")));
 			this.closeBtn.DarkMode = false;
 			this.closeBtn.FlatAppearance.BorderSize = 0;
+			this.closeBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
+			this.closeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
 			this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.closeBtn.ForeColor = System.Drawing.Color.Black;
 			this.closeBtn.Image = ((System.Drawing.Image)(resources.GetObject("closeBtn.Image")));
@@ -70,6 +72,7 @@
 			// 
 			this.textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox.BackColor = System.Drawing.SystemColors.Control;
 			this.textBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.textBox.Location = new System.Drawing.Point(10, 42);
 			this.textBox.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);

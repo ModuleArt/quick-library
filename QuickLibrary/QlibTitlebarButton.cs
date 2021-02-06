@@ -110,15 +110,15 @@ namespace QuickLibrary
 			}
 			else
 			{
-				FlatAppearance.MouseDownBackColor = ThemeManager.PressedColor;
+				FlatAppearance.MouseDownBackColor = ThemeMan.PressedColor;
 
 				if (darkMode)
 				{
-					FlatAppearance.MouseOverBackColor = ThemeManager.DarkHoverColor;
+					FlatAppearance.MouseOverBackColor = ThemeMan.DarkHoverColor;
 				}
 				else
 				{
-					FlatAppearance.MouseOverBackColor = ThemeManager.LightHoverColor;
+					FlatAppearance.MouseOverBackColor = ThemeMan.LightHoverColor;
 				}
 			}
 

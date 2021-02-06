@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace QuickLibrary
 {
-	public static class ThemeManager
+	public static class ThemeMan
 	{
 		public static Font DefaultFont = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, ((byte)(204)));
 

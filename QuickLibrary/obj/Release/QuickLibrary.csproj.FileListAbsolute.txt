@@ -36,3 +36,4 @@ D:\Projects\quick-library\QuickLibrary\bin\Release\Utf8Json.dll
 D:\Projects\quick-library\QuickLibrary\bin\Release\System.Threading.Tasks.Extensions.xml
 D:\Projects\quick-library\QuickLibrary\bin\Release\System.ValueTuple.xml
 D:\Projects\quick-library\QuickLibrary\bin\Release\Utf8Json.xml
+D:\Projects\quick-library\QuickLibrary\obj\Release\QuickLibrary.csprojAssemblyReference.cache

@@ -9,7 +9,7 @@ namespace QuickLibrary
 
 		public static string defaultLang = "en";
 
-		public static void InitResMan(string nameSpace, string baseName = null)
+		public static void Init(string nameSpace, string baseName = null)
 		{
 			if (baseName == null)
 			{
@@ -21,9 +21,16 @@ namespace QuickLibrary
 			}
 		}
 
-		public static string GetString(string str)
+		public static string Get(string str)
 		{
-			return resMan.GetString(str);
+			try
+			{
+				return resMan.GetString(str);
+			}
+			catch
+			{
+				return str;
+			}
 		}
 	}
 }

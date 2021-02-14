@@ -157,7 +157,7 @@ namespace QuickLibrary
 
 		#region CONSTRUCTOR
 
-		public QlibFixedForm() 
+		public QlibFixedForm()
 		{
 			base.FormBorderStyle = FormBorderStyle.None;
 			base.AutoScaleMode = AutoScaleMode.Dpi;
@@ -183,13 +183,17 @@ namespace QuickLibrary
 			base.ForeColor = Color.Black;
 
 			TextChanged += QlibFixedForm_TextChanged;
-
-			SetDarkMode(false, false);
 		}
 
 		#endregion
 
 		#region PRIVATE BODY
+
+		protected override void OnLoad(EventArgs e)
+		{
+			SetDarkMode(DarkMode, AlternativeAppearance);
+			base.OnLoad(e);
+		}
 
 		protected override void OnHandleCreated(EventArgs e)
 		{
@@ -265,6 +269,11 @@ namespace QuickLibrary
 
 		private void SetDarkMode(bool dark, bool alternative)
 		{
+			if (dark)
+			{
+				HandleCreated += new EventHandler(ThemeMan.formHandleCreated);
+			}
+
 			darkMode = dark;
 			alternativeAppearance = alternative;
 

@@ -75,7 +75,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="QlibContextMenu.cs">
+    <Compile Include="QlibContextMenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="QlibListView.cs">

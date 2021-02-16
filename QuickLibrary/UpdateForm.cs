@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -10,7 +9,7 @@ namespace QuickLibrary
 	{
 		private bool _loadednotes;
 
-		public UpdateForm(bool darkMode, string title, string message, string dwnldBtnText, string whatsNewBtnText)
+		public UpdateForm(bool darkMode, string title, string message, string dwnldBtnText, string skipBtnText, string whatsNewBtnText)
 		{
 			if (darkMode)
 			{
@@ -21,12 +20,13 @@ namespace QuickLibrary
 			(new DropShadow()).ApplyShadows(this);
 			SetDraggableControls(new List<Control>() { titlePanel, titleLabel });
 
-			Height = 160;
+			Height = 244;
 
 			titleLabel.Text = title;
 			boxReleaseNotes.Text = whatsNewBtnText;
 			messageTextBox.Text = string.Format(message, UpdateChecker.LatestRelease.TagName, "v" + UpdateChecker.CurrentVersion);
 			buttonYes.Text = dwnldBtnText;
+			skipBtn.Text = skipBtnText;
 
 			infoTooltip.SetToolTip(closeBtn, NativeMan.GetMessageBoxText(NativeMan.DialogBoxCommandID.IDCLOSE) + " | Alt+F4");
 
@@ -35,6 +35,7 @@ namespace QuickLibrary
 			if (darkMode)
 			{
 				buttonYes.BackColor = ThemeMan.DarkSecondColor;
+				skipBtn.BackColor = ThemeMan.DarkSecondColor;
 				boxReleaseNotes.BackColor = ThemeMan.DarkSecondColor;
 				messageTextBox.BackColor = ThemeMan.DarkBackColor;
 				messageTextBox.ForeColor = Color.White;
@@ -45,11 +46,11 @@ namespace QuickLibrary
 		{
 			if (boxReleaseNotes.Checked)
 			{
-				Height = 360;
+				Height = 444;
 			}
 			else
 			{
-				Height = 160;
+				Height = 244;
 			}
 
 			ReleaseNotes.Visible = boxReleaseNotes.Checked;

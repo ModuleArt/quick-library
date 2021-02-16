@@ -26,7 +26,7 @@ namespace QuickLibrary
 			CurrentVersion = version;
 		}
 
-		internal static async Task<bool> CheckUpdate()
+		internal static async Task<string> CheckUpdate()
 		{
 			var releases = await _releaseClient.GetAll(RepositoryOwner, RepostoryName);
 			LatestRelease = releases[0];
@@ -45,25 +45,24 @@ namespace QuickLibrary
 
 				if (major > curMajor)
 				{
-					return true;
+					return major + "." + minor + "." + patch;
 				}
 				else if (major == curMajor)
 				{
 					if (minor > curMinor)
 					{
-						return true;
+						return major + "." + minor + "." + patch;
 					}
 					else if (minor == curMinor)
 					{
 						if (patch > curPatch)
 						{
-							return true;
+							return major + "." + minor + "." + patch;
 						}
 					}
 				}
 			}
-
-			return false;
+			return null;
 		}
 
 		internal static async Task<string> RenderReleaseNotes()

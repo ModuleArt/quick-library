@@ -38,6 +38,7 @@
 			this.closeBtn = new QuickLibrary.QlibTitlebarButton();
 			this.infoTooltip = new System.Windows.Forms.ToolTip(this.components);
 			this.messageTextBox = new System.Windows.Forms.TextBox();
+			this.skipBtn = new System.Windows.Forms.Button();
 			this.titlePanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -49,12 +50,12 @@
 			this.buttonYes.FlatAppearance.BorderSize = 0;
 			this.buttonYes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.buttonYes.Font = new System.Drawing.Font("Segoe UI", 10F);
-			this.buttonYes.Location = new System.Drawing.Point(202, 118);
+			this.buttonYes.Location = new System.Drawing.Point(10, 118);
 			this.buttonYes.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
 			this.buttonYes.Name = "buttonYes";
-			this.buttonYes.Size = new System.Drawing.Size(128, 32);
+			this.buttonYes.Size = new System.Drawing.Size(320, 32);
 			this.buttonYes.TabIndex = 1;
-			this.buttonYes.Text = "download";
+			this.buttonYes.Text = "install now";
 			this.buttonYes.UseVisualStyleBackColor = false;
 			// 
 			// boxReleaseNotes
@@ -64,10 +65,10 @@
 			this.boxReleaseNotes.FlatAppearance.BorderSize = 0;
 			this.boxReleaseNotes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.boxReleaseNotes.Font = new System.Drawing.Font("Segoe UI", 10F);
-			this.boxReleaseNotes.Location = new System.Drawing.Point(10, 118);
+			this.boxReleaseNotes.Location = new System.Drawing.Point(10, 202);
 			this.boxReleaseNotes.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
 			this.boxReleaseNotes.Name = "boxReleaseNotes";
-			this.boxReleaseNotes.Size = new System.Drawing.Size(128, 32);
+			this.boxReleaseNotes.Size = new System.Drawing.Size(320, 32);
 			this.boxReleaseNotes.TabIndex = 0;
 			this.boxReleaseNotes.Text = "whats new";
 			this.boxReleaseNotes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -79,7 +80,7 @@
 			this.ReleaseNotes.AllowNavigation = false;
 			this.ReleaseNotes.AllowWebBrowserDrop = false;
 			this.ReleaseNotes.IsWebBrowserContextMenuEnabled = false;
-			this.ReleaseNotes.Location = new System.Drawing.Point(10, 160);
+			this.ReleaseNotes.Location = new System.Drawing.Point(10, 244);
 			this.ReleaseNotes.Margin = new System.Windows.Forms.Padding(0, 0, 9, 0);
 			this.ReleaseNotes.MinimumSize = new System.Drawing.Size(20, 20);
 			this.ReleaseNotes.Name = "ReleaseNotes";
@@ -142,10 +143,27 @@
 			this.messageTextBox.TabIndex = 43;
 			this.messageTextBox.Text = "message";
 			// 
+			// skipBtn
+			// 
+			this.skipBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.skipBtn.BackColor = System.Drawing.SystemColors.ControlLight;
+			this.skipBtn.DialogResult = System.Windows.Forms.DialogResult.No;
+			this.skipBtn.FlatAppearance.BorderSize = 0;
+			this.skipBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.skipBtn.Font = new System.Drawing.Font("Segoe UI", 10F);
+			this.skipBtn.Location = new System.Drawing.Point(10, 160);
+			this.skipBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
+			this.skipBtn.Name = "skipBtn";
+			this.skipBtn.Size = new System.Drawing.Size(320, 32);
+			this.skipBtn.TabIndex = 44;
+			this.skipBtn.Text = "skip this version";
+			this.skipBtn.UseVisualStyleBackColor = false;
+			// 
 			// UpdateForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-			this.ClientSize = new System.Drawing.Size(340, 360);
+			this.ClientSize = new System.Drawing.Size(340, 444);
+			this.Controls.Add(this.skipBtn);
 			this.Controls.Add(this.messageTextBox);
 			this.Controls.Add(this.titlePanel);
 			this.Controls.Add(this.buttonYes);
@@ -176,5 +194,6 @@
 		private QlibTitlebarButton closeBtn;
 		private System.Windows.Forms.ToolTip infoTooltip;
 		private System.Windows.Forms.TextBox messageTextBox;
+		private System.Windows.Forms.Button skipBtn;
 	}
 }

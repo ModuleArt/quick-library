@@ -52,7 +52,7 @@
 			this.yesBtn.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
 			this.yesBtn.Name = "yesBtn";
 			this.yesBtn.Size = new System.Drawing.Size(260, 32);
-			this.yesBtn.TabIndex = 0;
+			this.yesBtn.TabIndex = 2;
 			this.yesBtn.Text = "yes";
 			this.yesBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.yesBtn.UseVisualStyleBackColor = false;
@@ -73,7 +73,10 @@
 			// 
 			this.closeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.closeBtn.DarkImage = ((System.Drawing.Image)(resources.GetObject("closeBtn.DarkImage")));
+			this.closeBtn.DarkMode = false;
 			this.closeBtn.FlatAppearance.BorderSize = 0;
+			this.closeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.closeBtn.ForeColor = System.Drawing.Color.Black;
 			this.closeBtn.Image = ((System.Drawing.Image)(resources.GetObject("closeBtn.Image")));
 			this.closeBtn.IsRed = true;
 			this.closeBtn.LightImage = ((System.Drawing.Image)(resources.GetObject("closeBtn.LightImage")));
@@ -81,20 +84,21 @@
 			this.closeBtn.Margin = new System.Windows.Forms.Padding(0);
 			this.closeBtn.Name = "closeBtn";
 			this.closeBtn.Size = new System.Drawing.Size(32, 32);
-			this.closeBtn.TabIndex = 3;
+			this.closeBtn.TabIndex = 0;
 			this.closeBtn.UseVisualStyleBackColor = true;
 			// 
 			// textBox
 			// 
 			this.textBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox.BackColor = System.Drawing.SystemColors.Control;
 			this.textBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.textBox.Location = new System.Drawing.Point(10, 42);
 			this.textBox.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
 			this.textBox.Multiline = true;
 			this.textBox.Name = "textBox";
 			this.textBox.Size = new System.Drawing.Size(260, 64);
-			this.textBox.TabIndex = 4;
+			this.textBox.TabIndex = 1;
 			this.textBox.Text = "message";
 			// 
 			// noBtn
@@ -110,7 +114,7 @@
 			this.noBtn.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
 			this.noBtn.Name = "noBtn";
 			this.noBtn.Size = new System.Drawing.Size(260, 32);
-			this.noBtn.TabIndex = 1;
+			this.noBtn.TabIndex = 3;
 			this.noBtn.Text = "no";
 			this.noBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.noBtn.UseVisualStyleBackColor = false;
@@ -130,7 +134,7 @@
 			this.cancelBtn.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
 			this.cancelBtn.Name = "cancelBtn";
 			this.cancelBtn.Size = new System.Drawing.Size(260, 32);
-			this.cancelBtn.TabIndex = 2;
+			this.cancelBtn.TabIndex = 4;
 			this.cancelBtn.Text = "cancel";
 			this.cancelBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.cancelBtn.UseVisualStyleBackColor = false;

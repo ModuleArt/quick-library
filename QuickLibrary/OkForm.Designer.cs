@@ -65,7 +65,7 @@
 			this.closeBtn.Margin = new System.Windows.Forms.Padding(0);
 			this.closeBtn.Name = "closeBtn";
 			this.closeBtn.Size = new System.Drawing.Size(32, 32);
-			this.closeBtn.TabIndex = 3;
+			this.closeBtn.TabIndex = 0;
 			this.closeBtn.UseVisualStyleBackColor = true;
 			// 
 			// textBox
@@ -79,7 +79,7 @@
 			this.textBox.Multiline = true;
 			this.textBox.Name = "textBox";
 			this.textBox.Size = new System.Drawing.Size(260, 64);
-			this.textBox.TabIndex = 4;
+			this.textBox.TabIndex = 1;
 			this.textBox.Text = "message";
 			// 
 			// okBtn

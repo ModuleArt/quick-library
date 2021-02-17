@@ -54,7 +54,7 @@
 			this.buttonYes.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
 			this.buttonYes.Name = "buttonYes";
 			this.buttonYes.Size = new System.Drawing.Size(320, 32);
-			this.buttonYes.TabIndex = 1;
+			this.buttonYes.TabIndex = 3;
 			this.buttonYes.Text = "install now";
 			this.buttonYes.UseVisualStyleBackColor = false;
 			// 
@@ -69,7 +69,7 @@
 			this.boxReleaseNotes.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
 			this.boxReleaseNotes.Name = "boxReleaseNotes";
 			this.boxReleaseNotes.Size = new System.Drawing.Size(320, 32);
-			this.boxReleaseNotes.TabIndex = 0;
+			this.boxReleaseNotes.TabIndex = 5;
 			this.boxReleaseNotes.Text = "whats new";
 			this.boxReleaseNotes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.boxReleaseNotes.UseVisualStyleBackColor = false;
@@ -86,7 +86,7 @@
 			this.ReleaseNotes.Name = "ReleaseNotes";
 			this.ReleaseNotes.ScriptErrorsSuppressed = true;
 			this.ReleaseNotes.Size = new System.Drawing.Size(320, 190);
-			this.ReleaseNotes.TabIndex = 3;
+			this.ReleaseNotes.TabIndex = 6;
 			this.ReleaseNotes.Visible = false;
 			this.ReleaseNotes.WebBrowserShortcutsEnabled = false;
 			// 
@@ -98,7 +98,7 @@
 			this.titlePanel.Margin = new System.Windows.Forms.Padding(0);
 			this.titlePanel.Name = "titlePanel";
 			this.titlePanel.Size = new System.Drawing.Size(340, 32);
-			this.titlePanel.TabIndex = 8;
+			this.titlePanel.TabIndex = 0;
 			// 
 			// titleLabel
 			// 
@@ -140,7 +140,7 @@
 			this.messageTextBox.Multiline = true;
 			this.messageTextBox.Name = "messageTextBox";
 			this.messageTextBox.Size = new System.Drawing.Size(320, 66);
-			this.messageTextBox.TabIndex = 43;
+			this.messageTextBox.TabIndex = 2;
 			this.messageTextBox.Text = "message";
 			// 
 			// skipBtn
@@ -155,7 +155,7 @@
 			this.skipBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
 			this.skipBtn.Name = "skipBtn";
 			this.skipBtn.Size = new System.Drawing.Size(320, 32);
-			this.skipBtn.TabIndex = 44;
+			this.skipBtn.TabIndex = 4;
 			this.skipBtn.Text = "skip this version";
 			this.skipBtn.UseVisualStyleBackColor = false;
 			// 

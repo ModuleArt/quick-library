@@ -30,24 +30,23 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DownloadForm));
-			this.progressBar1 = new QlibProgressBar();
+			this.progressBar1 = new QuickLibrary.QlibProgressBar();
 			this.statusLabel = new System.Windows.Forms.Label();
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.updateButton = new System.Windows.Forms.Button();
-			this.titlePanel = new System.Windows.Forms.Panel();
 			this.closeBtn = new QuickLibrary.QlibTitlebarButton();
 			this.titleLabel = new System.Windows.Forms.Label();
 			this.infoTooltip = new System.Windows.Forms.ToolTip(this.components);
-			this.titlePanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// progressBar1
 			// 
+			this.progressBar1.DarkMode = false;
 			this.progressBar1.Location = new System.Drawing.Point(10, 71);
 			this.progressBar1.Margin = new System.Windows.Forms.Padding(0);
 			this.progressBar1.Name = "progressBar1";
 			this.progressBar1.Size = new System.Drawing.Size(320, 23);
-			this.progressBar1.TabIndex = 0;
+			this.progressBar1.TabIndex = 1;
 			// 
 			// statusLabel
 			// 
@@ -69,7 +68,7 @@
 			this.cancelButton.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
 			this.cancelButton.Name = "cancelButton";
 			this.cancelButton.Size = new System.Drawing.Size(155, 32);
-			this.cancelButton.TabIndex = 1;
+			this.cancelButton.TabIndex = 3;
 			this.cancelButton.Text = "cancel";
 			this.cancelButton.UseVisualStyleBackColor = false;
 			this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -85,21 +84,11 @@
 			this.updateButton.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
 			this.updateButton.Name = "updateButton";
 			this.updateButton.Size = new System.Drawing.Size(155, 32);
-			this.updateButton.TabIndex = 0;
+			this.updateButton.TabIndex = 2;
 			this.updateButton.Text = "install";
 			this.updateButton.UseVisualStyleBackColor = false;
 			this.updateButton.Visible = false;
 			this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
-			// 
-			// titlePanel
-			// 
-			this.titlePanel.Controls.Add(this.closeBtn);
-			this.titlePanel.Controls.Add(this.titleLabel);
-			this.titlePanel.Location = new System.Drawing.Point(0, 0);
-			this.titlePanel.Margin = new System.Windows.Forms.Padding(0);
-			this.titlePanel.Name = "titlePanel";
-			this.titlePanel.Size = new System.Drawing.Size(340, 32);
-			this.titlePanel.TabIndex = 16;
 			// 
 			// closeBtn
 			// 
@@ -117,7 +106,7 @@
 			this.closeBtn.Margin = new System.Windows.Forms.Padding(0);
 			this.closeBtn.Name = "closeBtn";
 			this.closeBtn.Size = new System.Drawing.Size(32, 32);
-			this.closeBtn.TabIndex = 18;
+			this.closeBtn.TabIndex = 0;
 			this.closeBtn.UseVisualStyleBackColor = true;
 			this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
 			// 
@@ -136,7 +125,8 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.ClientSize = new System.Drawing.Size(340, 148);
-			this.Controls.Add(this.titlePanel);
+			this.Controls.Add(this.closeBtn);
+			this.Controls.Add(this.titleLabel);
 			this.Controls.Add(this.updateButton);
 			this.Controls.Add(this.cancelButton);
 			this.Controls.Add(this.statusLabel);
@@ -150,8 +140,6 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Update downloader";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DownloadForm_FormClosing);
-			this.titlePanel.ResumeLayout(false);
-			this.titlePanel.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -163,7 +151,6 @@
 		private System.Windows.Forms.Label statusLabel;
 		private System.Windows.Forms.Button cancelButton;
 		private System.Windows.Forms.Button updateButton;
-		private System.Windows.Forms.Panel titlePanel;
 		private System.Windows.Forms.Label titleLabel;
 		private QlibTitlebarButton closeBtn;
 		private System.Windows.Forms.ToolTip infoTooltip;

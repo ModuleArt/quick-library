@@ -32,7 +32,7 @@ namespace QuickLibrary
 
             InitializeComponent();
             (new DropShadow()).ApplyShadows(this);
-            SetDraggableControls(new List<Control>() { titlePanel, titleLabel, statusLabel });
+            SetDraggableControls(new List<Control>() { titleLabel, statusLabel });
 
             titleLabel.Text = updating;
             statusLabel.Text = downloading;

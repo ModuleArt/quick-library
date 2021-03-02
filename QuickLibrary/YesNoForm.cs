@@ -18,11 +18,6 @@ namespace QuickLibrary
 			bool darkMode = false
 		)
 		{
-			if (darkMode)
-			{
-				HandleCreated += new EventHandler(ThemeMan.formHandleCreated);
-			}
-
 			InitializeComponent();
 			(new DropShadow()).ApplyShadows(this);
 			SetDraggableControls(new List<Control>() { titleLabel });

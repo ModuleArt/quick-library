@@ -20,11 +20,6 @@ namespace QuickLibrary
 
         public DownloadForm(string url, bool darkMode, string updating, string downloading, string readyToInstall, string failed, string install)
         {
-            if (darkMode)
-            {
-                HandleCreated += new EventHandler(ThemeMan.formHandleCreated);
-            }
-
             fileName = Path.Combine(GetDownloadFolderPath(), System.IO.Path.GetFileName(url));
             this.downloading = downloading;
             this.readyToInstall = readyToInstall;

@@ -89,6 +89,9 @@ namespace QuickLibrary
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
 		public new Cursor Cursor { get { return base.Cursor; } set { } }
 
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool CausesValidation { get { return base.CausesValidation; } set { } }
+
 		#endregion
 
 		#region PUBLIC PROPS
@@ -181,6 +184,7 @@ namespace QuickLibrary
 			base.Cursor = Cursors.Default;
 			base.BackColor = ThemeMan.LightBackColor;
 			base.ForeColor = Color.Black;
+			base.CausesValidation = false;
 
 			TextChanged += QlibFixedForm_TextChanged;
 		}
@@ -269,10 +273,7 @@ namespace QuickLibrary
 
 		private void SetDarkMode(bool dark, bool alternative)
 		{
-			if (dark)
-			{
-				HandleCreated += new EventHandler(ThemeMan.formHandleCreated);
-			}
+			HandleCreated += new EventHandler(ThemeMan.formHandleCreated);
 
 			darkMode = dark;
 			alternativeAppearance = alternative;

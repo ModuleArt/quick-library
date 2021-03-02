@@ -16,40 +16,19 @@ namespace QuickLibrary
 		#region HIDDEN PROPS
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new ContentAlignment TextAlign
-		{
-			get { return base.TextAlign; }
-			set { base.TextAlign = value; }
-		}
+		public new ContentAlignment TextAlign { get { return base.TextAlign; } set { } }
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new string Text
-		{
-			get { return base.Text; }
-			set { base.Text = value; }
-		}
+		public new string Text { get { return base.Text; } set { } }
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new Color ForeColor 
-		{
-			get { return base.ForeColor; }
-			set { base.ForeColor = value; }
-		}
-
+		public new Color ForeColor { get { return base.ForeColor; } set { } }
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new bool UseWaitCursor
-		{
-			get { return base.UseWaitCursor; }
-			set { base.UseWaitCursor = value; }
-		}
+		public new bool UseWaitCursor { get { return base.UseWaitCursor; } set { } }
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new FlatStyle FlatStyle
-		{
-			get { return base.FlatStyle; }
-			set { base.FlatStyle = value; }
-		}
+		public new FlatStyle FlatStyle { get { return base.FlatStyle; } set { } }
 
 		#endregion
 

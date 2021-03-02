@@ -18,7 +18,8 @@ namespace QuickLibrary
 			PluginInfo.Function func,
 			bool alwaysOnTop,
 			string langCode,
-			Form mainForm = null
+			Form mainForm,
+			object secondaryArg
 		)
 		{
 			Text = func.title.Get(langCode);
@@ -47,7 +48,7 @@ namespace QuickLibrary
 					IntPtr pluginPtr = NativeMan.LoadLibrary(dllPath);
 					IntPtr funcPtr = NativeMan.GetProcAddressOrdinal(pluginPtr, func.name);
 					var callback = Marshal.GetDelegateForFunctionPointer<PluginMan.RunFunction>(funcPtr);
-					res = callback(input, path, darkMode, langCode, alwaysOnTop);
+					res = callback(input, path, darkMode, langCode, alwaysOnTop, secondaryArg);
 				}
 				else if (pi.dllType == "csharp")
 				{
@@ -59,7 +60,8 @@ namespace QuickLibrary
 						path,
 						darkMode,
 						langCode,
-						alwaysOnTop
+						alwaysOnTop,
+						secondaryArg
 					}) as Object;
 
 					PluginMan.OutputEventArgs oea = new PluginMan.OutputEventArgs

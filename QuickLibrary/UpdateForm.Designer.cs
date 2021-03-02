@@ -33,13 +33,11 @@
 			this.buttonYes = new System.Windows.Forms.Button();
 			this.boxReleaseNotes = new System.Windows.Forms.CheckBox();
 			this.ReleaseNotes = new System.Windows.Forms.WebBrowser();
-			this.titlePanel = new System.Windows.Forms.Panel();
 			this.titleLabel = new System.Windows.Forms.Label();
 			this.closeBtn = new QuickLibrary.QlibTitlebarButton();
 			this.infoTooltip = new System.Windows.Forms.ToolTip(this.components);
 			this.messageTextBox = new System.Windows.Forms.TextBox();
 			this.skipBtn = new System.Windows.Forms.Button();
-			this.titlePanel.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// buttonYes
@@ -54,7 +52,7 @@
 			this.buttonYes.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
 			this.buttonYes.Name = "buttonYes";
 			this.buttonYes.Size = new System.Drawing.Size(320, 32);
-			this.buttonYes.TabIndex = 3;
+			this.buttonYes.TabIndex = 0;
 			this.buttonYes.Text = "install now";
 			this.buttonYes.UseVisualStyleBackColor = false;
 			// 
@@ -69,7 +67,7 @@
 			this.boxReleaseNotes.Margin = new System.Windows.Forms.Padding(0, 10, 0, 10);
 			this.boxReleaseNotes.Name = "boxReleaseNotes";
 			this.boxReleaseNotes.Size = new System.Drawing.Size(320, 32);
-			this.boxReleaseNotes.TabIndex = 5;
+			this.boxReleaseNotes.TabIndex = 2;
 			this.boxReleaseNotes.Text = "whats new";
 			this.boxReleaseNotes.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			this.boxReleaseNotes.UseVisualStyleBackColor = false;
@@ -86,19 +84,9 @@
 			this.ReleaseNotes.Name = "ReleaseNotes";
 			this.ReleaseNotes.ScriptErrorsSuppressed = true;
 			this.ReleaseNotes.Size = new System.Drawing.Size(320, 190);
-			this.ReleaseNotes.TabIndex = 6;
+			this.ReleaseNotes.TabIndex = 3;
 			this.ReleaseNotes.Visible = false;
 			this.ReleaseNotes.WebBrowserShortcutsEnabled = false;
-			// 
-			// titlePanel
-			// 
-			this.titlePanel.Controls.Add(this.titleLabel);
-			this.titlePanel.Controls.Add(this.closeBtn);
-			this.titlePanel.Location = new System.Drawing.Point(0, 0);
-			this.titlePanel.Margin = new System.Windows.Forms.Padding(0);
-			this.titlePanel.Name = "titlePanel";
-			this.titlePanel.Size = new System.Drawing.Size(340, 32);
-			this.titlePanel.TabIndex = 0;
 			// 
 			// titleLabel
 			// 
@@ -127,7 +115,7 @@
 			this.closeBtn.Margin = new System.Windows.Forms.Padding(0);
 			this.closeBtn.Name = "closeBtn";
 			this.closeBtn.Size = new System.Drawing.Size(32, 32);
-			this.closeBtn.TabIndex = 1;
+			this.closeBtn.TabIndex = 4;
 			this.closeBtn.UseVisualStyleBackColor = true;
 			this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
 			// 
@@ -140,7 +128,7 @@
 			this.messageTextBox.Multiline = true;
 			this.messageTextBox.Name = "messageTextBox";
 			this.messageTextBox.Size = new System.Drawing.Size(320, 66);
-			this.messageTextBox.TabIndex = 2;
+			this.messageTextBox.TabIndex = 5;
 			this.messageTextBox.Text = "message";
 			// 
 			// skipBtn
@@ -155,7 +143,7 @@
 			this.skipBtn.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
 			this.skipBtn.Name = "skipBtn";
 			this.skipBtn.Size = new System.Drawing.Size(320, 32);
-			this.skipBtn.TabIndex = 4;
+			this.skipBtn.TabIndex = 1;
 			this.skipBtn.Text = "skip this version";
 			this.skipBtn.UseVisualStyleBackColor = false;
 			// 
@@ -163,9 +151,10 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.ClientSize = new System.Drawing.Size(340, 444);
+			this.Controls.Add(this.titleLabel);
 			this.Controls.Add(this.skipBtn);
+			this.Controls.Add(this.closeBtn);
 			this.Controls.Add(this.messageTextBox);
-			this.Controls.Add(this.titlePanel);
 			this.Controls.Add(this.buttonYes);
 			this.Controls.Add(this.ReleaseNotes);
 			this.Controls.Add(this.boxReleaseNotes);
@@ -178,8 +167,6 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Update available!";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UpdateForm_KeyDown);
-			this.titlePanel.ResumeLayout(false);
-			this.titlePanel.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -189,7 +176,6 @@
 		private System.Windows.Forms.CheckBox boxReleaseNotes;
 		private System.Windows.Forms.WebBrowser ReleaseNotes;
 		private System.Windows.Forms.Button buttonYes;
-		private System.Windows.Forms.Panel titlePanel;
 		private System.Windows.Forms.Label titleLabel;
 		private QlibTitlebarButton closeBtn;
 		private System.Windows.Forms.ToolTip infoTooltip;

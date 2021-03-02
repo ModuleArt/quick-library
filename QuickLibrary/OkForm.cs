@@ -7,18 +7,8 @@ namespace QuickLibrary
 {
 	internal partial class OkForm : QlibFixedForm
 	{
-		public OkForm(
-			string messageText,
-			string windowTitle,
-			bool darkMode = false
-		)
+		public OkForm(string messageText, string windowTitle, bool darkMode = false)
 		{
-
-			if (darkMode)
-			{
-				HandleCreated += new EventHandler(ThemeMan.formHandleCreated);
-			}
-
 			InitializeComponent();
 			(new DropShadow()).ApplyShadows(this);
 			SetDraggableControls(new List<Control>() { titleLabel });

@@ -6,6 +6,7 @@ namespace QuickLibrary
 	public static class DialogMan
 	{
 		public static DialogResult ShowConfirm(
+			Form owner,
 			string messageText,
 			string yesBtnText = "",
 			Image yesBtnImage = null,
@@ -17,16 +18,19 @@ namespace QuickLibrary
 		)
 		{
 			YesNoForm ynf = new YesNoForm(messageText, yesBtnText, yesBtnImage, showNoBtn, noBtnText, noBtnImage, windowTitle, darkMode);
+			ynf.Owner = owner;
 			return ynf.ShowDialog();
 		}
 
 		public static DialogResult ShowInfo(
+			Form owner,
 			string messageText,
 			string windowTitle = "",
 			bool darkMode = false
 		)
 		{
 			OkForm of = new OkForm(messageText, windowTitle, darkMode);
+			of.Owner = owner;
 			return of.ShowDialog();
 		}
 	}

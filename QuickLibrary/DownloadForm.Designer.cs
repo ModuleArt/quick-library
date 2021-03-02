@@ -46,7 +46,7 @@
 			this.progressBar1.Margin = new System.Windows.Forms.Padding(0);
 			this.progressBar1.Name = "progressBar1";
 			this.progressBar1.Size = new System.Drawing.Size(320, 23);
-			this.progressBar1.TabIndex = 1;
+			this.progressBar1.TabIndex = 3;
 			// 
 			// statusLabel
 			// 
@@ -68,7 +68,7 @@
 			this.cancelButton.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
 			this.cancelButton.Name = "cancelButton";
 			this.cancelButton.Size = new System.Drawing.Size(155, 32);
-			this.cancelButton.TabIndex = 3;
+			this.cancelButton.TabIndex = 1;
 			this.cancelButton.Text = "cancel";
 			this.cancelButton.UseVisualStyleBackColor = false;
 			this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -84,7 +84,7 @@
 			this.updateButton.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
 			this.updateButton.Name = "updateButton";
 			this.updateButton.Size = new System.Drawing.Size(155, 32);
-			this.updateButton.TabIndex = 2;
+			this.updateButton.TabIndex = 0;
 			this.updateButton.Text = "install";
 			this.updateButton.UseVisualStyleBackColor = false;
 			this.updateButton.Visible = false;
@@ -106,7 +106,7 @@
 			this.closeBtn.Margin = new System.Windows.Forms.Padding(0);
 			this.closeBtn.Name = "closeBtn";
 			this.closeBtn.Size = new System.Drawing.Size(32, 32);
-			this.closeBtn.TabIndex = 0;
+			this.closeBtn.TabIndex = 2;
 			this.closeBtn.UseVisualStyleBackColor = true;
 			this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
 			// 

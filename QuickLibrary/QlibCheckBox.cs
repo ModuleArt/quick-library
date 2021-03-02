@@ -178,7 +178,7 @@ namespace QuickLibrary
 		{
 			if (darkMode)
 			{
-				int top = (Height / 2) - 8;
+				int top = (Height / 2) - 9;
 
 				e.Graphics.Clear(BackColor);
 

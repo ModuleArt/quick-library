@@ -65,7 +65,7 @@
 			this.closeBtn.Margin = new System.Windows.Forms.Padding(0);
 			this.closeBtn.Name = "closeBtn";
 			this.closeBtn.Size = new System.Drawing.Size(32, 32);
-			this.closeBtn.TabIndex = 0;
+			this.closeBtn.TabIndex = 1;
 			this.closeBtn.UseVisualStyleBackColor = true;
 			// 
 			// textBox
@@ -79,7 +79,7 @@
 			this.textBox.Multiline = true;
 			this.textBox.Name = "textBox";
 			this.textBox.Size = new System.Drawing.Size(260, 64);
-			this.textBox.TabIndex = 1;
+			this.textBox.TabIndex = 2;
 			this.textBox.Text = "message";
 			// 
 			// okBtn
@@ -95,7 +95,7 @@
 			this.okBtn.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
 			this.okBtn.Name = "okBtn";
 			this.okBtn.Size = new System.Drawing.Size(260, 32);
-			this.okBtn.TabIndex = 2;
+			this.okBtn.TabIndex = 0;
 			this.okBtn.Text = "ok";
 			this.okBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.okBtn.UseVisualStyleBackColor = false;

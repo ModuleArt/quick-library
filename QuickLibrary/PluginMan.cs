@@ -8,15 +8,16 @@ namespace QuickLibrary
 	public class PluginMan
 	{
 		public static string pluginsFolder = null;
-		public static int apiVer = 0;
+		public static int apiVer = 4;
 		public static string inputType = null;
 
 		public delegate string[] RunFunction(
-			Object input = null,
+			object input = null,
 			string path = null,
 			bool darkMode = false,
 			string language = "en",
-			bool alwaysOnTop = false
+			bool alwaysOnTop = false,
+			object secondaryArg = null
 		);
 
 		public delegate void PluginOutput(object sender, OutputEventArgs oea);

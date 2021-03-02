@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Text;
@@ -11,7 +10,6 @@ namespace QuickLibrary
     {
         #region PRIVATE FIELDS
 
-        private bool darkMode = false;
         private readonly StringFormat CenterSringFormat = new StringFormat
         {
             Alignment = StringAlignment.Center,
@@ -53,11 +51,7 @@ namespace QuickLibrary
         #region PUBLIC PROPS
 
         [Category("Qlib props"), Browsable(true), Description("Dark mode")]
-        public bool DarkMode
-        {
-            get { return darkMode; }
-            set { SetDarkMode(value); }
-        }
+        public bool DarkMode { get; set; }
 
         #endregion
 
@@ -92,90 +86,71 @@ namespace QuickLibrary
         protected override void OnPaint(PaintEventArgs e)
         {
             Color headerColor = ThemeMan.LightSecondColor;
-            if (darkMode)
+            if (DarkMode)
             {
                 headerColor = ThemeMan.DarkSecondColor;
             }
             Color backTabColor = ThemeMan.LightBackColor;
-            if (darkMode)
+            if (DarkMode)
             {
                 backTabColor = ThemeMan.DarkBackColor;
             }
             Color textColor = Color.Black;
-            if (darkMode)
+            if (DarkMode)
             {
                 textColor = Color.White;
             }
 
-            var g = e.Graphics;
-            var Drawer = g;
+            Graphics g = e.Graphics;
+  
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            g.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
 
-            Drawer.SmoothingMode = SmoothingMode.HighQuality;
-            Drawer.PixelOffsetMode = PixelOffsetMode.HighQuality;
-            Drawer.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
-            Drawer.Clear(headerColor);
-            try
+            g.Clear(headerColor);
+
+            if (SelectedTab != null)
             {
                 SelectedTab.BackColor = backTabColor;
-            }
-            catch
-            {
-                // ignored
-            }
-
-            try
-            {
                 SelectedTab.BorderStyle = BorderStyle.None;
             }
-            catch
+
+            g.FillRectangle(new SolidBrush(backTabColor), new Rectangle(1, Height - TabPages[0].Height - 4, Width - 2, TabPages[0].Height + 3));
+
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+            for (int i = 0; i <= TabCount - 1; i++)
             {
-                // ignored
-            }
-
-            Drawer.FillRectangle(new SolidBrush(backTabColor), new Rectangle(1, this.Height - this.TabPages[0].Height - 4, Width - 2, this.TabPages[0].Height + 3));
-
-            Drawer.InterpolationMode = InterpolationMode.HighQualityBicubic;
-
-            for (var i = 0; i <= TabCount - 1; i++)
-            {
-                var Header = new Rectangle(
+                Rectangle Header = new Rectangle(
                     new Point(GetTabRect(i).Location.X + 1, GetTabRect(i).Location.Y + 4),
-                    new Size(GetTabRect(i).Width, GetTabRect(i).Height - 4));
-                var HeaderSize = new Rectangle(new Point(Header.Location.X + 2, Header.Location.Y), new Size(Header.Width, Header.Height));
+                    new Size(GetTabRect(i).Width, GetTabRect(i).Height - 4)
+                );
+                Rectangle HeaderSize = new Rectangle(new Point(Header.Location.X + 2, Header.Location.Y), new Size(Header.Width, Header.Height));
 
                 if (i == SelectedIndex)
                 {
-                    Drawer.FillRectangle(new SolidBrush(headerColor), HeaderSize);
-
-                    Drawer.FillRectangle(
-                        new SolidBrush(backTabColor),
-                        new Rectangle(Header.X - 2, Header.Y - 3, Header.Width - 3, Header.Height + 5));
-                    Drawer.FillRectangle(
-                        new SolidBrush(ThemeMan.AccentColor),
-                        new Rectangle(Header.X - 2, Header.Y - 3, Header.Width - 3, 1));
-
-                    Drawer.DrawString(
+                    g.FillRectangle(new SolidBrush(headerColor), HeaderSize);
+                    g.FillRectangle(new SolidBrush(backTabColor),  new Rectangle(Header.X - 2, Header.Y - 3, Header.Width - 3, Header.Height + 5));
+                    g.FillRectangle(new SolidBrush(ThemeMan.AccentColor), new Rectangle(Header.X - 2, Header.Y - 3, Header.Width - 3, 1));
+                    g.DrawString(
                         TabPages[i].Text,
                         Font,
                         new SolidBrush(textColor),
                         new Rectangle(HeaderSize.X - 5, HeaderSize.Y + 2, HeaderSize.Width, HeaderSize.Height),
-                        CenterSringFormat);
+                        CenterSringFormat
+                    );
                 }
                 else
                 {
-                    Drawer.DrawString(
+                    g.DrawString(
                         TabPages[i].Text,
                         Font,
                         new SolidBrush(textColor),
                         new Rectangle(HeaderSize.X - 5, HeaderSize.Y, HeaderSize.Width, HeaderSize.Height),
-                        CenterSringFormat);
+                        CenterSringFormat
+                    );
                 }
             }
-        }
-
-        private void SetDarkMode(bool dark)
-        {
-            darkMode = dark;
         }
 
 		#endregion

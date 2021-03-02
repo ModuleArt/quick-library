@@ -11,14 +11,9 @@ namespace QuickLibrary
 
 		public UpdateForm(bool darkMode, string title, string message, string dwnldBtnText, string skipBtnText, string whatsNewBtnText)
 		{
-			if (darkMode)
-			{
-				HandleCreated += new EventHandler(ThemeMan.formHandleCreated);
-			}
-
 			InitializeComponent();
 			(new DropShadow()).ApplyShadows(this);
-			SetDraggableControls(new List<Control>() { titlePanel, titleLabel });
+			SetDraggableControls(new List<Control>() { titleLabel });
 
 			Height = 244;
 

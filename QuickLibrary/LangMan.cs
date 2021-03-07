@@ -29,8 +29,9 @@ namespace QuickLibrary
 			}
 			catch
 			{
-				return str;
+				
 			}
+			return str;
 		}
 	}
 }

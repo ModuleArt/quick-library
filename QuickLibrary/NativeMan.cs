@@ -27,12 +27,12 @@ namespace QuickLibrary
 		public const int CS_DBLCLKS = 0x8;
 		public const int WM_NCPAINT = 0x0085;
 		public const int WM_ACTIVATEAPP = 0x001C;
+		public const int SW_SHOW = 5;
+		public const int SEE_MASK_INVOKEIDLIST = 12;
+		public const int WS_EX_TRANSPARENT = 0x20;
 
 		// ENUMS
 
-		/// <summary>
-		/// Represents possible dialogbox command id values by the MB_GetString function.
-		/// </summary>
 		public enum DialogBoxCommandID : int
 		{
 			IDOK = 0,
@@ -78,6 +78,31 @@ namespace QuickLibrary
 			public int Bottom;
 		}
 
+		[StructLayout(LayoutKind.Sequential)]
+		public struct SHELLEXECUTEINFO
+		{
+			public int cbSize;
+			public uint fMask;
+			public IntPtr hwnd;
+			[MarshalAs(UnmanagedType.LPTStr)]
+			public string lpVerb;
+			[MarshalAs(UnmanagedType.LPTStr)]
+			public string lpFile;
+			[MarshalAs(UnmanagedType.LPTStr)]
+			public string lpParameters;
+			[MarshalAs(UnmanagedType.LPTStr)]
+			public string lpDirectory;
+			public int nShow;
+			public IntPtr hInstApp;
+			public IntPtr lpIDList;
+			[MarshalAs(UnmanagedType.LPTStr)]
+			public string lpClass;
+			public IntPtr hkeyClass;
+			public uint dwHotKey;
+			public IntPtr hIcon;
+			public IntPtr hProcess;
+		}
+
 		// KERNEL32 METHODS
 
 		[DllImport("kernel32", SetLastError = true, CharSet = CharSet.Ansi)]
@@ -87,6 +112,9 @@ namespace QuickLibrary
 		public static extern IntPtr GetProcAddressOrdinal(IntPtr hModule, string procName);
 
 		// USER32 METHODS
+
+		[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+		public static extern bool SetProcessDPIAware();
 
 		[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
 		public static extern IntPtr MB_GetString(int strId);
@@ -130,6 +158,11 @@ namespace QuickLibrary
 
 		[DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 		public static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
+
+		// SHELL32 METHODS
+
+		[DllImport("shell32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+		public static extern bool ShellExecuteEx(ref SHELLEXECUTEINFO lpExecInfo);
 
 		// CUSTOM METHODS
 

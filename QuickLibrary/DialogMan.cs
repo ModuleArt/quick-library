@@ -19,7 +19,9 @@ namespace QuickLibrary
 		{
 			YesNoForm ynf = new YesNoForm(messageText, yesBtnText, yesBtnImage, showNoBtn, noBtnText, noBtnImage, windowTitle, darkMode);
 			ynf.Owner = owner;
-			return ynf.ShowDialog();
+			DialogResult dr = ynf.ShowDialog();
+			ynf.Dispose();
+			return dr;
 		}
 
 		public static DialogResult ShowInfo(
@@ -31,7 +33,9 @@ namespace QuickLibrary
 		{
 			OkForm of = new OkForm(messageText, windowTitle, darkMode);
 			of.Owner = owner;
-			return of.ShowDialog();
+			DialogResult dr = of.ShowDialog();
+			of.Dispose();
+			return dr;
 		}
 	}
 }

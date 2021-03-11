@@ -22,14 +22,7 @@ namespace QuickLibrary
 			(new DropShadow()).ApplyShadows(this);
 			SetDraggableControls(new List<Control>() { titleLabel });
 
-			if (yesBtnText.Length == 0)
-			{
-				yesBtn.Text = NativeMan.GetMessageBoxText(NativeMan.DialogBoxCommandID.IDYES);
-			}
-			else
-			{
-				yesBtn.Text = yesBtnText;
-			}
+			yesBtn.Text = yesBtnText.Length == 0 ? NativeMan.GetMessageBoxText(NativeMan.DialogBoxCommandID.IDYES) : yesBtnText;
 			if (yesBtnImage != null)
 			{
 				yesBtn.Image = yesBtnImage;
@@ -37,14 +30,7 @@ namespace QuickLibrary
 				yesBtn.Text = " " + yesBtn.Text;
 			}
 
-			if (noBtnText.Length == 0)
-			{
-				noBtn.Text = NativeMan.GetMessageBoxText(NativeMan.DialogBoxCommandID.IDNO);
-			}
-			else
-			{
-				noBtn.Text = noBtnText;
-			}
+			noBtn.Text = noBtnText.Length == 0 ? NativeMan.GetMessageBoxText(NativeMan.DialogBoxCommandID.IDNO) : noBtnText;
 			if (noBtnImage != null)
 			{
 				noBtn.Image = noBtnImage;
@@ -58,14 +44,8 @@ namespace QuickLibrary
 			textBox.BackColor = BackColor;
 			textBox.Text = messageText;
 
-			if (showNoBtn)
-			{
-				noBtn.Visible = true;
-			}
-			else
-			{
-				Size = new Size(Size.Width, Size.Height - noBtn.Height - 10);
-			}
+			if (showNoBtn) noBtn.Visible = true;
+			else Size = new Size(Size.Width, Size.Height - noBtn.Height - 10);
 
 			infoTooltip.SetToolTip(closeBtn, NativeMan.GetMessageBoxText(NativeMan.DialogBoxCommandID.IDCLOSE) + " | Alt+F4");
 
@@ -83,10 +63,7 @@ namespace QuickLibrary
 
 		private void YesNoForm_KeyDown(object sender, KeyEventArgs e)
 		{
-			if (e.KeyCode == Keys.Escape)
-			{
-				Close();
-			}
+			if (e.KeyCode == Keys.Escape) Close();
 		}
 
 		private void yesBtn_Click(object sender, EventArgs e)

@@ -169,10 +169,7 @@ namespace QuickLibrary
 		public static string GetMessageBoxText(DialogBoxCommandID messageId)
 		{
 			string str = Marshal.PtrToStringAuto(MB_GetString((int)messageId));
-			if (str[0] == '&')
-			{
-				str = str.Substring(1, str.Length - 1);
-			}
+			if (str[0] == '&') str = str.Substring(1, str.Length - 1);
 			return str;
 		}
 

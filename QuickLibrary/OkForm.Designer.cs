@@ -117,7 +117,6 @@
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Update available!";
-			this.TitleLabel = this.titleLabel;
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OkForm_KeyDown);
 			this.ResumeLayout(false);
 			this.PerformLayout();

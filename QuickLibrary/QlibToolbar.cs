@@ -52,6 +52,29 @@ namespace QuickLibrary
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
 		public new bool AllowDrop { get { return base.AllowDrop; } set { } }
 
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool Stretch { get { return base.Stretch; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Size MinimumSize { get { return base.MinimumSize; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Size MaximumSize { get { return base.MaximumSize; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Padding Margin { get { return base.Margin; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Padding Padding { get { return base.Padding; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new ToolStripLayoutStyle LayoutStyle { get { return base.LayoutStyle; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Padding GripMargin { get { return base.GripMargin; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool AutoSize { get { return base.AutoSize; } set { } }
 
 		#endregion
 
@@ -85,8 +108,8 @@ namespace QuickLibrary
 
 		public QlibToolbar() 
 		{
-			base.BackColor = ThemeMan.LightBackColor;
 			base.ForeColor = Color.Black;
+			base.BackColor = ThemeMan.LightBackColor;
 			base.BackgroundImageLayout = ImageLayout.None;
 			base.BackgroundImage = null;
 			base.Font = ThemeMan.DefaultFont;
@@ -97,8 +120,16 @@ namespace QuickLibrary
 			base.UseWaitCursor = false;
 			base.ImageScalingSize = new Size(16, 16);
 			base.AllowDrop = false;
+			base.Stretch = false;
+			base.MinimumSize = Size.Empty;
+			base.MaximumSize = Size.Empty;
+			base.Margin = Padding.Empty;
+			base.Padding = new Padding(4, 5, 4, 5);
+			base.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
+			base.GripMargin = Padding.Empty;
+			base.AutoSize = false;
 
-			base.MouseDown += QlibToolbar_MouseDown;
+			MouseDown += QlibToolbar_MouseDown;
 		}
 
 		#endregion
@@ -107,10 +138,7 @@ namespace QuickLibrary
 
 		private void QlibToolbar_MouseDown(object sender, MouseEventArgs e)
 		{
-			if (dragForm && e.Button == MouseButtons.Left)
-			{
-				NativeMan.DragWindow(Parent.Handle);
-			}
+			if (dragForm && e.Button == MouseButtons.Left) NativeMan.DragWindow(Parent.Handle);
 		}
 
 		private void SetDarkMode(bool dark, bool alternative)
@@ -118,28 +146,8 @@ namespace QuickLibrary
 			darkMode = dark;
 			alternativeAppearance = alternative;
 
-			if (dark)
-			{
-				if (alternative)
-				{
-					base.BackColor = ThemeMan.DarkMainColor;
-				}
-				else
-				{
-					base.BackColor = ThemeMan.DarkBackColor;
-				}
-			}
-			else
-			{
-				if (alternative)
-				{
-					base.BackColor = ThemeMan.LightMainColor;
-				}
-				else
-				{
-					base.BackColor = ThemeMan.LightBackColor;
-				}
-			}
+			if (dark) base.BackColor = alternative ? ThemeMan.DarkMainColor : ThemeMan.DarkBackColor;
+			else base.BackColor = alternative ? ThemeMan.LightMainColor : ThemeMan.LightBackColor;
 
 			foreach (var c in Items)
 			{

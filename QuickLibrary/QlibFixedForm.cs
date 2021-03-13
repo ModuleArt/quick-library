@@ -15,6 +15,8 @@ namespace QuickLibrary
 		private Color customBackColor = Color.White;
 		private bool usePadding = true;
 		private Button closeBtn = null;
+		private bool showTitle = false;
+		private Label titleLabel = null;
 
 		#endregion
 
@@ -57,28 +59,22 @@ namespace QuickLibrary
 		public new Font Font { get { return base.Font; } set { } }
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new Color ForeColor { get { return base.ForeColor; } set { } }
+		public new bool KeyPreview { get { return base.KeyPreview; } set { } }
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new Color BackColor { get { return base.BackColor; } set { } }
+		public new IButtonControl CancelButton { get { return base.CancelButton; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new IButtonControl AcceptButton { get { return base.AcceptButton; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new SizeGripStyle SizeGripStyle { get { return base.SizeGripStyle; } set { } }
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
 		public new RightToLeft RightToLeft { get { return base.RightToLeft; } set { } }
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
 		public new bool RightToLeftLayout { get { return base.RightToLeftLayout; } set { } }
-
-		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new SizeGripStyle SizeGripStyle { get { return base.SizeGripStyle; } set { } }
-
-		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new IButtonControl AcceptButton { get { return base.AcceptButton; } set { } }
-
-		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new IButtonControl CancelButton { get { return base.CancelButton; } set { } }
-
-		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new bool KeyPreview { get { return base.KeyPreview; } set { } }
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
 		public new Padding Padding { get { return base.Padding; } set { } }
@@ -90,7 +86,16 @@ namespace QuickLibrary
 		public new Cursor Cursor { get { return base.Cursor; } set { } }
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Color BackColor { get { return base.BackColor; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Color ForeColor { get { return base.ForeColor; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
 		public new bool CausesValidation { get { return base.CausesValidation; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new AutoValidate AutoValidate { get { return base.AutoValidate; } set { } }
 
 		#endregion
 
@@ -113,8 +118,12 @@ namespace QuickLibrary
 		[Category("Qlib props"), Browsable(true), Description("Draggable form")]
 		public bool Draggable { get; set; } = false;
 
-		[Category("Qlib props"), Browsable(true), Description("Title label")]
-		public Label TitleLabel { get; set; } = null;
+		[Category("Qlib props"), Browsable(true), Description("Show title")]
+		public bool ShowTitle
+		{
+			get { return showTitle; }
+			set { SetShowTitle(value); }
+		}
 
 		[Category("Qlib props"), Browsable(true), Description("Close button")]
 		public Button CloseButton 
@@ -145,14 +154,7 @@ namespace QuickLibrary
 			set 
 			{
 				usePadding = value;
-				if (value)
-				{
-					base.Padding = new Padding(10);
-				}
-				else
-				{
-					base.Padding = new Padding(0);
-				}
+				base.Padding = value ? new Padding(10) : base.Padding = Padding.Empty;
 			}
 		}
 
@@ -162,6 +164,7 @@ namespace QuickLibrary
 
 		public QlibFixedForm()
 		{
+			base.ControlBox = true;
 			base.FormBorderStyle = FormBorderStyle.None;
 			base.AutoScaleMode = AutoScaleMode.Dpi;
 			base.HelpButton = false;
@@ -185,6 +188,7 @@ namespace QuickLibrary
 			base.BackColor = ThemeMan.LightBackColor;
 			base.ForeColor = Color.Black;
 			base.CausesValidation = false;
+			base.AutoValidate = AutoValidate.Disable;
 
 			TextChanged += QlibFixedForm_TextChanged;
 		}
@@ -205,38 +209,47 @@ namespace QuickLibrary
 			base.OnHandleCreated(e);
 		}
 
+		private void SetShowTitle(bool show)
+		{
+			showTitle = show;
+
+			if (showTitle && titleLabel == null)
+			{
+				titleLabel = new Label();
+				Controls.Add(titleLabel);
+				titleLabel.MouseDown += Control_MouseDown;
+				titleLabel.Location = new Point(10, 7);
+				titleLabel.Text = Text;
+				titleLabel.AutoSize = true;
+			}
+			else if (titleLabel != null)
+			{
+				titleLabel.MouseDown -= Control_MouseDown;
+				Controls.Remove(titleLabel);
+				titleLabel.Dispose();
+				titleLabel = null;
+			}
+		}
+
 		private void QlibFixedForm_TextChanged(object sender, EventArgs e)
 		{
-			if (TitleLabel != null) 
-			{
-				TitleLabel.Text = Text;
-			}
+			if (titleLabel != null) titleLabel.Text = Text;
 		}
 
 		public void SetDraggableControls(List<Control> controls)
 		{
-			foreach (Control control in controls)
-			{
-				control.MouseDown += Control_MouseDown;
-			}
+			foreach (Control control in controls) control.MouseDown += Control_MouseDown;
 		}
 
 		private void Control_MouseDown(object sender, MouseEventArgs e)
 		{
-			if (e.Button == MouseButtons.Left)
-			{
-				GoDrag();
-			}
+			if (e.Button == MouseButtons.Left) GoDrag();
 		}
 
 		protected override void OnMouseDown(MouseEventArgs e)
 		{
 			base.OnMouseDown(e);
-
-			if (e.Button == MouseButtons.Left && Draggable)
-			{
-				GoDrag();
-			}
+			if (e.Button == MouseButtons.Left && Draggable) GoDrag();
 		}
 
 		private void GoDrag()
@@ -282,35 +295,17 @@ namespace QuickLibrary
 			{
 				base.ForeColor = Color.White;
 
-				if (CustomBack)
-				{
-					base.BackColor = customBackColor;
-				}
-				else if (alternative)
-				{
-					base.BackColor = ThemeMan.DarkMainColor;
-				}
-				else
-				{
-					base.BackColor = ThemeMan.DarkBackColor;
-				}
+				if (CustomBack) base.BackColor = customBackColor;
+				else if (alternative) base.BackColor = ThemeMan.DarkMainColor;
+				else base.BackColor = ThemeMan.DarkBackColor;
 			}
 			else
 			{
 				base.ForeColor = Color.Black;
 
-				if (CustomBack)
-				{
-					base.BackColor = customBackColor;
-				}
-				else if (alternative)
-				{
-					base.BackColor = ThemeMan.LightMainColor;
-				}
-				else
-				{
-					base.BackColor = ThemeMan.LightBackColor;
-				}
+				if (CustomBack) base.BackColor = customBackColor;
+				else if (alternative) base.BackColor = ThemeMan.LightMainColor;
+				else base.BackColor = ThemeMan.LightBackColor;
 			}
 		}
 

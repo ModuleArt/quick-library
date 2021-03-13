@@ -27,7 +27,18 @@ namespace QuickLibrary
 			public object input { get; set; }
 		}
 
-		public static PluginInfo[] GetPlugins(bool onlyAvailable)
+		public static string GenerateCacheStr()
+		{
+			return Convert.ToBase64String(SerializeMan.ObjectToByteArray(GetPlugins()));
+		}
+
+		public static PluginInfo[] GetPluginsCache(string cacheStr)
+		{
+			if (cacheStr.Length > 0) return SerializeMan.ByteArrayToObject(Convert.FromBase64String(cacheStr)) as PluginInfo[];
+			else return new PluginInfo[] { };
+		}
+
+		private static PluginInfo[] GetPlugins()
 		{
 			List<PluginInfo> plugins = new List<PluginInfo>();
 			DirectoryInfo di = new DirectoryInfo(pluginsFolder);
@@ -39,18 +50,7 @@ namespace QuickLibrary
 					if (Path.GetExtension(files[i].Name) == ".json")
 					{
 						PluginInfo pi = PluginInfo.FromJson(File.ReadAllText(Path.Combine(di.FullName, files[i].Name)));
-
-						if (onlyAvailable)
-						{
-							if (pi.apiVer == apiVer && pi.inputType == inputType)
-							{
-								plugins.Add(pi);
-							}
-						}
-						else
-						{
-							plugins.Add(pi);
-						}
+						if (pi.apiVer == apiVer && pi.inputType == inputType) plugins.Add(pi);
 					}
 					files[i] = null;
 				}
@@ -63,32 +63,20 @@ namespace QuickLibrary
 			if (darkMode)
 			{
 				string path = Path.Combine(pluginsFolder, pluginName, funcName + ".dark.png");
-				if (File.Exists(path))
-				{
-					return Bitmap.FromFile(path);
-				}
+				if (File.Exists(path)) return Bitmap.FromFile(path);
 
 				path = Path.Combine(pluginsFolder, pluginName, funcName + ".png");
-				if (File.Exists(path))
-				{
-					return Bitmap.FromFile(path);
-				}
+				if (File.Exists(path)) return Bitmap.FromFile(path);
 
 				return null;
 			}
 			else
 			{
 				string path = Path.Combine(pluginsFolder, pluginName, funcName + ".light.png");
-				if (File.Exists(path))
-				{
-					return Bitmap.FromFile(path);
-				}
+				if (File.Exists(path)) return Bitmap.FromFile(path);
 
 				path = Path.Combine(pluginsFolder, pluginName, funcName + ".png");
-				if (File.Exists(path))
-				{
-					return Bitmap.FromFile(path);
-				}
+				if (File.Exists(path)) return Bitmap.FromFile(path);
 
 				return null;
 			}

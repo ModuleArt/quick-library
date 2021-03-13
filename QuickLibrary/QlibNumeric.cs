@@ -28,16 +28,13 @@ namespace QuickLibrary
 		public new ImageLayout BackgroundImageLayout { get { return base.BackgroundImageLayout; } set { } }
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new Color ForeColor { get { return base.ForeColor; } set { } }
+		public new Font Font { get { return base.Font; } set { } }
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new Color BackColor { get { return base.BackColor; } set { } }
+		public new RightToLeft RightToLeft { get { return base.RightToLeft; } set { } }
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new Cursor Cursor { get { return base.Cursor; } set { } }
-
-		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new BorderStyle BorderStyle { get { return base.BorderStyle; } set { } }
+		public new Padding Padding { get { return base.Padding; } set { } }
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
 		public new bool AutoScroll { get { return base.AutoScroll; } set { } }
@@ -49,13 +46,37 @@ namespace QuickLibrary
 		public new AutoSizeMode AutoSizeMode { get { return base.AutoSizeMode; } set { } }
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new Font Font { get { return base.Font; } set { } }
+		public new BorderStyle BorderStyle { get { return base.BorderStyle; } set { } }
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new Padding Padding { get { return base.Padding; } set { } }
+		public new Color BackColor { get { return base.BackColor; } set { } }
 
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-		public new RightToLeft RightToLeft { get { return base.RightToLeft; } set { } }
+		public new Color ForeColor { get { return base.ForeColor; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Cursor Cursor { get { return base.Cursor; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool UseWaitCursor { get { return base.UseWaitCursor; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool CausesValidation { get { return base.CausesValidation; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Size AutoScrollMargin { get { return base.AutoScrollMargin; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Size AutoScrollMinSize { get { return base.AutoScrollMinSize; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Size MinimumSize { get { return base.MinimumSize; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Size MaximumSize { get { return base.MaximumSize; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool AllowDrop { get { return base.AllowDrop; } set { } }
 
 		#endregion
 
@@ -95,8 +116,9 @@ namespace QuickLibrary
 
 		public QlibNumeric()
 		{
-			base.BackgroundImageLayout = ImageLayout.None;
+			base.Text = string.Empty;
 			base.BackgroundImage = null;
+			base.BackgroundImageLayout = ImageLayout.None;
 			base.Font = ThemeMan.DefaultFont;
 			base.RightToLeft = RightToLeft.No;
 			base.Padding = Padding.Empty;
@@ -107,7 +129,13 @@ namespace QuickLibrary
 			base.BackColor = ThemeMan.LightBackColor;
 			base.ForeColor = Color.Black;
 			base.Cursor = Cursors.IBeam;
-			base.Text = string.Empty;
+			base.UseWaitCursor = false;
+			base.CausesValidation = false;
+			base.AutoScrollMargin = Size.Empty;
+			base.AutoScrollMinSize = Size.Empty;
+			base.MinimumSize = Size.Empty;
+			base.MaximumSize = Size.Empty;
+			base.AllowDrop = false;
 
 			numeric = new InternalNumericUpDown();
 			numeric.Location = new Point(7, 7);

@@ -52,6 +52,24 @@ namespace QuickLibrary
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
 		public new RightToLeft RightToLeft { get { return base.RightToLeft; } set { } }
 
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Size AutoScrollMargin { get { return base.AutoScrollMargin; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Size AutoScrollMinSize { get { return base.AutoScrollMinSize; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Size MinimumSize { get { return base.MinimumSize; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Size MaximumSize { get { return base.MaximumSize; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool CausesValidation { get { return base.CausesValidation; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool UseWaitCursor { get { return base.UseWaitCursor; } set { } }
+
 		#endregion
 
 		#region PUBLIC PROPS
@@ -90,18 +108,24 @@ namespace QuickLibrary
 
 		public QlibTextBox()
 		{
-			base.BackgroundImageLayout = ImageLayout.None;
 			base.BackgroundImage = null;
-			base.Cursor = Cursors.IBeam;
-			base.BackColor = ThemeMan.LightBackColor;
+			base.BackgroundImageLayout = ImageLayout.None;
 			base.ForeColor = Color.Black;
+			base.BackColor = ThemeMan.LightBackColor;
+			base.Cursor = Cursors.IBeam;
 			base.BorderStyle = BorderStyle.None;
 			base.Font = ThemeMan.DefaultFont;
 			base.AutoScroll = false;
 			base.AutoSize = false;
 			base.AutoSizeMode = AutoSizeMode;
-			base.RightToLeft = RightToLeft.No;
 			base.Padding = Padding.Empty;
+			base.RightToLeft = RightToLeft.No;
+			base.AutoScrollMargin = Size.Empty;
+			base.AutoScrollMinSize = Size.Empty;
+			base.MinimumSize = Size.Empty;
+			base.MaximumSize = Size.Empty;
+			base.CausesValidation = false;
+			base.UseWaitCursor = false;
 
 			textBox = new TextBox();
 

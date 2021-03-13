@@ -82,6 +82,33 @@ namespace QuickLibrary
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
 		public new bool AutoCheck { get { return base.AutoCheck; } set { } }
 
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new Font Font { get { return base.Font; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool UseWaitCursor { get { return base.UseWaitCursor; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool UseVisualStyleBackColor { get { return base.UseVisualStyleBackColor; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool UseMnemonic { get { return base.UseMnemonic; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool AllowDrop { get { return base.AllowDrop; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool AutoEllipsis { get { return base.AutoEllipsis; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool CausesValidation { get { return base.CausesValidation; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool UseCompatibleTextRendering { get { return base.UseCompatibleTextRendering; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new ContentAlignment TextAlign { get { return base.TextAlign; } set { } }
+
 		#endregion
 
 		#region PUBLIC PROPS
@@ -99,27 +126,36 @@ namespace QuickLibrary
 
 		public QlibCheckBox()
 		{
-			base.AutoCheck = true;
-			base.ThreeState = false;
-			base.MaximumSize = DefaultMaximumSize;
-			base.MinimumSize = DefaultMinimumSize;
-			base.Dock = DockStyle.None;
-			base.AutoSize = false;
-			base.RightToLeft = RightToLeft.No;
-			base.Padding = Padding.Empty;
-			base.ImageKey = null;
-			base.ImageIndex = 0;
-			base.ImageAlign = ContentAlignment.MiddleCenter;
-			base.FlatStyle = FlatStyle.System;
-			base.CheckState = CheckState.Unchecked;
-			base.Cursor = Cursors.Default;
-			base.Image = null;
-			base.CheckAlign = ContentAlignment.MiddleLeft;
-			base.BackgroundImageLayout = ImageLayout.None;
-			base.BackgroundImage = null;
-			base.BackColor = ThemeMan.LightBackColor;
-			base.ForeColor = Color.Black;
 			base.Appearance = Appearance.Normal;
+			base.ForeColor = Color.Black;
+			base.BackColor = ThemeMan.LightBackColor;
+			base.BackgroundImage = null;
+			base.BackgroundImageLayout = ImageLayout.None;
+			base.CheckAlign = ContentAlignment.MiddleLeft;
+			base.Image = null;
+			base.Cursor = Cursors.Default;
+			base.CheckState = CheckState.Unchecked;
+			base.FlatStyle = FlatStyle.System;
+			base.ImageAlign = ContentAlignment.MiddleCenter;
+			base.ImageIndex = 0;
+			base.ImageKey = null;
+			base.Padding = Padding.Empty;
+			base.RightToLeft = RightToLeft.No;
+			base.AutoSize = false;
+			base.Dock = DockStyle.None;
+			base.MinimumSize = DefaultMinimumSize;
+			base.MaximumSize = DefaultMaximumSize;
+			base.ThreeState = false;
+			base.AutoCheck = true;
+			base.Font = ThemeMan.DefaultFont;
+			base.UseWaitCursor = false;
+			base.UseVisualStyleBackColor = true;
+			base.UseMnemonic = false;
+			base.AllowDrop = false;
+			base.AutoEllipsis = false;
+			base.CausesValidation = false;
+			base.UseCompatibleTextRendering = false;
+			base.TextAlign = ContentAlignment.MiddleLeft;
 		}
 
 		#endregion
@@ -179,7 +215,6 @@ namespace QuickLibrary
 			if (darkMode)
 			{
 				int top = (Height / 2) - 9;
-
 				e.Graphics.Clear(BackColor);
 
 				if (pressed)
@@ -198,36 +233,17 @@ namespace QuickLibrary
 					}
 				}
 
-				if (Focused)
-				{
-					e.Graphics.DrawRectangle(new Pen(ThemeMan.BorderColor, 2), new Rectangle(1, top + 3, 13, 13));
-				}
+				if (Focused) e.Graphics.DrawRectangle(new Pen(ThemeMan.BorderColor, 2), new Rectangle(1, top + 3, 13, 13));
 
 				if (Checked)
 				{
 					e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-
-					if (Enabled)
-					{
-						e.Graphics.DrawLine(new Pen(ForeColor, 2), 2, top + 9, 5, top + 12);
-						e.Graphics.DrawLine(new Pen(ForeColor, 2), 5, top + 13, 12, top + 6);
-					}
-					else
-					{
-						e.Graphics.DrawLine(new Pen(ThemeMan.BorderColor, 2), 2, top + 9, 5, top + 12);
-						e.Graphics.DrawLine(new Pen(ThemeMan.BorderColor, 2), 5, top + 13, 12, top + 6);
-					}
+					e.Graphics.DrawLine(new Pen(Enabled ? ForeColor : ThemeMan.BorderColor, 2), 2, top + 9, 5, top + 12);
+					e.Graphics.DrawLine(new Pen(Enabled ? ForeColor : ThemeMan.BorderColor, 2), 5, top + 13, 12, top + 6);
 				}
 
 				e.Graphics.TextRenderingHint = TextRenderingHint.ClearTypeGridFit;
-				if (Enabled)
-				{
-					e.Graphics.DrawString(Text, Font, new SolidBrush(ForeColor), 22, top);
-				}
-				else
-				{
-					e.Graphics.DrawString(Text, Font, new SolidBrush(ThemeMan.BorderColor), 22, top);
-				}
+				e.Graphics.DrawString(Text, Font, new SolidBrush(Enabled ? ForeColor : ThemeMan.BorderColor), 22, top);
 			}
 			else
 			{

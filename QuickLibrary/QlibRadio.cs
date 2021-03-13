@@ -76,6 +76,30 @@ namespace QuickLibrary
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
 		public new bool AutoCheck { get { return base.AutoCheck; } set { } }
 
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool AllowDrop { get { return base.AllowDrop; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool AutoEllipsis { get { return base.AutoEllipsis; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool CausesValidation { get { return base.CausesValidation; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool UseCompatibleTextRendering { get { return base.UseCompatibleTextRendering; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool UseVisualStyleBackColor { get { return base.UseVisualStyleBackColor; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool UseMnemonic { get { return base.UseMnemonic; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new ContentAlignment TextAlign { get { return base.TextAlign; } set { } }
+
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool UseWaitCursor { get { return base.UseWaitCursor; } set { } }
+
 		#endregion
 
 		#region PUBLIC PROPS
@@ -93,25 +117,33 @@ namespace QuickLibrary
 
 		public QlibRadio()
 		{
-			base.MaximumSize = DefaultMaximumSize;
-			base.MinimumSize = DefaultMinimumSize;
-			base.AutoCheck = true;
-			base.Dock = DockStyle.None;
-			base.AutoSize = false;
-			base.RightToLeft = RightToLeft.No;
-			base.Padding = Padding.Empty;
-			base.ImageKey = null;
-			base.ImageIndex = 0;
-			base.ImageAlign = ContentAlignment.MiddleCenter;
-			base.FlatStyle = FlatStyle.System;
-			base.Cursor = Cursors.Default;
-			base.Image = null;
-			base.BackgroundImageLayout = ImageLayout.None;
-			base.BackgroundImage = null;
-			base.CheckAlign = ContentAlignment.MiddleLeft;
-			base.BackColor = ThemeMan.LightBackColor;
-			base.ForeColor = Color.Black;
 			base.Appearance = Appearance.Normal;
+			base.ForeColor = Color.Black;
+			base.BackColor = ThemeMan.LightBackColor;
+			base.BackgroundImage = null;
+			base.BackgroundImageLayout = ImageLayout.None;
+			base.CheckAlign = ContentAlignment.MiddleLeft;
+			base.Image = null;
+			base.Cursor = Cursors.Default;
+			base.FlatStyle = FlatStyle.System;
+			base.ImageAlign = ContentAlignment.MiddleCenter;
+			base.ImageIndex = 0;
+			base.ImageKey = null;
+			base.Padding = Padding.Empty;
+			base.RightToLeft = RightToLeft.No;
+			base.AutoSize = false;
+			base.Dock = DockStyle.None;
+			base.MinimumSize = DefaultMinimumSize;
+			base.MaximumSize = DefaultMaximumSize;
+			base.AutoCheck = true;
+			base.AllowDrop = false;
+			base.AutoEllipsis = false;
+			base.CausesValidation = false;
+			base.UseCompatibleTextRendering = false;
+			base.UseVisualStyleBackColor = true;
+			base.UseMnemonic = false;
+			base.TextAlign = ContentAlignment.MiddleLeft;
+			base.UseWaitCursor = false;
 		}
 
 		#endregion

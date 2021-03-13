@@ -46,12 +46,36 @@ namespace QuickLibrary
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public new TabSizeMode SizeMode { get { return base.SizeMode; } set { } }
 
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new Size MinimumSize { get { return base.MinimumSize; } set { } }
+
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new Size MaximumSize { get { return base.MaximumSize; } set { } }
+
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new Font Font { get { return base.Font; } set { } }
+
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new RightToLeft RightToLeft { get { return base.RightToLeft; } set { } }
+
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new bool RightToLeftLayout { get { return base.RightToLeftLayout; } set { } }
+
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new bool UseWaitCursor { get { return base.UseWaitCursor; } set { } }
+
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new TabDrawMode DrawMode { get { return base.DrawMode; } set { } }
+
+        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+        public new bool CausesValidation { get { return base.CausesValidation; } set { } }
+
         #endregion
 
         #region PUBLIC PROPS
 
         [Category("Qlib props"), Browsable(true), Description("Dark mode")]
-        public bool DarkMode { get; set; }
+        public bool DarkMode { get; set; } = false;
 
         #endregion
 
@@ -68,6 +92,14 @@ namespace QuickLibrary
             base.Multiline = true;
             base.ShowToolTips = false;
             base.SizeMode = TabSizeMode.Normal;
+            base.MinimumSize = Size.Empty;
+            base.MaximumSize = Size.Empty;
+            base.Font = ThemeMan.DefaultFont;
+            base.RightToLeft = RightToLeft.No;
+            base.RightToLeftLayout = false;
+            base.UseWaitCursor = false;
+            base.DrawMode = TabDrawMode.Normal;
+            base.CausesValidation = false;
 
             SetStyle(
                 ControlStyles.AllPaintingInWmPaint | 

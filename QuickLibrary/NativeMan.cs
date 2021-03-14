@@ -30,6 +30,10 @@ namespace QuickLibrary
 		public const int SW_SHOW = 5;
 		public const int SEE_MASK_INVOKEIDLIST = 12;
 		public const int WS_EX_TRANSPARENT = 0x20;
+		public const int FO_DELETE = 0x0003;
+		public const int FOF_ALLOWUNDO = 0x0040;          
+		public const int FOF_NOCONFIRMATION = 0x0010;
+
 
 		// ENUMS
 
@@ -77,7 +81,7 @@ namespace QuickLibrary
 
 		// STRUCTURES
 
-		[StructLayout(LayoutKind.Sequential)]
+		[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
 		public struct MARGINS
 		{
 			public int Left;
@@ -86,7 +90,7 @@ namespace QuickLibrary
 			public int Bottom;
 		}
 
-		[StructLayout(LayoutKind.Sequential)]
+		[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
 		public struct SHELLEXECUTEINFO
 		{
 			public int cbSize;
@@ -109,6 +113,21 @@ namespace QuickLibrary
 			public uint dwHotKey;
 			public IntPtr hIcon;
 			public IntPtr hProcess;
+		}
+
+		[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
+		public struct SHFILEOPSTRUCT
+		{
+			public IntPtr hwnd;
+			[MarshalAs(UnmanagedType.U4)]
+			public int wFunc;
+			public string pFrom;
+			public string pTo;
+			public short fFlags;
+			[MarshalAs(UnmanagedType.Bool)]
+			public bool fAnyOperationsAborted;
+			public IntPtr hNameMappings;
+			public string lpszProgressTitle;
 		}
 
 		// KERNEL32 METHODS
@@ -174,6 +193,9 @@ namespace QuickLibrary
 
 		[DllImport("shell32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
 		public static extern bool ShellExecuteEx(ref SHELLEXECUTEINFO lpExecInfo);
+
+		[DllImport("shell32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+		public static extern int SHFileOperation(ref SHFILEOPSTRUCT FileOp);
 
 		// CUSTOM METHODS
 

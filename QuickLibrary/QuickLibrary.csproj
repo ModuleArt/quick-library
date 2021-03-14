@@ -64,6 +64,7 @@
     </Compile>
     <Compile Include="DropShadow.cs" />
     <Compile Include="FileAssociation.cs" />
+    <Compile Include="FileMan.cs" />
     <Compile Include="LangMan.cs" />
     <Compile Include="NativeMan.cs" />
     <Compile Include="PluginInfo.cs" />

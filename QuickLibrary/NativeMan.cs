@@ -67,6 +67,14 @@ namespace QuickLibrary
 			SB_THUMBPOSITION = 4
 		}
 
+		public enum ScrollBarDirection
+		{
+			SB_HORZ = 0,
+			SB_VERT = 1,
+			SB_CTL = 2,
+			SB_BOTH = 3
+		}
+
 		// STRUCTURES
 
 		[StructLayout(LayoutKind.Sequential)]
@@ -112,6 +120,9 @@ namespace QuickLibrary
 		public static extern IntPtr GetProcAddressOrdinal(IntPtr hModule, string procName);
 
 		// USER32 METHODS
+
+		[DllImport("user32.dll")]
+		public static extern bool ShowScrollBar(IntPtr hWnd, ScrollBarDirection wBar, bool bShow);
 
 		[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
 		public static extern bool SetProcessDPIAware();

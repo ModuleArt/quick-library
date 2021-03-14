@@ -27,9 +27,9 @@ namespace QuickLibrary
 
             InitializeComponent();
             (new DropShadow()).ApplyShadows(this);
-            SetDraggableControls(new List<Control>() { titleLabel, statusLabel });
+            SetDraggableControls(new List<Control>() { statusLabel });
 
-            titleLabel.Text = updating;
+            Text = updating;
             statusLabel.Text = downloading;
             updateButton.Text = install;
             cancelButton.Text = NativeMan.GetMessageBoxText(NativeMan.DialogBoxCommandID.IDCANCEL);

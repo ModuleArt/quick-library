@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -11,7 +10,6 @@ namespace QuickLibrary
 		{
 			InitializeComponent();
 			(new DropShadow()).ApplyShadows(this);
-			SetDraggableControls(new List<Control>() { titleLabel });
 
 			Text = windowTitle;
 			okBtn.Text = NativeMan.GetMessageBoxText(NativeMan.DialogBoxCommandID.IDOK);

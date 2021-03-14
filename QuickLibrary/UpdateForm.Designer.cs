@@ -33,7 +33,6 @@
 			this.buttonYes = new System.Windows.Forms.Button();
 			this.boxReleaseNotes = new System.Windows.Forms.CheckBox();
 			this.ReleaseNotes = new System.Windows.Forms.WebBrowser();
-			this.titleLabel = new System.Windows.Forms.Label();
 			this.closeBtn = new QuickLibrary.QlibTitlebarButton();
 			this.infoTooltip = new System.Windows.Forms.ToolTip(this.components);
 			this.messageTextBox = new System.Windows.Forms.TextBox();
@@ -88,17 +87,6 @@
 			this.ReleaseNotes.Visible = false;
 			this.ReleaseNotes.WebBrowserShortcutsEnabled = false;
 			// 
-			// titleLabel
-			// 
-			this.titleLabel.AutoSize = true;
-			this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 10F);
-			this.titleLabel.Location = new System.Drawing.Point(10, 7);
-			this.titleLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.titleLabel.Name = "titleLabel";
-			this.titleLabel.Size = new System.Drawing.Size(32, 19);
-			this.titleLabel.TabIndex = 16;
-			this.titleLabel.Text = "title";
-			// 
 			// closeBtn
 			// 
 			this.closeBtn.DarkImage = ((System.Drawing.Image)(resources.GetObject("closeBtn.DarkImage")));
@@ -151,7 +139,6 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.ClientSize = new System.Drawing.Size(340, 444);
-			this.Controls.Add(this.titleLabel);
 			this.Controls.Add(this.skipBtn);
 			this.Controls.Add(this.closeBtn);
 			this.Controls.Add(this.messageTextBox);
@@ -164,8 +151,9 @@
 			this.MinimumSize = new System.Drawing.Size(320, 39);
 			this.Name = "UpdateForm";
 			this.ShowInTaskbar = false;
+			this.ShowTitle = true;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "Update available!";
+			this.Text = "UpdateForm";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UpdateForm_KeyDown);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -176,7 +164,6 @@
 		private System.Windows.Forms.CheckBox boxReleaseNotes;
 		private System.Windows.Forms.WebBrowser ReleaseNotes;
 		private System.Windows.Forms.Button buttonYes;
-		private System.Windows.Forms.Label titleLabel;
 		private QlibTitlebarButton closeBtn;
 		private System.Windows.Forms.ToolTip infoTooltip;
 		private System.Windows.Forms.TextBox messageTextBox;

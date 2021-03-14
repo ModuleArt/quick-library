@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -13,11 +12,10 @@ namespace QuickLibrary
 		{
 			InitializeComponent();
 			(new DropShadow()).ApplyShadows(this);
-			SetDraggableControls(new List<Control>() { titleLabel });
 
 			Height = 244;
 
-			titleLabel.Text = title;
+			Text = title;
 			boxReleaseNotes.Text = whatsNewBtnText;
 			messageTextBox.Text = string.Format(message, UpdateChecker.LatestRelease.TagName, "v" + UpdateChecker.CurrentVersion);
 			buttonYes.Text = dwnldBtnText;

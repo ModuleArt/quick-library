@@ -35,7 +35,6 @@
 			this.cancelButton = new System.Windows.Forms.Button();
 			this.updateButton = new System.Windows.Forms.Button();
 			this.closeBtn = new QuickLibrary.QlibTitlebarButton();
-			this.titleLabel = new System.Windows.Forms.Label();
 			this.infoTooltip = new System.Windows.Forms.ToolTip(this.components);
 			this.SuspendLayout();
 			// 
@@ -110,23 +109,11 @@
 			this.closeBtn.UseVisualStyleBackColor = true;
 			this.closeBtn.Click += new System.EventHandler(this.closeBtn_Click);
 			// 
-			// titleLabel
-			// 
-			this.titleLabel.AutoSize = true;
-			this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 10F);
-			this.titleLabel.Location = new System.Drawing.Point(10, 7);
-			this.titleLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.titleLabel.Name = "titleLabel";
-			this.titleLabel.Size = new System.Drawing.Size(64, 19);
-			this.titleLabel.TabIndex = 17;
-			this.titleLabel.Text = "updating";
-			// 
 			// DownloadForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
 			this.ClientSize = new System.Drawing.Size(340, 148);
 			this.Controls.Add(this.closeBtn);
-			this.Controls.Add(this.titleLabel);
 			this.Controls.Add(this.updateButton);
 			this.Controls.Add(this.cancelButton);
 			this.Controls.Add(this.statusLabel);
@@ -137,8 +124,9 @@
 			this.Name = "DownloadForm";
 			this.ShowIcon = false;
 			this.ShowInTaskbar = false;
+			this.ShowTitle = true;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "Update downloader";
+			this.Text = "DownloadForm";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DownloadForm_FormClosing);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -151,7 +139,6 @@
 		private System.Windows.Forms.Label statusLabel;
 		private System.Windows.Forms.Button cancelButton;
 		private System.Windows.Forms.Button updateButton;
-		private System.Windows.Forms.Label titleLabel;
 		private QlibTitlebarButton closeBtn;
 		private System.Windows.Forms.ToolTip infoTooltip;
 	}

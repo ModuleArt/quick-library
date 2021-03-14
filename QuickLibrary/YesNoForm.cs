@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -20,7 +19,6 @@ namespace QuickLibrary
 		{
 			InitializeComponent();
 			(new DropShadow()).ApplyShadows(this);
-			SetDraggableControls(new List<Control>() { titleLabel });
 
 			yesBtn.Text = yesBtnText.Length == 0 ? NativeMan.GetMessageBoxText(NativeMan.DialogBoxCommandID.IDYES) : yesBtnText;
 			if (yesBtnImage != null)

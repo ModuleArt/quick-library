@@ -32,7 +32,6 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(YesNoForm));
 			this.yesBtn = new System.Windows.Forms.Button();
 			this.infoTooltip = new System.Windows.Forms.ToolTip(this.components);
-			this.titleLabel = new System.Windows.Forms.Label();
 			this.closeBtn = new QuickLibrary.QlibTitlebarButton();
 			this.textBox = new System.Windows.Forms.TextBox();
 			this.noBtn = new System.Windows.Forms.Button();
@@ -57,17 +56,6 @@
 			this.yesBtn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
 			this.yesBtn.UseVisualStyleBackColor = false;
 			this.yesBtn.Click += new System.EventHandler(this.yesBtn_Click);
-			// 
-			// titleLabel
-			// 
-			this.titleLabel.AutoSize = true;
-			this.titleLabel.Font = new System.Drawing.Font("Segoe UI", 10F);
-			this.titleLabel.Location = new System.Drawing.Point(10, 7);
-			this.titleLabel.Margin = new System.Windows.Forms.Padding(0);
-			this.titleLabel.Name = "titleLabel";
-			this.titleLabel.Size = new System.Drawing.Size(32, 19);
-			this.titleLabel.TabIndex = 16;
-			this.titleLabel.Text = "title";
 			// 
 			// closeBtn
 			// 
@@ -148,7 +136,6 @@
 			this.ClientSize = new System.Drawing.Size(280, 242);
 			this.CloseButton = this.closeBtn;
 			this.Controls.Add(this.closeBtn);
-			this.Controls.Add(this.titleLabel);
 			this.Controls.Add(this.cancelBtn);
 			this.Controls.Add(this.noBtn);
 			this.Controls.Add(this.textBox);
@@ -158,8 +145,9 @@
 			this.MinimizeBox = false;
 			this.Name = "YesNoForm";
 			this.ShowInTaskbar = false;
+			this.ShowTitle = true;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "Update available!";
+			this.Text = "YesNoForm";
 			this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.YesNoForm_KeyDown);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -169,7 +157,6 @@
 		#endregion
 		private System.Windows.Forms.Button yesBtn;
 		private System.Windows.Forms.ToolTip infoTooltip;
-		private System.Windows.Forms.Label titleLabel;
 		private QlibTitlebarButton closeBtn;
 		private System.Windows.Forms.TextBox textBox;
 		private System.Windows.Forms.Button noBtn;

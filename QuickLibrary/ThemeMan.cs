@@ -77,7 +77,7 @@ namespace QuickLibrary
 		[DllImport("user32.dll")]
 		private static extern bool SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttribData data);
 
-		private static void enableDarkTitlebar(IntPtr handle, bool dark)
+		public static void EnableDarkTitlebar(IntPtr handle, bool dark)
 		{
 			AllowDarkModeForWindow(handle, dark);
 
@@ -98,12 +98,6 @@ namespace QuickLibrary
 		public static void allowDarkModeForApp(bool dark)
 		{
 			AllowDarkModeForApp(dark);
-		}
-
-		public static void formHandleCreated(object sender, EventArgs e)
-		{
-			Form f = sender as Form;
-			enableDarkTitlebar(f.Handle, true);
 		}
 
 		public static void setDarkModeToControl(IntPtr handle)

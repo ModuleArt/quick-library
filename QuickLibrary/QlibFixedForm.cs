@@ -205,6 +205,7 @@ namespace QuickLibrary
 
 		protected override void OnHandleCreated(EventArgs e)
 		{
+			ThemeMan.EnableDarkTitlebar(Handle, DarkMode);
 			(new DropShadow()).ApplyShadows(this);
 			base.OnHandleCreated(e);
 		}
@@ -286,8 +287,6 @@ namespace QuickLibrary
 
 		private void SetDarkMode(bool dark, bool alternative)
 		{
-			HandleCreated += new EventHandler(ThemeMan.formHandleCreated);
-
 			darkMode = dark;
 			alternativeAppearance = alternative;
 

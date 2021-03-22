@@ -204,8 +204,8 @@ namespace QuickLibrary
 		private void QlibNumericBox_SizeChanged(object sender, EventArgs e)
 		{
 			numeric.Size = new Size(Size.Width - 14, numeric.Size.Height);
-			upBtn.Location = new Point(Size.Width - 21, 0);
-			downBtn.Location = new Point(Size.Width - 21, 16);
+			upBtn.Location = new Point(Size.Width - upBtn.Width, 0);
+			downBtn.Location = new Point(Size.Width - downBtn.Width, 16);
 		}
 
 		internal class InternalNumericUpDown : NumericUpDown

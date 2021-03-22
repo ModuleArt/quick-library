@@ -205,7 +205,7 @@ namespace QuickLibrary
 
 		protected override void OnHandleCreated(EventArgs e)
 		{
-			ThemeMan.EnableDarkTitlebar(Handle, DarkMode);
+			ThemeMan.ApplyDarkTitlebar(Handle, DarkMode);
 			(new DropShadow()).ApplyShadows(this);
 			base.OnHandleCreated(e);
 		}

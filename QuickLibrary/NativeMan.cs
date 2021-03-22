@@ -79,6 +79,14 @@ namespace QuickLibrary
 			SB_BOTH = 3
 		}
 
+		public enum DPI_AWARENESS_CONTEXT
+		{
+			DPI_AWARENESS_CONTEXT_UNAWARE = 16,
+			DPI_AWARENESS_CONTEXT_SYSTEM_AWARE = 17,
+			DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE = 18,
+			DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2 = 34
+		}
+
 		// STRUCTURES
 
 		[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Auto)]
@@ -139,6 +147,9 @@ namespace QuickLibrary
 		public static extern IntPtr GetProcAddressOrdinal(IntPtr hModule, string procName);
 
 		// USER32 METHODS
+
+		[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+		public static extern bool SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT dpiFlag);
 
 		[DllImport("user32.dll")]
 		public static extern bool ShowScrollBar(IntPtr hWnd, ScrollBarDirection wBar, bool bShow);

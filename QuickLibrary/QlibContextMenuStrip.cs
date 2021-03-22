@@ -44,6 +44,9 @@ namespace QuickLibrary
 		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
 		public new Padding Padding { get { return base.Padding; } set { } }
 
+		[Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
+		public new bool UseWaitCursor { get { return base.UseWaitCursor; } set { } }
+
 		#endregion
 
 		#region PUBLIC PROPS
@@ -71,6 +74,7 @@ namespace QuickLibrary
 			base.AllowDrop = false;
 			base.AutoSize = true;
 			base.Padding = new Padding(32, 2, 2, 2);
+			base.UseWaitCursor = false;
 		}
 
 		#endregion

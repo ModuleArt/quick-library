@@ -9,7 +9,6 @@ namespace QuickLibrary
 		public OkForm(string messageText, string windowTitle, bool darkMode = false)
 		{
 			InitializeComponent();
-			(new DropShadow()).ApplyShadows(this);
 
 			Text = windowTitle;
 			okBtn.Text = NativeMan.GetMessageBoxText(NativeMan.DialogBoxCommandID.IDOK);

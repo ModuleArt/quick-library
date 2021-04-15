@@ -74,7 +74,7 @@ namespace QuickLibrary
 		[DllImport("uxtheme.dll", EntryPoint = "#135", SetLastError = true, ExactSpelling = true, CharSet = CharSet.Unicode, CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool AllowDarkModeForApp(bool allow);
 
-		[DllImport("user32.dll")]
+		[DllImport("user32.dll", CallingConvention = CallingConvention.Cdecl)]
 		private static extern bool SetWindowCompositionAttribute(IntPtr hwnd, ref WindowCompositionAttribData data);
 
 		public static void ApplyDarkTitlebar(IntPtr handle, bool dark)
@@ -93,6 +93,20 @@ namespace QuickLibrary
 			SetWindowCompositionAttribute(handle, ref data);
 
 			Marshal.FreeHGlobal(dataPtr);
+		}
+
+		public static void ApplyShadows(IntPtr handle)
+		{
+			var v = 2;
+			NativeMan.DwmSetWindowAttribute(handle, 2, ref v, 4);
+			NativeMan.MARGINS margins = new NativeMan.MARGINS()
+			{
+				Bottom = 1,
+				Left = 1,
+				Right = 1,
+				Top = 1
+			};
+			NativeMan.DwmExtendFrameIntoClientArea(handle, ref margins);
 		}
 
 		public static void AllowAppDarkMode(bool dark)

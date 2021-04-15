@@ -11,7 +11,6 @@ namespace QuickLibrary
 		public UpdateForm(bool darkMode, string title, string message, string dwnldBtnText, string skipBtnText, string whatsNewBtnText)
 		{
 			InitializeComponent();
-			(new DropShadow()).ApplyShadows(this);
 
 			Height = 244;
 

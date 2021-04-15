@@ -91,20 +91,24 @@ namespace QuickLibrary
 					}
 				}
 			}
-			catch
+			catch (Exception ex)
 			{
 				if (showUpToDateDialog)
 				{
-					OnUpdateFailed(EventArgs.Empty);
+					UpdateFailedEventArgs ufea = new UpdateFailedEventArgs
+					{
+						Exception = ex
+					};
+					OnUpdateFailed(ufea);
 				}
 			}
 		}
 
-		public static void OnUpdateFailed(EventArgs ea)
+		public static void OnUpdateFailed(UpdateFailedEventArgs ufea)
 		{
-			UpdateFailed?.Invoke(null, ea);
+			UpdateFailed?.Invoke(null, ufea);
 		}
-		public static event EventHandler<EventArgs> UpdateFailed;
+		public static event EventHandler<UpdateFailedEventArgs> UpdateFailed;
 
 		public static void OnIsUpToDate(EventArgs ea)
 		{
@@ -117,6 +121,11 @@ namespace QuickLibrary
 			UpdateSkipped?.Invoke(null, usea);
 		}
 		public static event EventHandler<UpdateSkippedEventArgs> UpdateSkipped;
+	}
+
+	public class UpdateFailedEventArgs : EventArgs
+	{
+		public Exception Exception { get; set; }
 	}
 
 	public class UpdateSkippedEventArgs : EventArgs

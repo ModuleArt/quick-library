@@ -55,21 +55,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DialogMan.cs" />
-    <Compile Include="DownloadForm.cs">
+    <Compile Include="managers\DialogMan.cs" />
+    <Compile Include="forms\DownloadForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DownloadForm.Designer.cs">
+    <Compile Include="forms\DownloadForm.Designer.cs">
       <DependentUpon>DownloadForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DropShadow.cs" />
-    <Compile Include="FileAssociation.cs" />
-    <Compile Include="FileMan.cs" />
-    <Compile Include="LangMan.cs" />
-    <Compile Include="NativeMan.cs" />
-    <Compile Include="PluginInfo.cs" />
-    <Compile Include="PluginMan.cs" />
-    <Compile Include="PluginMenuItem.cs">
+    <Compile Include="helpers\FileAssociation.cs" />
+    <Compile Include="managers\FileMan.cs" />
+    <Compile Include="managers\LangMan.cs" />
+    <Compile Include="managers\NativeMan.cs" />
+    <Compile Include="entities\PluginInfo.cs" />
+    <Compile Include="managers\PluginMan.cs" />
+    <Compile Include="entities\PluginMenuItem.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -77,86 +76,86 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="QlibContextMenuStrip.cs">
+    <Compile Include="controls\QlibContextMenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="QlibListView.cs">
+    <Compile Include="controls\QlibListView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="QlibProgressBar.cs">
+    <Compile Include="controls\QlibProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="QlibTextBox.cs">
+    <Compile Include="controls\QlibTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="QlibTitlebarButton.cs">
+    <Compile Include="controls\QlibTitlebarButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="QlibFixedForm.cs">
+    <Compile Include="forms\QlibFixedForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="QlibCheckBox.cs">
+    <Compile Include="controls\QlibCheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QlibComboBox.cs">
+    <Compile Include="controls\QlibComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="QlibNumeric.cs">
+    <Compile Include="controls\QlibNumeric.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="QlibRadio.cs">
+    <Compile Include="controls\QlibRadio.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="QlibTabs.cs">
+    <Compile Include="controls\QlibTabs.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="QlibToolbar.cs">
+    <Compile Include="controls\QlibToolbar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="QlibToolsep.cs">
+    <Compile Include="controls\QlibToolsep.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SerializeMan.cs" />
-    <Compile Include="ThemeMan.cs" />
-    <Compile Include="UpdateChecker.cs" />
-    <Compile Include="OkForm.cs">
+    <Compile Include="managers\SerializeMan.cs" />
+    <Compile Include="managers\ThemeMan.cs" />
+    <Compile Include="helpers\UpdateChecker.cs" />
+    <Compile Include="forms\OkForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OkForm.Designer.cs">
+    <Compile Include="forms\OkForm.Designer.cs">
       <DependentUpon>OkForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateMan.cs" />
-    <Compile Include="WallpaperMan.cs" />
-    <Compile Include="YesNoForm.cs">
+    <Compile Include="managers\UpdateMan.cs" />
+    <Compile Include="managers\WallpaperMan.cs" />
+    <Compile Include="forms\YesNoForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="YesNoForm.Designer.cs">
+    <Compile Include="forms\YesNoForm.Designer.cs">
       <DependentUpon>YesNoForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateForm.cs">
+    <Compile Include="forms\UpdateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateForm.Designer.cs">
+    <Compile Include="forms\UpdateForm.Designer.cs">
       <DependentUpon>UpdateForm.cs</DependentUpon>
     </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DownloadForm.resx">
+    <EmbeddedResource Include="forms\DownloadForm.resx">
       <DependentUpon>DownloadForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="OkForm.resx">
+    <EmbeddedResource Include="forms\OkForm.resx">
       <DependentUpon>OkForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="YesNoForm.resx">
+    <EmbeddedResource Include="forms\YesNoForm.resx">
       <DependentUpon>YesNoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateForm.resx">
+    <EmbeddedResource Include="forms\UpdateForm.resx">
       <DependentUpon>UpdateForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

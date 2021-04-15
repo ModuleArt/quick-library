@@ -34,7 +34,6 @@ namespace QuickLibrary
 		public const int FOF_ALLOWUNDO = 0x0040;          
 		public const int FOF_NOCONFIRMATION = 0x0010;
 
-
 		// ENUMS
 
 		public enum DialogBoxCommandID : int
@@ -85,6 +84,15 @@ namespace QuickLibrary
 			DPI_AWARENESS_CONTEXT_SYSTEM_AWARE = 17,
 			DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE = 18,
 			DPI_AWARENESS_CONTEXT_PER_MONITOR_AWARE_V2 = 34
+		}
+
+		public enum KeyModifier : int
+		{
+			None = 0,
+			Alt = 1,
+			Control = 2,
+			Shift = 4,
+			WinKey = 8
 		}
 
 		// STRUCTURES
@@ -149,6 +157,12 @@ namespace QuickLibrary
 		// USER32 METHODS
 
 		[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+		public static extern bool RegisterHotKey(IntPtr hWnd, int id, KeyModifier fsModifiers, int vk);
+
+		[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+		public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+
+		[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
 		public static extern bool SetProcessDpiAwarenessContext(DPI_AWARENESS_CONTEXT dpiFlag);
 
 		[DllImport("user32.dll")]
@@ -174,6 +188,9 @@ namespace QuickLibrary
 
 		[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
 		public static extern IntPtr FindWindowEx(IntPtr hP, IntPtr hC, string sC, string sW);
+
+		[DllImport("user32.dll", SetLastError = true)]
+		public static extern int GetWindowLong(IntPtr hWnd, int nIndex);
 
 		[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
 		public static extern int SetWindowLong(IntPtr hWnd, int nIndex, IntPtr dwNewLong);

@@ -18,7 +18,6 @@ namespace QuickLibrary
 		)
 		{
 			InitializeComponent();
-			(new DropShadow()).ApplyShadows(this);
 
 			yesBtn.Text = yesBtnText.Length == 0 ? NativeMan.GetMessageBoxText(NativeMan.DialogBoxCommandID.IDYES) : yesBtnText;
 			if (yesBtnImage != null)

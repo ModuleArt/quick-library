@@ -151,12 +151,15 @@ namespace QuickLibrary
 		public bool UsePadding
 		{
 			get { return usePadding; }
-			set 
+			set
 			{
 				usePadding = value;
 				base.Padding = value ? new Padding(10) : base.Padding = Padding.Empty;
 			}
 		}
+
+		[Category("Qlib props"), Browsable(true), Description("Esc to close")]
+		public bool EscToClose { get; set; } = false;
 
 		#endregion
 
@@ -197,6 +200,12 @@ namespace QuickLibrary
 
 		#region PRIVATE BODY
 
+		protected override void OnKeyDown(KeyEventArgs e)
+		{
+			if (EscToClose && e.KeyCode == Keys.Escape) Close();
+			base.OnKeyDown(e);
+		}
+
 		protected override void OnLoad(EventArgs e)
 		{
 			SetDarkMode(DarkMode, AlternativeAppearance);
@@ -206,7 +215,7 @@ namespace QuickLibrary
 		protected override void OnHandleCreated(EventArgs e)
 		{
 			ThemeMan.ApplyDarkTitlebar(Handle, DarkMode);
-			(new DropShadow()).ApplyShadows(this);
+			ThemeMan.ApplyShadows(Handle);
 			base.OnHandleCreated(e);
 		}
 

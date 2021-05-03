@@ -14,11 +14,13 @@ namespace QuickLibrary
 			string noBtnText = "",
 			Image noBtnImage = null,
 			string windowTitle = "",
-			bool darkMode = false
+			bool darkMode = false,
+			bool topMost = false
 		)
 		{
 			YesNoForm ynf = new YesNoForm(messageText, yesBtnText, yesBtnImage, showNoBtn, noBtnText, noBtnImage, windowTitle, darkMode);
 			ynf.Owner = owner;
+			ynf.TopMost = topMost;
 			DialogResult dr = ynf.ShowDialog();
 			ynf.Dispose();
 			return dr;
@@ -28,11 +30,13 @@ namespace QuickLibrary
 			Form owner,
 			string messageText,
 			string windowTitle = "",
-			bool darkMode = false
+			bool darkMode = false,
+			bool topMost = false
 		)
 		{
 			OkForm of = new OkForm(messageText, windowTitle, darkMode);
 			of.Owner = owner;
+			of.TopMost = topMost;
 			DialogResult dr = of.ShowDialog();
 			of.Dispose();
 			return dr;

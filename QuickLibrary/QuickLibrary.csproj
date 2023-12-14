@@ -1,166 +1,59 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{90F913B5-1B48-4E7B-83AA-21C0946B4F81}</ProjectGuid>
+    <TargetFramework>net8.0-windows</TargetFramework>
     <OutputType>Library</OutputType>
-    <RootNamespace>QuickLibrary</RootNamespace>
-    <AssemblyName>QuickLibrary</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Octokit, Version=0.48.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Octokit.0.48.0\lib\net46\Octokit.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.4.0\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\net47\System.ValueTuple.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Utf8Json, Version=1.3.7.0, Culture=neutral, PublicKeyToken=8a73d3ba7e392e27, processorArchitecture=MSIL">
-      <HintPath>..\packages\Utf8Json.1.3.7\lib\net47\Utf8Json.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="managers\DialogMan.cs" />
-    <Compile Include="forms\DownloadForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\DownloadForm.Designer.cs">
-      <DependentUpon>DownloadForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="helpers\FileAssociation.cs" />
-    <Compile Include="managers\FileMan.cs" />
-    <Compile Include="managers\LangMan.cs" />
-    <Compile Include="managers\NativeMan.cs" />
-    <Compile Include="entities\PluginInfo.cs" />
-    <Compile Include="managers\PluginMan.cs" />
-    <Compile Include="entities\PluginMenuItem.cs">
+    <Compile Update="entities\PluginMenuItem.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="controls\QlibContextMenuStrip.cs">
+    <Compile Update="controls\QlibContextMenuStrip.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="controls\QlibListView.cs">
+    <Compile Update="controls\QlibListView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="controls\QlibProgressBar.cs">
+    <Compile Update="controls\QlibProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="controls\QlibTextBox.cs">
+    <Compile Update="controls\QlibTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="controls\QlibTitlebarButton.cs">
+    <Compile Update="controls\QlibTitlebarButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="forms\QlibFixedForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="controls\QlibCheckBox.cs">
+    <Compile Update="controls\QlibCheckBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="controls\QlibComboBox.cs">
+    <Compile Update="controls\QlibComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="controls\QlibNumeric.cs">
+    <Compile Update="controls\QlibNumeric.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="controls\QlibRadio.cs">
+    <Compile Update="controls\QlibRadio.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="controls\QlibTabs.cs">
+    <Compile Update="controls\QlibTabs.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="controls\QlibToolbar.cs">
+    <Compile Update="controls\QlibToolbar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="controls\QlibToolsep.cs">
+    <Compile Update="controls\QlibToolsep.cs">
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="managers\SerializeMan.cs" />
-    <Compile Include="managers\ThemeMan.cs" />
-    <Compile Include="helpers\UpdateChecker.cs" />
-    <Compile Include="forms\OkForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\OkForm.Designer.cs">
-      <DependentUpon>OkForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="managers\UpdateMan.cs" />
-    <Compile Include="managers\WallpaperMan.cs" />
-    <Compile Include="forms\YesNoForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\YesNoForm.Designer.cs">
-      <DependentUpon>YesNoForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="forms\UpdateForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\UpdateForm.Designer.cs">
-      <DependentUpon>UpdateForm.cs</DependentUpon>
     </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="forms\DownloadForm.resx">
-      <DependentUpon>DownloadForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="forms\OkForm.resx">
-      <DependentUpon>OkForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="forms\YesNoForm.resx">
-      <DependentUpon>YesNoForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="forms\UpdateForm.resx">
-      <DependentUpon>UpdateForm.cs</DependentUpon>
-    </EmbeddedResource>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <PackageReference Include="Octokit" Version="9.0.0" />
+    <PackageReference Include="Utf8Json" Version="1.3.7" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

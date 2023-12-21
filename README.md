@@ -65,7 +65,7 @@ git submodule update
 
 Code contributors:
 
-- <a href="https://github.com/adriengivry">adriengivry</a> - <a href="https://github.com/ModuleArt/quick-library/pull/1">Updated app to to .NET8.0</a>
+- <a href="https://github.com/adriengivry">adriengivry</a> - <a href="https://github.com/ModuleArt/quick-library/pull/1">Updated app to .NET8.0</a>
 - <a href="https://github.com/Beelink">Beelink</a> - Everything else 😘
 
 ## 🖼 App showcase

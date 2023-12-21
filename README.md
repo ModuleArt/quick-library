@@ -49,24 +49,25 @@ Managers:
 
 ## 🔨 Contribution:
 
-Help Module Art!
+#### Help Module Art!
 
 - Give us a star ⭐
 - Fork and Clone! Awesome
 - Select existing <a href="https://github.com/ModuleArt/quick-library/issues">issues</a> or create a <a href="https://github.com/ModuleArt/quick-library/issues/new">new issue</a> and give us a PR with your bugfix or improvement after. We love it ❤
 
-How to clone:
+#### How to clone:
 
 ```powershell
 git clone --recurse-submodules https://github.com/ModuleArt/quick-library
 ```
 
-Code contributors:
+#### Code contributors:
 
 - <a href="https://github.com/adriengivry">adriengivry</a> - <a href="https://github.com/ModuleArt/quick-library/pull/1">Updated app to .NET8.0</a>
 - <a href="https://github.com/Beelink">Beelink</a> - Everything else 😘
 
-## 🖼 App showcase
+## 🖼 Showcase:
 
 - <a href="https://moduleart.github.io/quick-picture-viewer/">Quick Picture Viewer</a> - Lightweight, versatile desktop image viewer for Windows. The best replacement for the default Windows photo viewer.<br>
 - <a href="https://github.com/ModuleArt/quick-color-picker/">Quick Color Picker</a> - Lightweight desktop color picker and color editor utility for Windows.<br>
+- <a href="https://moduleart.github.io/qpv-plugins/">QPV Plugins</a> - Set of preinstalled plugins for the Quick Picture Viewer<br>

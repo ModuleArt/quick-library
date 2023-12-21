@@ -41,7 +41,7 @@ namespace QuickLibrary
             if (darkMode)
             {
                 cancelButton.BackColor = ThemeMan.DarkSecondColor;
-                updateButton.BackColor = ThemeMan.DarkSecondColor;  
+                updateButton.BackColor = ThemeMan.DarkSecondColor;
             }
 
             wc = new WebClient();
@@ -85,7 +85,11 @@ namespace QuickLibrary
 
         private void updateButton_Click(object sender, EventArgs e)
         {
-            Process.Start(fileName);
+            Process.Start(new ProcessStartInfo
+            {
+                UseShellExecute = true,
+                FileName = fileName
+            });
             Close();
             Owner.Close();
         }

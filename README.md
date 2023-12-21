@@ -59,8 +59,6 @@ How to clone:
 
 ```powershell
 git clone --recurse-submodules https://github.com/ModuleArt/quick-library
-git submodule init
-git submodule update
 ```
 
 Code contributors:

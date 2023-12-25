@@ -121,7 +121,7 @@ namespace QuickLibrary
 
 		public static bool isDarkTheme()
 		{
-			if (isWindows10())
+			if (isWindows10orLater())
 			{
 				try
 				{
@@ -140,13 +140,13 @@ namespace QuickLibrary
 			}
 		}
 
-		public static bool isWindows10()
+		public static bool isWindows10orLater()
 		{
 			try
 			{
 				var reg = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows NT\CurrentVersion");
 				string productName = (string)reg.GetValue("ProductName");
-				return productName.StartsWith("Windows 10");
+				return productName.StartsWith("Windows 10") || productName.StartsWith("Windows 11");
 			}
 			catch
 			{

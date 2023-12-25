@@ -82,7 +82,7 @@ namespace QuickLibrary
 			base.MaximumSize = Size.Empty;
 			base.CausesValidation = false;
 			base.ItemHeight = 26;
-			base.IntegralHeight = false;
+			base.IntegralHeight = true;
 			base.AllowDrop = false;
 			base.RightToLeft = RightToLeft.No;
 			base.FlatStyle = FlatStyle.Flat;
